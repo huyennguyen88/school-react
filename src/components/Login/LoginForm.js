@@ -10,32 +10,28 @@ class LoginForm extends Component {
                         <form>
                             <fieldset className="form-group text-left">
                                 <div className="row">
-  
                                     <div className="col-sm-10">
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" defaultValue="option1" defaultChecked />
                                             <label className="form-check-label" htmlFor="gridRadios1">
                                                 Học sinh
-        </label>
+                                            </label>
                                         </div>
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" defaultValue="option2" />
                                             <label className="form-check-label" htmlFor="gridRadios2">
                                                 Giáo viên
-        </label>
+                                            </label>
                                         </div>
                                         <div className="form-check disabled">
                                             <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3" defaultValue="option3"/>
                                             <label className="form-check-label" htmlFor="gridRadios3">
                                                 Phụ huynh
-        </label>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
-
-
-
                             <div className="form-group">
                                 <div className="input-group">
                                     <div className="input-group-prepend">

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-
-export class ProfileMain extends Component {
+class MyStorage extends Component {
     render() {
         return (
             <div>
-                <p className="h2">Profile here</p>
+                <h1>My storage</h1>
             </div>
         )
     }
 }
-
-export default ProfileMain
+export default MyStorage 
