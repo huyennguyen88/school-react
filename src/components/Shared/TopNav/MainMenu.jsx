@@ -13,7 +13,7 @@ class MainMenu extends Component {
                     <div className="collapse navbar-collapse my-2 my-lg-0" id="navbarTogglerDemo02">
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li className="nav-item">
-                                <Link to="/" className="nav-link">
+                                <Link to="/publicStorage" className="nav-link">
                                     <i className="fas fa-book-reader mx-2"></i>
                                     Kho tài liệu
                                     <span className="sr-only">(current)</span>

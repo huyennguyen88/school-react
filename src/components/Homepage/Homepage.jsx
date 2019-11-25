@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Main from './Main';
 import LoginForm from '../Login/LoginForm';
 import ProfileMain from '../Profile/ProfileMain';
+import PublicStorage from '../DocumentStorage/PublicStorage';
 class Homepage extends React.Component {
     render() {
         return (
@@ -15,6 +16,9 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/profile">
                         <ProfileMain/>
+                    </Route>
+                    <Route path="/publicStorage">
+                        <PublicStorage/>
                     </Route>
                     <Route path="/">
                         <Main />
