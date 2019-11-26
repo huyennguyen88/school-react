@@ -4,7 +4,7 @@ import StudentListItem from './StudentListItem';
 class StudentList extends Component {
     render() {
         return (
-            <div class="container">
+            <div class="container mt-3 mb-3">
                 <div class="row">
                     <table class="table table-bordered text-center">
                         <thead>
