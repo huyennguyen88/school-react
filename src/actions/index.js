@@ -5,7 +5,6 @@ export const getGradesApi = (dispatch)=>{
         return callApi('grades','GET',null)
         .then(res => 
             {
-                console.log("goi")
                 dispatch(getGrades(res.data))
             })
     }
@@ -26,7 +25,6 @@ export const getSubjectsApi =(dispatch)=>{
 }
 export const getSubjects = (subjects)=>
 {
-
     return {
         type: types.GET_SUBJECTS,
         subjects

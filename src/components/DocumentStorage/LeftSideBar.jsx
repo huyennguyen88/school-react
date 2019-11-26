@@ -10,20 +10,16 @@ class LeftSideBar extends Component {
             grades: []
         }
     }
-    componentDidMount() {
-        this.setState({
-            grades: this.props.grades
-        })
-    }
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            grades: nextProps.grades
-        })
-    }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.grades === prevState.date) {
+          return null
+        }
+    
+        return { grades: nextProps.grades }
+      }
     render() {
         var { grades } = this.state
-        console.log("grades", grades)
-
+        //console.log("grades", grades)
         var listGrade = grades.map((grade, index) => {
             return <MenuGradeItem key={index} index={index} grade={grade} />
         })
