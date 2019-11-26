@@ -5,12 +5,12 @@ class ListClass extends Component {
     render() {
         return (
             <div>
-                <BigImage />
+                {/* <BigImage /> */}
                 <div class="container mt-3 mb-3">
                     <h1>Danh sách lớp</h1>
                     <hr />
                     <div class="row">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered text-center">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Mã lớp</th>
