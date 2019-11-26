@@ -5,7 +5,7 @@ export class ProfileMain extends Component {
         return (
             <div>
                 
-                <div class="container pb-4 mb-4">
+                <div class="container mb-3">
                 <p className="h2">Profile here</p>
                 <hr/>
                     <div class="row border mb-3">
@@ -34,9 +34,13 @@ export class ProfileMain extends Component {
                         </tbody>
                     </table>
                         </div>
-                        
+
                     </div>
-                    <a name="" id="" class="btn btn-primary float-right " href="#" role="button">Back</a>
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-primary float-right">Back</button>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

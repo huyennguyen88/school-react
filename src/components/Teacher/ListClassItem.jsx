@@ -4,8 +4,8 @@ class ListClassItem extends Component {
     render() {
         
         return (
-            <tr>
-                <td scope="row"></td>
+            <tr className="table table-info">
+                <td scope="row">asdfasdf</td>
                 <td></td>
                 <td></td>
             </tr>

@@ -5,10 +5,10 @@ class ListClass extends Component {
     render() {
         return (
             <div>
-                <BigImage/>
+                <BigImage />
                 <div class="container mt-3 mb-3">
                     <h1>Danh sách lớp</h1>
-                    <hr/>
+                    <hr />
                     <div class="row">
                         <table class="table table-bordered">
                             <thead class="thead-dark">
@@ -22,6 +22,11 @@ class ListClass extends Component {
                                 <ListClassItem />
                             </tbody>
                         </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-primary float-right">Back</button>
+                        </div>
                     </div>
                 </div>
             </div>
