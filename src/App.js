@@ -2,8 +2,16 @@ import React from 'react';
 import './App.css';
 import Homepage from './components/Homepage/Homepage';
 import { BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from './actions/index'
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.props.getSubjects()
+    this.props.getGrades()
+  }
   render() {
+     // console.log("grades app",this.props.grades)
       return (
         <Router>
           <div>
@@ -13,5 +21,21 @@ class App extends React.Component {
       )
   }
 }
+const mapStateToProps =(state)=>{
+  return {
+    subjects: state.subjects,
+    grades: state.grades
+  }
 
-export default App;
+}
+const mapDispatchToProps =(dispatch)=>{
+  return{
+      getSubjects : () =>{
+          dispatch(actions.getSubjectsApi())
+      },
+      getGrades: () => {
+        dispatch(actions.getGradesApi())
+    }
+  }
+}
+export default connect(null,mapDispatchToProps) (App);

@@ -1,6 +1,10 @@
 import {combineReducers} from 'redux';
-import classes from './classes'
+import grades from './grades'
+import subjects from './subjects'
+
 const myReducer = combineReducers({
-    classes
+    //HUYEN
+    grades,
+    subjects
 });
 export default myReducer
