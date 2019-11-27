@@ -21,13 +21,13 @@ class App extends React.Component {
       )
   }
 }
-const mapStateToProps =(state)=>{
-  return {
-    subjects: state.subjects,
-    grades: state.grades
-  }
+// const mapStateToProps =(state)=>{
+//   return {
+//     subjects: state.subjects,
+//     grades: state.grades
+//   }
 
-}
+// }
 const mapDispatchToProps =(dispatch)=>{
   return{
       getSubjects : () =>{

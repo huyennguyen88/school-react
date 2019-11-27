@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import StudentList from './StudentList'
-import StudentDiligenceItem from './StudentDiligenceItem';
 import StudentDiligence from './StudentDiligence';
 import StudentScore from './StudentScore';
 

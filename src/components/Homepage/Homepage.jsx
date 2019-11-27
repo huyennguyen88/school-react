@@ -36,13 +36,10 @@ class Homepage extends React.Component {
                     <Route path="/">
                         <Main />
                     </Route>
-                    
-
                 </Switch>
                 <Footer/>
             </div>
         )
     }
 }
-
 export default Homepage
