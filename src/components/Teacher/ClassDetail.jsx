@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StudentList from './StudentList'
 import StudentDiligenceItem from './StudentDiligenceItem';
 import StudentDiligence from './StudentDiligence';
+import StudentScore from './StudentScore';
 
 class ClassDetail extends Component {
     render() {
@@ -23,7 +24,7 @@ class ClassDetail extends Component {
                 <div class="tab-content " id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><StudentList/></div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><StudentDiligence/></div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Bảng điểm</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><StudentScore/></div>
                 </div>
             </div>
         );
