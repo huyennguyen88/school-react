@@ -10,7 +10,7 @@ class StudentList extends Component {
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
                 <div class="row">
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr className="bg-success text-white ">
                                 <th>Ảnh đại diện</th>
@@ -20,7 +20,7 @@ class StudentList extends Component {
                                 <th>Phụ huynh</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="table table-striped table-success">
                             <StudentListItem />
                         </tbody>
                     </table>

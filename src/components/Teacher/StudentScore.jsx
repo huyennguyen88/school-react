@@ -34,7 +34,7 @@ class StudentScore extends Component {
                                     <th>Cuối kì</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="table table-striped table-success">
                                 <StudentScoreItem />
                             </tbody>
                         </table>

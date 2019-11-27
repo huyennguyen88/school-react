@@ -21,7 +21,7 @@ class StudentList extends Component {
                                 <th>Vắng không phép</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="table table-striped table-success">
                             <StudentDiligenceItem />
                         </tbody>
                     </table>
