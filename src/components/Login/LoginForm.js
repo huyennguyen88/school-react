@@ -49,7 +49,7 @@ class LoginForm extends Component {
                                 </div>
                             </div>
                             <div className="form-group ">
-                                <Link to="/profile"><button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button></Link>
+                                <Link to="/logged"><button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button></Link>
                                 <button type="reset" className="btn btn-outline-danger mx-2">Cancel</button>
                             </div>
                         </form>
