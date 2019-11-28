@@ -12,3 +12,15 @@ export const getClasses =(classes)=>{
         classes
     }
 }
+export const logInApi = (user)=>{
+    console.log(user)
+    return(dispatch)=>{
+        return callApi("users/sign_in","POST",{
+            email: user.email,
+            password: user.password,
+            role: user.role
+        }).then(res=>{
+            if(res) console.log(res)
+        })
+    }
+}

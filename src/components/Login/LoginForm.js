@@ -1,6 +1,30 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux'
+import * as login from './../../actions/session'
+import Axios from 'axios';
 class LoginForm extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            role: 0,
+            email: "",
+            password: ""
+        }
+    }
+    onChange = (e)=>{
+        let target = e.target;
+        let name = target.name;
+        let value = target.value
+        this.setState({
+            [name]: value
+        })
+    }
+    onSubmit = (e)=>{
+        e.preventDefault();
+        let user  = this.state
+        this.props.logIn(user)
+    }
     render() {
         return (
             <div className="Login  mt-4">
@@ -12,20 +36,20 @@ class LoginForm extends Component {
                                 <div className="row">
                                     <div className="col-sm-10">
                                         <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" defaultValue="option1" defaultChecked />
-                                            <label className="form-check-label" htmlFor="gridRadios1">
-                                                Học sinh
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" defaultValue="option2" />
-                                            <label className="form-check-label" htmlFor="gridRadios2">
+                                            <input className="form-check-input" type="radio" name="role" id="gridRadios1" value="1" onClick={this.onChange} />
+                                            <label className="form-check-label"  htmlFor="gridRadios1">
                                                 Giáo viên
                                             </label>
                                         </div>
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="role"  id="gridRadios2" value="3"  defaultChecked onClick={this.onChange} />
+                                            <label className="form-check-label"  htmlFor="gridRadios2">
+                                                Học sinh
+                                            </label>
+                                        </div>
                                         <div className="form-check disabled">
-                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3" defaultValue="option3"/>
-                                            <label className="form-check-label" htmlFor="gridRadios3">
+                                            <input className="form-check-input" type="radio" name="role"  id="gridRadios3" value="2"   onClick={this.onChange} />
+                                            <label className="form-check-label"  htmlFor="gridRadios3">
                                                 Phụ huynh
                                             </label>
                                         </div>
@@ -37,7 +61,7 @@ class LoginForm extends Component {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"> <i className="fa fa-user" /> </span>
                                     </div>
-                                    <input onKeyUp={this.onChange} name="email" className="form-control" placeholder="Nhập mã số" type="number" />
+                                    <input onKeyUp={this.onChange} name="email" className="form-control" placeholder="Nhập email" type="email" />
                                 </div>
                             </div>
                             <div className="form-group">
@@ -49,7 +73,7 @@ class LoginForm extends Component {
                                 </div>
                             </div>
                             <div className="form-group ">
-                                <Link to="/profile"><button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button></Link>
+                                <button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button>
                                 <button type="reset" className="btn btn-outline-danger mx-2">Cancel</button>
                             </div>
                         </form>
@@ -64,4 +88,14 @@ const style = {
         width: "25rem"
     }
 }
-export default LoginForm
+const mapStateToProps = (state)=>{
+
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        logIn: (user)=>{
+            dispatch(login.logInApi(user))
+        }
+    }
+}
+export default connect(null,mapDispatchToProps)(LoginForm)
