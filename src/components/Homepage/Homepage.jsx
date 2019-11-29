@@ -14,7 +14,7 @@ import {connect} from 'react-redux'
 class Homepage extends React.Component {
     async componentWillMount(){
         let token = JSON.parse(localStorage.getItem('token'))
-        await this.props.currentUser(token);
+        if(token)await this.props.currentUser(token);
     }
     render() {
         return (

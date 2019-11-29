@@ -5,6 +5,7 @@ export const getGradesApi = (dispatch)=>{
         return callApi('grades','GET',null)
         .then(res => 
             {
+                // console.log(res)
                 dispatch(getGrades(res.data))
             })
     }
