@@ -1,7 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import * as session from './../../../actions/session'
+import Swal from 'sweetalert2'
+import {isEmpty} from 'lodash'
 class MainMenu extends Component {
+    constructor(props){
+        super(props)
+    }
+    logOut = ()=>{
+        this.props.logOut();
+        Swal.fire('Log out', 'log out sucess', 'success')
+        this.props.history.push('/')
+    }
     render() {
+        var {user,role} = this.props
         return (
             <div>
                 <nav style={style} className="navbar  navbar-expand-lg navbar-dark  mb-0">
@@ -28,31 +41,43 @@ class MainMenu extends Component {
                     </div>
                     <div >
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                            <li className="nav-item">
-                                <Link to="/login" className="nav-link">
-                                    <i className="fas fa-sign-in-alt"></i>
-                                    <span className="mx-2">Đăng nhập</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                    <Link to="/" className="nav-link">
-                                    <i className="fas fa-bell mx-2"></i>
-                                        Thông báo<span className="sr-only">(current)</span></Link>
-                                </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i className="fas fa-user mx-2"></i>
-                                    Tài khoản
-                                </a>
-                                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <Link to="/profile" className="dropdown-item">Trang cá nhân</Link>
-                                    <div className="dropdown-divider" />
-                                    <Link to="/" className="dropdown-item">
-                                        <span className="mx-2">Đăng xuất</span>
-                                        <i className="fas fa-sign-out-alt"></i>
+                            {
+                                isEmpty(user)?
+                                <li className="nav-item">
+                                    <Link to="/login" className="nav-link">
+                                        <i className="fas fa-sign-in-alt"></i>
+                                        <span className="mx-2">Đăng nhập</span>
                                     </Link>
-                                </div>
-                            </li>
+                                </li>
+                                :
+                                ""
+                            }
+                            {
+                                isEmpty(user)?
+                                ""
+                                :
+                                <>
+                                    <li className="nav-item">
+                                        <Link to="/" className="nav-link">
+                                            <span className=""><i className="fas fa-bell mx-2"></i> Thông báo</span>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i className="fas fa-user mx-2"></i>
+                                            Tài khoản
+                                        </Link>
+                                        <div className="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
+                                            <Link to="/profile" className="dropdown-item"><i class="fas fa-address-card"></i> Trang cá nhân</Link>
+                                            <div className="dropdown-divider" />
+                                            <Link onClick={this.logOut} className="dropdown-item">
+                                                <span className="mx-2"> <i className="fas fa-sign-out-alt"></i> Đăng xuất</span>
+                                            </Link>
+                                        </div>
+                                    </li>
+                                </>
+                            }
+                            
                         </ul>
                     </div>
                 </nav>
@@ -60,7 +85,22 @@ class MainMenu extends Component {
         )
     }
 }
-export default MainMenu
+const mapStateToProps = (state)=>{
+    return{
+        user: state.session,
+        role: state.role
+    }
+}
+const mapDispatchToProps = (dispatch,)=>{
+    return{
+        logOut: ()=>{
+            return  dispatch(session.logOut())
+        }
+ 
+    }
+}
 const style = {
     backgroundColor: "rgb(225, 5, 93)"
 }
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(MainMenu))
+
