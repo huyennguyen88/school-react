@@ -86,7 +86,7 @@ class LoginForm extends Component {
                                 </div>
                             </div>
                             <div className="form-group ">
-                                <button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button>
+                                <Link to="/logged"><button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button></Link>
                                 <button type="reset" className="btn btn-outline-danger mx-2">Cancel</button>
                             </div>
                         </form>

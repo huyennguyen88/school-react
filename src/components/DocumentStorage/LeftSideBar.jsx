@@ -1,40 +1,34 @@
 import React, { Component } from 'react'
-import { connect } from "react-redux";
 import "./LeftSideBar.scss";
-import * as actions from '../../actions/index'
+import MenuGradeItem from './MenuGradeItem';
+import { connect } from "react-redux";
+//import * as actions from '../../actions/index'
 class LeftSideBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            classes: []
+            grades: []
         }
-        // this.props.getClasses()
     }
-    componentWillReceiveProps = (nextProps) => {
-        this.setState({
-            classes: nextProps.classes
-        })
-    }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.grades === prevState.date) {
+          return null
+        }
+    
+        return { grades: nextProps.grades }
+      }
     render() {
-        var { classes } = this.state
+        var { grades } = this.state
+        //console.log("grades", grades)
+        var listGrade = grades.map((grade, index) => {
+            return <MenuGradeItem key={index} index={index} grade={grade} />
+        })
         return (
             <div>
                 <nav id="sidebar">
+
                     <ul className="list-unstyled components">
-                        <li>
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
-                            <ul className="collapse list-unstyled" id="pageSubmenu">
-                                <li>
-                                    <a href="#">Page 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 3</a>
-                                </li>
-                            </ul>
-                        </li>
+                        {listGrade}
                     </ul>
                 </nav>
             </div>
@@ -43,14 +37,7 @@ class LeftSideBar extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        classes: state.classes
+        grades: state.grades
     }
 }
-const mapDispatchToProps = (dispatch, props) => {
-    return {
-        getClasses: () => {
-            dispatch(actions.getClassesApi())
-        }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(LeftSideBar)
+export default connect(mapStateToProps, null)(LeftSideBar)

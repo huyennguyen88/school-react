@@ -1,10 +1,14 @@
 import {combineReducers} from 'redux';
-import classes from './classes'
+import grades from './grades'
+import subjects from './subjects'
 import session from './session'
 import role from './role'
 const myReducer = combineReducers({
-    classes,
+    //Tu
     session, //session
-    role//role
+    role,//role
+    //Huyen
+    grades, // grades
+    subjects // subject
 });
 export default myReducer
