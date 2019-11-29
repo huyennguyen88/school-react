@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
-
+import logo from './../../../image/logo.jpg'
 
 class Footer extends Component {
     render() {
 
         return (
             <div >
-                <footer class="page-footer font-small teal pt-2" style={style} >
+                <footer className="page-footer font-small teal pt-2" style={style} >
 
-                    <div class="container-fluid text-center text-md-left " style={{height: "100px"}}>
+                    <div className="container-fluid text-center text-md-left " style={{height: "100px"}}>
 
-                        <div class="row h-100">
+                        <div className="row h-100">
 
-                            <div class="col align-self-center ">
-                                <img src="./image/logo.jpg" height="100" alt="logo" />
+                            <div className="col align-self-center ">
+                                <img src={logo} height="100" alt="logo" />
                                 <span className="sr-only"></span>
                             </div>
 
-                            <div class="col-md-3 mt-md-0 mt-6">
+                            <div className="col-md-3 mt-md-0 mt-6">
 
                                 <p></p>
 
                             </div>
 
-                            <hr class="clearfix w-100 d-md-none " />
+                            <hr className="clearfix w-100 d-md-none " />
 
-                            <div class="col-md-3 mb-md-0 mb-3 text-white" >
+                            <div className="col-md-3 mb-md-0 mb-3 text-white" >
 
                                 <h6 className="text-white">54 Nguyen Luong Bang St</h6>
                                 <h6 className="text-white">Hoa Khanh, Da Nang, Viet Nam</h6>
@@ -37,7 +37,7 @@ class Footer extends Component {
                         </div>
 
                     </div>
-                    <div class="footer-copyright text-center py-3 text-white">© 2018 Copyright: abc@gmail.com
+                    <div className="footer-copyright text-center py-3 text-white">© 2018 Copyright: abc@gmail.com
                     </div>
                 </footer>
             </div>

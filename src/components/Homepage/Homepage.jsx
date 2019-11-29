@@ -8,6 +8,7 @@ import LoggedMenu from '../LoggedHome/LoggedMenu';
 import Footer from '../Shared/Footer/Footer'
 import ListClass from '../Teacher/ListClass';
 import ClassDetail from '../Teacher/ClassDetail'
+import EditProfile from '../Profile/EditProfile'
 import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
@@ -23,6 +24,9 @@ class Homepage extends React.Component {
                 <Switch>
                     <Route path="/login">
                         <LoginForm />
+                    </Route>
+                    <Route path="/profile/edit">
+                        <EditProfile/>
                     </Route>
                     <Route path="/profile">
                         <ProfileMain/>
