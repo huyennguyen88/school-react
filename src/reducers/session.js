@@ -7,14 +7,14 @@ var myReducer = (state = initialState, action)=>{
             localStorage.setItem('token',JSON.stringify(state.authentication_token))
             localStorage.setItem('role',JSON.stringify(state.role))
             return state;
-        case types.LOG_OUT:
+        case types.LOG_OUT:            
             localStorage.removeItem('token');
             localStorage.removeItem('role');
             state = {}
             return state
-        // case types.INFO:
-        //     state = action.user;
-        //     return state;
+        case types.PROFILE:
+            state = action.user;
+            return state;
         // case types.SIGN_UP:
         //     state = action.newUser;
         //     return state

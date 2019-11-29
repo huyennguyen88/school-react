@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import * as session from './../../actions/session'
+import * as session from '../../actions/session'
 import Swal from 'sweetalert2'
 import {isEmpty} from 'lodash'
 import { withRouter } from "react-router-dom";
@@ -45,7 +45,7 @@ class LoginForm extends Component {
                     <div className="card-header bg-danger h3 text-light">Đăng nhập</div>
                     <div className="card-body">
                         <form>
-                            <fieldset className="form-group text-left">
+                            {/* <fieldset className="form-group text-left">
                                 <div className="row">
                                     <div className="col-sm-10">
                                         <div className="form-check">
@@ -68,7 +68,7 @@ class LoginForm extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset>
+                            </fieldset> */}
                             <div className="form-group">
                                 <div className="input-group">
                                     <div className="input-group-prepend">
