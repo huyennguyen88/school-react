@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
-
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 export class ProfileMain extends Component {
     render() {
+        let {user} = this.props
+        console.log(user)
         return (
             <div>
-
-                <div class="container mb-3">
-                    <p className="h2">Profile here</p>
+                <div class="container mb-5 mt-5">
+                    <p className="h2">
+                        Profile  
+                        <Link to="/profile/edit" style={{float: "right"}}>
+                            <i className="fas fa-user-edit"></i>
+                        </Link></p>
                     <hr />
                     <div class="row border mb-3">
                         <div class="col-3">
@@ -16,15 +22,19 @@ export class ProfileMain extends Component {
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td >Ho ten</td>
-                                        <td>Nguyen Tat Dang</td>
+                                        <td>Ho ten</td>
+                                        <td>{user.name}</td>
                                     </tr>
                                     <tr>
-                                        <td >Ngay sinh</td>
-                                        <td>06-06-1998</td>
+                                        <td>Ngày sinh</td>
+                                        <td>{(user.birthday+"").substring(0,10)}</td>
                                     </tr>
                                     <tr>
-                                        <td >Gioi tinh</td>
+                                        <td>Địa chỉ</td>
+                                        <td>{user.address}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giới tính</td>
                                         <td>Nam</td>
                                     </tr>
                                     <tr>
@@ -38,7 +48,7 @@ export class ProfileMain extends Component {
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <button type="button" class="btn btn-primary float-right">Back</button>
+                            <Link to="/"><button type="button" class="btn btn-primary float-right">Back</button></Link>
                         </div>
                     </div>
                 </div>
@@ -47,5 +57,15 @@ export class ProfileMain extends Component {
         )
     }
 }
-
-export default ProfileMain
+const mapStateToProps = (state)=>{
+    return{
+        user: state.session,
+        role: state.role
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ProfileMain)

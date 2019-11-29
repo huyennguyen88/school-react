@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import * as session from '../../actions/session'
+import * as actions from '../../actions/index'
 import Swal from 'sweetalert2'
 import {isEmpty} from 'lodash'
 import { withRouter } from "react-router-dom";
@@ -86,7 +86,7 @@ class LoginForm extends Component {
                                 </div>
                             </div>
                             <div className="form-group ">
-                                <Link to="/logged"><button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button></Link>
+                                <button onClick={this.onSubmit} type="submit" className="btn btn-outline-danger" >Ok</button>
                                 <button type="reset" className="btn btn-outline-danger mx-2">Cancel</button>
                             </div>
                         </form>
@@ -110,7 +110,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return{
         logIn: (user)=>{
-           return  dispatch(session.logInApi(user))
+           return  dispatch(actions.logInApi(user))
         }
 
     }
