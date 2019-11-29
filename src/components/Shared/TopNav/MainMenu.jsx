@@ -17,7 +17,8 @@ class MainMenu extends Component {
         var {user,role} = this.props
         return (
             <div>
-                <nav style={style} className="navbar  navbar-expand-lg navbar-dark  justify-content-between">
+                <nav style={style} className="navbar  navbar-expand-lg navbar-dark  mb-0">
+                 
                     <Link to="/" className="navbar-brand">
                         <img src="./image/logo.jpg" height="40" alt="logo" />
                         Home<span className="sr-only">(current)</span>

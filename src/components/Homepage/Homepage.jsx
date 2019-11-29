@@ -4,6 +4,10 @@ import Main from './Main';
 import LoginForm from '../Login/LoginForm';
 import ProfileMain from '../Profile/ProfileMain';
 import PublicStorage from '../DocumentStorage/PublicStorage';
+import LoggedMenu from '../LoggedHome/LoggedMenu';
+import Footer from '../Shared/Footer/Footer'
+import ListClass from '../Teacher/ListClass';
+import ClassDetail from '../Teacher/ClassDetail'
 import * as session from './../../actions/session'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
@@ -26,10 +30,20 @@ class Homepage extends React.Component {
                     <Route path="/publicStorage">
                         <PublicStorage/>
                     </Route>
+                    <Route path="/logged">
+                        <LoggedMenu/>
+                    </Route>
+                    <Route path="/listclass">
+                        <ListClass />
+                    </Route>
+                    <Route path="/classdetail">
+                        <ClassDetail />
+                    </Route>
                     <Route path="/">
                         <Main />
                     </Route>
                 </Switch>
+                <Footer/>
             </div>
         )
     }

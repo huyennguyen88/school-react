@@ -1,15 +1,33 @@
 import callApi from '../utils/apiCaller'
 import * as types from '../constants/ActionTypes'
-export const getClassesApi = (dispatch)=>{
+export const getGradesApi = (dispatch)=>{
     return(dispatch)=>{
-        return callApi('classes','GET',null)
-        .then(res => {dispatch(getClasses(res.data))})
+        return callApi('grades','GET',null)
+        .then(res => 
+            {
+                dispatch(getGrades(res.data))
+            })
     }
 }
-export const getClasses =(classes)=>{
+export const getGrades =(grades)=>{
     return {
-        type: types.GET_CLASSES,
-        classes
+        type: types.GET_GRADES,
+        grades
+    }
+}
+export const getSubjectsApi =(dispatch)=>{
+    return(dispatch)=>{
+        return callApi('subjects','GET',null)
+        .then(res => {
+            dispatch(getSubjects(res.data))
+        })
+    }
+}
+export const getSubjects = (subjects)=>
+{
+    return {
+        type: types.GET_SUBJECTS,
+        subjects
     }
 }
 export const logInApi = (user)=>{

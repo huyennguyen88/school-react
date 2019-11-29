@@ -9,3 +9,6 @@ export const SESSION = 'SESSION';
 export const SIGN_UP = 'SIGN_UP'
 export const PROFILE = 'PROFILE'
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+//HUYEN
+export const GET_GRADES = 'GET_GRADES'
+export const GET_SUBJECTS = 'GET_SUBJECTS'
