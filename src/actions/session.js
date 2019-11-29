@@ -1,17 +1,17 @@
 import callApi from './../utils/apiCaller'
 import * as types from '../constants/ActionTypes'
-import Axios from 'axios'
 
 export const logInApi = (user)=>{
     return(dispatch)=>{
-        return callApi("parents","GET",null).then(res=>{
+        return callApi("users/sign_in","POST",{
+            email: user.email,
+            password: user.password,
+            role: user.role
+        }).then(res=>{
             if(res) {
-                console.log(res)
-                //admin@gmail.com username day
-                //123456 password day
-                // let data = res.data
-                // dispatch(logIn(data.user))
-                // dispatch(role(data.role))
+                let data = res.data
+                dispatch(logIn(data.user))
+                dispatch(role(data.role))
             }
         })
     }
@@ -24,7 +24,12 @@ export const logIn = (user)=>{
 }
 export const role = (role)=>{
     return{
-        type: types.LOG_IN,
+        type: types.ROLE,
         role
+    }
+}
+export const logOut = ()=>{
+    return{
+        type: types.LOG_OUT
     }
 }

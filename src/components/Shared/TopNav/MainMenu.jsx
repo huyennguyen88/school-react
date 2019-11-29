@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
-
-import { Link } from "react-router-dom";
+import { Link,withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import * as session from './../../../actions/session'
+import Swal from 'sweetalert2'
 class MainMenu extends Component {
+    constructor(props){
+        super(props)
+    }
+    logOut = ()=>{
+        this.props.logOut();
+        Swal.fire('Log out', 'log out sucess', 'success')
+        this.props.history.push('/')
+    }
     render() {
         return (
             <div>
@@ -48,7 +58,7 @@ class MainMenu extends Component {
                                     <Link to="/profile" className="dropdown-item">Trang cá nhân</Link>
                                     <div className="dropdown-divider" />
                                     <Link to="/" className="dropdown-item">
-                                        <span className="mx-2">Đăng xuất</span>
+                                        <span onClick={this.logOut} className="mx-2">Đăng xuất</span>
                                         <i className="fas fa-sign-out-alt"></i>
                                     </Link>
                                 </div>
@@ -60,7 +70,22 @@ class MainMenu extends Component {
         )
     }
 }
-export default MainMenu
+const mapStateToProps = (state)=>{
+    // return{
+    //     user: state.session,
+    //     role: state.role
+    // }
+}
+const mapDispatchToProps = (dispatch,)=>{
+    return{
+        logOut: ()=>{
+            return  dispatch(session.logOut())
+         }
+ 
+    }
+}
 const style = {
     backgroundColor: "rgb(225, 5, 93)"
 }
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(MainMenu))
+

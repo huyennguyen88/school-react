@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import * as login from './../../actions/session'
-import Axios from 'axios';
+import * as session from './../../actions/session'
+import Swal from 'sweetalert2'
+import {isEmpty} from 'lodash'
+import { withRouter } from "react-router-dom";
 class LoginForm extends Component {
     constructor(props){
         super(props)
@@ -20,11 +22,22 @@ class LoginForm extends Component {
             [name]: value
         })
     }
-    onSubmit = (e)=>{
+    onSubmit = async (e)=>{
         e.preventDefault();
-        let user  = this.state
-        this.props.logIn(user)
-    }
+
+        let userLogin  = this.state
+        await this.props.logIn(userLogin)
+        let {user,role} = this.props
+        if(isEmpty(user) || isEmpty(role)){
+            Swal.fire('Login', 'invalid email or password or role','error')
+        }
+        else
+        {
+            Swal.fire('Login', 'login sucess', 'success')
+            this.props.history.push('/')
+        }
+    }   
+  
     render() {
         return (
             <div className="Login  mt-4">
@@ -89,13 +102,17 @@ const style = {
     }
 }
 const mapStateToProps = (state)=>{
-
+    return{
+        user: state.session,
+        role: state.role
+    }
 }
 const mapDispatchToProps = (dispatch)=>{
     return{
         logIn: (user)=>{
-            dispatch(login.logInApi(user))
+           return  dispatch(session.logInApi(user))
         }
+
     }
 }
-export default connect(null,mapDispatchToProps)(LoginForm)
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(LoginForm))
