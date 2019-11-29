@@ -5,7 +5,6 @@ import avatar from './../../image/avatar.jpg'
 export class ProfileMain extends Component {
     render() {
         let {user} = this.props
-        console.log(user)
         return (
             <div>
                 <div className="container mb-5 mt-5">
@@ -44,7 +43,7 @@ export class ProfileMain extends Component {
                                         <td>Nam</td>
                                     </tr>
                                     <tr>
-                                        <td >Mat khau</td>
+                                        <td >Mật khẩu</td>
                                         <td>********</td>
                                     </tr>
                                 </tbody>

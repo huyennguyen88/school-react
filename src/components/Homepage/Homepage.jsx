@@ -13,9 +13,9 @@ import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
 class Homepage extends React.Component {
-    async componentWillMount(){
+    componentWillMount(){
         let token = JSON.parse(localStorage.getItem('token'))
-        await this.props.currentUser(token);
+        this.props.currentUser(token);
     }
     render() {
         return (
