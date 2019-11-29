@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import * as session from '../../actions/session'
+import * as actions from '../../actions/index'
 import Swal from 'sweetalert2'
 import {isEmpty} from 'lodash'
 import { withRouter } from "react-router-dom";
@@ -110,7 +110,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return{
         logIn: (user)=>{
-           return  dispatch(session.logInApi(user))
+           return  dispatch(actions.logInApi(user))
         }
 
     }

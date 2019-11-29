@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link,withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import * as session from './../../../actions/session'
+import * as actions from './../../../actions/index'
 import Swal from 'sweetalert2'
 import {isEmpty} from 'lodash'
 class MainMenu extends Component {
@@ -94,7 +94,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch,)=>{
     return{
         logOut: ()=>{
-            return  dispatch(session.logOut())
+            return  dispatch(actions.logOut())
         }
  
     }
