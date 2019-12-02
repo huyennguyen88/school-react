@@ -11,7 +11,6 @@ class App extends React.Component {
     this.props.getGrades()
   }
   render() {
-     // console.log("grades app",this.props.grades)
       return (
         <Router>
           <div>
