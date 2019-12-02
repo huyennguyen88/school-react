@@ -58,3 +58,24 @@ export const roleProfile= (roles)=>{
         roles
     }
 }
+export const updateProfileApi = (token,user)=>{
+
+    return (dispatch) =>{
+        return callApi('users/'+token,'PUT',{
+            name: user.name,
+            birthday: user.birthday,
+            address: user.address,
+            password: user.password? user.password : ''
+        }).then(res=>{
+            if(res){
+                dispatch(updateProfile(res.data))
+            }
+        })
+    }
+}
+export const updateProfile = (user)=>{
+    return{
+        type: types.UPDATE_PROFILE,
+        user
+    }
+}
