@@ -34,7 +34,7 @@ class MainMenu extends Component {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/" className="nav-link">
+                                <Link to="/chat" className="nav-link">
                                     <i className="fas fa-comments mx-2"></i>
                                     Chat<span className="sr-only">(current)</span></Link>
                             </li>
