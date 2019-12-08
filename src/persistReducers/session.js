@@ -15,12 +15,10 @@ var myReducer = (state = initialState, action)=>{
         case types.PROFILE:
             state = action.user;
             return state;
-        case types.UPDATE_PROFILE:
-            state = action.user
-            return state;
         // case types.SIGN_UP:
         //     state = action.newUser;
         //     return state
+     
         default: return state; 
     }
 }
