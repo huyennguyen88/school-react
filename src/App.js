@@ -3,7 +3,7 @@ import './App.css';
 import Homepage from './components/Homepage/Homepage';
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from './actions/index'
+import * as actions from './actions'
 class App extends React.Component {
   constructor(props){
     super(props)

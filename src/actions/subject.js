@@ -5,11 +5,11 @@ export const getSubjectsApi =(dispatch)=>{
     return(dispatch)=>{
         return callApi('subjects','GET',null)
         .then(res => {
-            // console.log(res)
             dispatch(getSubjects(res.data))
         })
     }
 }
+
 export const getSubjects = (subjects)=>
 {
     return {

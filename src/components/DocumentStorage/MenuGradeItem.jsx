@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "./LeftSideBar.scss";
 import { connect } from "react-redux";
-//import * as actions from '../../actions/index'
+//import * as actions from '../../actions'
 class MenuGradeItem extends Component {
     constructor(props){
         super(props)

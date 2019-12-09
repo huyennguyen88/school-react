@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
 import {connect} from 'react-redux'
-import * as actions from '../../actions/index'
+import * as actions from '../../actions'
 import Swal from 'sweetalert2'
 import {isEmpty} from 'lodash'
 import { withRouter } from "react-router-dom";

@@ -9,8 +9,7 @@ import Footer from '../Shared/Footer/Footer'
 import ListClass from '../Teacher/ListClass';
 import ClassDetail from '../Teacher/ClassDetail'
 import EditProfile from '../Profile/EditProfile'
-import {ChatMain} from './Chat'
-import * as actions from './../../actions/index'
+import * as actions from './../../actions'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
 class Homepage extends React.Component {
@@ -22,8 +21,7 @@ class Homepage extends React.Component {
         return (
             <div>
                 <MainMenu />
-                <ChatMain></ChatMain>
-                {/* <Switch>
+                <Switch>
                     <Route path="/login">
                         <LoginForm />
                     </Route>
@@ -48,7 +46,7 @@ class Homepage extends React.Component {
                     <Route path="/">
                         <Main />
                     </Route>
-                </Switch> */}
+                </Switch>
                 <Footer/>
             </div>
         )
