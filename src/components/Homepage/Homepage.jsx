@@ -14,9 +14,9 @@ import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
 class Homepage extends React.Component {
-    componentWillMount(){
+    async componentDidMount(){
         let token = JSON.parse(localStorage.getItem('token'))
-        this.props.currentUser(token);
+        await this.props.currentUser(token);
     }
     render() {
         return (
@@ -57,7 +57,6 @@ class Homepage extends React.Component {
     }
 }
 const mapStateToProps = (state)=>{
-
     return{
         user: state.session,
         role: state.role

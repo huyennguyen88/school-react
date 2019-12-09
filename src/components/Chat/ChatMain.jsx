@@ -10,18 +10,12 @@ class ChatMain extends Component {
         super(props)
     }
     async componentDidMount() {
-        let token = JSON.parse(localStorage.getItem('token'))
-        if (!isEmpty(token)) {
-            await this.props.loadListRoom(token)
-        }
+        // let token = JSON.parse(localStorage.getItem('token'))
+        // if (!isEmpty(token)) {
+        //     await this.props.loadListRoom(token)
+        // }
     }
     render() {
-        var { rooms, user } = this.props
-        var chatPeople = rooms.map((r, i) => {
-            return (
-                <ListRoom user={user} room={r} key={i} />
-            )
-        })
         return (
             <div>
                 <div className="container">

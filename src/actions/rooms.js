@@ -5,7 +5,7 @@ export const listRoomApi = (token)=>{
     return (dispatch)=>{
         return callApi('rooms/'+ token,'GET',null).then(res=>{
             if(res){
-                dispatch(listRoom(res.data))
+                return dispatch(listRoom(res.data))
             }
         })
     }

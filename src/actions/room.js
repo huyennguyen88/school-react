@@ -5,7 +5,7 @@ export const getMessApi = (room_id)=>{
     return (dispatch)=>{
         return callApi('getMessInRoom/'+room_id,'GET',null).then(res=>{
             if(res){
-                console.log(res.data)
+                return dispatch(getMess(res.data))
             }
         })
     }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {isEmpty} from 'lodash'
 import Room from './Room';
-// import * as actions from './../../actions/index'
+import * as actions from './../../actions/index'
 class ListRoom extends Component {
     constructor(props) {
         super(props);
@@ -9,10 +10,11 @@ class ListRoom extends Component {
             onActive: ""
         }
     }
-    activeChat = () => {
-        this.setState({
-            onActive: "active_chat"
-        })
+    async componentDidMount() {
+        let token = JSON.parse(localStorage.getItem('token'))
+        if (!isEmpty(token)) {
+            await this.props.loadListRoom(token)
+        }
     }
     render() {
         var { rooms } = this.props
@@ -23,7 +25,6 @@ class ListRoom extends Component {
                 )
             })
         }
-
         return (
             <div className="inbox_people">
                 <div className="headind_srch">
@@ -48,10 +49,15 @@ class ListRoom extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        rooms: state.rooms
+        rooms: state.rooms,
+        user: state.session
     }
 }
 const mapDispatchToProps = (dispatch) => {
-
+    return{
+        loadListRoom: (token) => {
+            return dispatch(actions.listRoomApi(token))
+        }
+    }
 }
-export default connect(mapStateToProps, null)(ListRoom)
+export default connect(mapStateToProps, mapDispatchToProps)(ListRoom)
