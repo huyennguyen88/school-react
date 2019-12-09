@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link,withRouter } from 'react-router-dom'
 import avatar from './../../image/avatar.jpg'
-import * as actions from './../../actions/index'
+import * as actions from './../../actions'
 import Swal from 'sweetalert2'
 export class EditProfile extends Component {
     constructor(props){

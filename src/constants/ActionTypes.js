@@ -10,6 +10,9 @@ export const SIGN_UP = 'SIGN_UP'
 //Tu - Profile
 export const PROFILE = 'PROFILE'
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+//Tu - CHAT
+export const LIST_ROOM = 'LIST_ROOM' 
+export const GET_MESSES  = 'GET_MESSES' 
 //HUYEN - Grades
 export const GET_GRADES = 'GET_GRADES'
 //Huyen - Subject

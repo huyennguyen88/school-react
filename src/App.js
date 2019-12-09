@@ -3,7 +3,7 @@ import './App.css';
 import Homepage from './components/Homepage/Homepage';
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from './actions/index'
+import * as actions from './actions'
 import io from 'socket.io-client'
 // const socket = io("localhost:5000");
 class App extends React.Component {
@@ -11,6 +11,8 @@ class App extends React.Component {
     super(props)
     this.props.getSubjects()
     this.props.getGrades()
+  }
+  componentDidMount(){
   }
   render() {
       return (
