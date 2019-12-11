@@ -7,7 +7,8 @@ class ListRoom extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            onActive: ""
+            onActive: "",
+            activeRoom:null,
         }
     }
     async componentDidMount() {
@@ -16,12 +17,18 @@ class ListRoom extends Component {
             await this.props.loadListRoom(token)
         }
     }
+    activeRoom = (id) => {
+            this.setState({activeRoom:id})
+    }
     render() {
         var { rooms } = this.props
         if (rooms) {
             var listRoom = rooms.map((room,index)=>{
                 return(
-                    <Room key={index} room={room}/>
+                    index===this.state.activeRoom?
+                    <Room key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = 'active_chat check'/>
+                    :
+                    <Room key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = ''/>
                 )
             })
         }
@@ -45,6 +52,14 @@ class ListRoom extends Component {
                 </div>
             </div>
         )
+    }
+}
+const style ={
+    active:{
+        backgroundColor: "#ebebeb"
+    },
+    unactive:{
+        
     }
 }
 const mapStateToProps = (state) => {

@@ -16,3 +16,14 @@ export const getMess = (messes)=>{
         messes
     }
 }
+export const clearMess = ()=>{
+    return{
+        type: types.CLEAR_MESSES
+    }
+}
+export const sendMess = (mess)=>{
+    return{
+        type: types.SEND_MESS,
+        mess
+    }
+}

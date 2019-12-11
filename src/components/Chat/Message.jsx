@@ -10,7 +10,8 @@ class Message extends Component {
     render() {
         var { mess, user } = this.props
         return (
-            <div className="outgoing_msg">
+            // <div className="outgoing_msg">
+            <div className="mess-store">
                 {
                     user.authentication_token === mess.user_token ?
                         <Send mess={mess} />

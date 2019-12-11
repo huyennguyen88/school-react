@@ -12,7 +12,9 @@ export const PROFILE = 'PROFILE'
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 //Tu - CHAT
 export const LIST_ROOM = 'LIST_ROOM' 
-export const GET_MESSES  = 'GET_MESSES' 
+export const GET_MESSES  = 'GET_MESSES'
+export const CLEAR_MESSES = 'CLEAR_MESSES'
+export const SEND_MESS = 'SEND_MESS'
 //HUYEN - Grades
 export const GET_GRADES = 'GET_GRADES'
 //Huyen - Subject

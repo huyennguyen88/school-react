@@ -5,6 +5,7 @@ import * as actions from './../../actions/index'
 import { isEmpty } from 'lodash'
 import MessInRoom from './MessInRoom'
 import Room from './Room'
+import Cable from 'actioncable'
 class ChatMain extends Component {
     constructor(props) {
         super(props)

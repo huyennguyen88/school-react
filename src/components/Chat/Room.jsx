@@ -5,18 +5,19 @@ class Room extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            onActive: ""
+            keyRoom: null
         }
     }
-    activeChat = async ()=>
-    {
+    activeChat = async ()=>{
+        var {keyRoom} = this.props
+        this.props.callback(keyRoom)
         this.setState({
-            onActive: "active_chat"
+            keyRoom: keyRoom
         })
         await this.props.loadMessInRoom(this.props.room.id)
     }
     render() {
-        var { room, user } = this.props
+        var { room, user,active } = this.props
         var nameRoomArr = room.name.split(', ');
         var nameRoom = '';
         if (user.name === nameRoomArr[0]) {
@@ -28,7 +29,7 @@ class Room extends Component {
             nameRoom = room.name
         }
         return (
-            <div className={this.state.onActive} onClick={this.activeChat}>
+            <div className={active} onClick={this.activeChat}>
                 <div className="chat_list">
                     <div className="chat_people">
                         <div className="chat_img">
@@ -57,6 +58,6 @@ const mapDispatchToProps = (dispatch) => {
        loadMessInRoom: (id_room)=>{
            return dispatch(actions.getMessApi(id_room))
        }
-   }
+   } 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Room)
