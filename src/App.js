@@ -7,8 +7,8 @@ import * as actions from './actions/index'
 class App extends React.Component {
   constructor(props){
     super(props)
-    this.props.getSubjects()
-    this.props.getGrades()
+    // this.props.getSubjects()
+    // this.props.getGrades()
   }
   render() {
      // console.log("grades app",this.props.grades)
@@ -28,14 +28,15 @@ class App extends React.Component {
 //   }
 
 // }
-const mapDispatchToProps =(dispatch)=>{
-  return{
-      getSubjects : () =>{
-          dispatch(actions.getSubjectsApi())
-      },
-      getGrades: () => {
-        dispatch(actions.getGradesApi())
-    }
-  }
-}
-export default connect(null,mapDispatchToProps) (App);
+// const mapDispatchToProps =(dispatch)=>{
+//   return{
+//       getSubjects : () =>{
+//           dispatch(actions.getSubjectsApi())
+//       },
+//       getGrades: () => {
+//         dispatch(actions.getGradesApi())
+//     }
+//   }
+// }
+// export default connect(null,mapDispatchToProps) (App);
+export default App;
