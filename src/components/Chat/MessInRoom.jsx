@@ -8,6 +8,8 @@ import Message from './Message';
 import Cable from "actioncable";
 import { WS } from "../../constants/Config";
 import * as actions from './../../actions/index'
+toast.configure()
+
 class MessInRoom extends Component {
     constructor(props) {
         super(props);
@@ -17,11 +19,21 @@ class MessInRoom extends Component {
             token: '',
         }
     }
+    handleInputEnter = (e) =>{
+        if(e.key === 'Enter') {
+          this.onSubmit(e);
+        }
+    }
+    
     componentDidMount() {
         // this.socket  = new createSocket()
         this.createSocket();
     }
-    notify = () => toast("Wow so easy !");
+    notify = (message) => {
+        toast.info(message.personSend+": " +message.content,{
+            position: toast.POSITION.TOP_RIGHT
+        });
+    }
     createSocket() {
         var cable = Cable.createConsumer(WS + "rooms");
         this.rooms = cable.subscriptions.create(
@@ -38,9 +50,8 @@ class MessInRoom extends Component {
                 received: data => {
                     this.props.sendMess(data)
                     var token = JSON.parse(localStorage.getItem('token'));
-                    console.log(token, "    ", data.user_token)
                     if (token !== data.user_token) {
-                        this.notify()
+                        this.notify(data);
                     }
                 },
                 create: function (token, token_room, chatContent) {
@@ -66,8 +77,10 @@ class MessInRoom extends Component {
         this.rooms.unsubscribe()
     }
     onChange = (e) => {
+        var name = e.target.name
+        var value = e.target.value
         this.setState({
-            currentMessage: e.target.value
+            [name]: value
         })
     }
     onSubmit = async (e) => {
@@ -75,6 +88,7 @@ class MessInRoom extends Component {
         // console.log(this.socket.rooms)
         // this.socket.rooms.create(message.token,message.token_room,message.currentMessage)
         this.rooms.create(message.token, message.token_room, message.currentMessage)
+        document.getElementById('currentMessage').value = ''
         e.preventDefault()
     }
     render() {
@@ -87,7 +101,7 @@ class MessInRoom extends Component {
         return (
             <div>
                 <div className="mesgs">
-                    
+
                     <div className="msg_history" id="mess_history">
                         {messesInRoom}
                     </div>
@@ -101,7 +115,10 @@ class MessInRoom extends Component {
                                         type="text"
                                         className="write_msg"
                                         placeholder="Type a message"
+                                        name="currentMessage"
+                                        id="currentMessage"
                                         onKeyUp={this.onChange}
+                                        onKeyPress={this.handleInputEnter}
                                     />
                                     <button
                                         className="msg_send_btn"
@@ -136,6 +153,7 @@ const mapStateToProps = (state) => {
         messes: state.room,
         rooms: state.rooms,
         user: state.session,
+        nameSend: state.nameSend,
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -148,7 +166,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         sendMess: (mess) => {
             return dispatch(actions.sendMess(mess))
-        }
+        },
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MessInRoom)

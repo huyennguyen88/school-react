@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { isEmpty } from 'lodash'
 import * as actions from './../../actions/index'
 class Room extends Component {
     constructor(props) {
@@ -8,8 +9,8 @@ class Room extends Component {
             keyRoom: null
         }
     }
-    activeChat = async ()=>{
-        var {keyRoom} = this.props
+    activeChat = async () => {
+        var { keyRoom } = this.props
         this.props.callback(keyRoom)
         this.setState({
             keyRoom: keyRoom
@@ -17,16 +18,28 @@ class Room extends Component {
         await this.props.loadMessInRoom(this.props.room.id)
     }
     render() {
-        var { room, user,active } = this.props
+        var { room, user, active, lastMess } = this.props
+        var lastMessInRoom = ''
         var nameRoomArr = room.name.split(', ');
         var nameRoom = '';
-        if (user.name === nameRoomArr[0]) {
-            nameRoom = nameRoomArr[1]
-        }
-        else if (user.name !== nameRoom[1]) {
-            nameRoom = nameRoomArr[0]
-        } else {
+        if (nameRoomArr.length > 2) {
             nameRoom = room.name
+            console.log(nameRoom)
+        }
+        else {
+            if (user.name === nameRoomArr[0]) {
+                nameRoom = nameRoomArr[1]
+            }
+            else if (user.name !== nameRoom[1]) {
+                nameRoom = nameRoomArr[0]
+            }
+        }
+        // else {
+        //     nameRoom = room.name
+        // }
+        if (!isEmpty(lastMess)) {
+
+            lastMessInRoom = lastMess
         }
         return (
             <div className={active} onClick={this.activeChat}>
@@ -37,8 +50,7 @@ class Room extends Component {
                         </div>
                         <div className="chat_ib">
                             <h5>{nameRoom} <span className="chat_date">Dec 25</span></h5>
-                            <p>Test, which is a new approach to have all solutions
-                        astrology under one roof.</p>
+                            <p>{lastMessInRoom}</p>
                         </div>
                     </div>
                 </div>
@@ -54,10 +66,10 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-   return{
-       loadMessInRoom: (id_room)=>{
-           return dispatch(actions.getMessApi(id_room))
-       }
-   } 
+    return {
+        loadMessInRoom: (id_room) => {
+            return dispatch(actions.getMessApi(id_room))
+        }
+    }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Room)

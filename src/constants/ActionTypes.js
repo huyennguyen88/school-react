@@ -15,6 +15,7 @@ export const LIST_ROOM = 'LIST_ROOM'
 export const GET_MESSES  = 'GET_MESSES'
 export const CLEAR_MESSES = 'CLEAR_MESSES'
 export const SEND_MESS = 'SEND_MESS'
+export const SEND_PERSON = 'SEND_PERSON'
 //HUYEN - Grades
 export const GET_GRADES = 'GET_GRADES'
 //Huyen - Subject

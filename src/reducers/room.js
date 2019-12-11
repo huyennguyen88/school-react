@@ -11,7 +11,6 @@ var myReducer = (state = initialState, action)=>{
             state.length = 0
             return state;
         case types.SEND_MESS:
-            console.log([...state,action.mess])
             return [...state,action.mess]
         default:
             return [...state];

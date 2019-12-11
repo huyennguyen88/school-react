@@ -18,17 +18,17 @@ class ListRoom extends Component {
         }
     }
     activeRoom = (id) => {
-            this.setState({activeRoom:id})
+        this.setState({activeRoom:id})
     }
     render() {
-        var { rooms } = this.props
+        var { rooms,lastMessArr } = this.props
         if (rooms) {
             var listRoom = rooms.map((room,index)=>{
                 return(
                     index===this.state.activeRoom?
-                    <Room key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = 'active_chat check'/>
+                    <Room lastMess={lastMessArr[index].content} key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = 'active_chat check'/>
                     :
-                    <Room key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = ''/>
+                    <Room lastMess={lastMessArr[index].content} key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = ''/>
                 )
             })
         }
@@ -65,14 +65,16 @@ const style ={
 const mapStateToProps = (state) => {
     return {
         rooms: state.rooms,
-        user: state.session
+        user: state.session,
+        messes: state.room,
+        lastMessArr: state.lastMess
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return{
         loadListRoom: (token) => {
             return dispatch(actions.listRoomApi(token))
-        }
+        },
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ListRoom)
