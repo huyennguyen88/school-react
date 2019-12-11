@@ -8,8 +8,14 @@ import Message from './Message';
 import Cable from "actioncable";
 import { WS } from "../../constants/Config";
 import * as actions from './../../actions/index'
-toast.configure()
+import ScrollToBottom from 'react-scroll-to-bottom';
+import { css } from 'glamor';
+const ROOT_CSS = css({
+    height: 600,
+  });
 
+
+toast.configure()
 class MessInRoom extends Component {
     constructor(props) {
         super(props);
@@ -19,18 +25,18 @@ class MessInRoom extends Component {
             token: '',
         }
     }
-    handleInputEnter = (e) =>{
-        if(e.key === 'Enter') {
-          this.onSubmit(e);
+    handleInputEnter = (e) => {
+        if (e.key === 'Enter') {
+            this.onSubmit(e);
         }
     }
-    
+
     componentDidMount() {
         // this.socket  = new createSocket()
         this.createSocket();
     }
     notify = (message) => {
-        toast.info(message.personSend+": " +message.content,{
+        toast.info(message.personSend + ": " + message.content, {
             position: toast.POSITION.TOP_RIGHT
         });
     }
@@ -101,10 +107,11 @@ class MessInRoom extends Component {
         return (
             <div>
                 <div className="mesgs">
-
-                    <div className="msg_history" id="mess_history">
-                        {messesInRoom}
-                    </div>
+                    <ScrollToBottom className={ROOT_CSS}>
+                       
+                            {messesInRoom}
+                       
+                    </ScrollToBottom>
                     {
                         isEmpty(messesInRoom)
                             ? ""

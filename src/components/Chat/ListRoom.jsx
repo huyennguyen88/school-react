@@ -9,6 +9,7 @@ class ListRoom extends Component {
         this.state = {
             onActive: "",
             activeRoom:null,
+            keySearch: '',
         }
     }
     async componentDidMount() {
@@ -20,9 +21,23 @@ class ListRoom extends Component {
     activeRoom = (id) => {
         this.setState({activeRoom:id})
     }
+    onChange = (e)=>{
+        var target = e.target;
+        var name = target. name
+        var value = target. value
+        this.setState({
+            [name]: value
+        })
+    }
+    onSearch = ()=>{
+        this.props.onSearch(this.state.keySearch)
+    }
     render() {
-        var { rooms,lastMessArr } = this.props
-        if (rooms) {
+        var { rooms,lastMessArr,keySearch } = this.props
+        if (!isEmpty(rooms)) {
+            rooms = rooms.filter((r,i)=>{
+                return r.name.toLowerCase().indexOf(keySearch) !== -1
+            })
             var listRoom = rooms.map((room,index)=>{
                 return(
                     index===this.state.activeRoom?
@@ -40,9 +55,17 @@ class ListRoom extends Component {
                     </div>
                     <div className="srch_bar">
                         <div className="stylish-input-group">
-                            <input type="text" className="search-bar" placeholder="Search" />
+                            <input 
+                                type="text" 
+                                name="keySearch"
+                                 className="search-bar" 
+                                 placeholder="Search"
+                                 onKeyUp={this.onChange} 
+                            />
                             <span className="input-group-addon">
-                                <button type="button"> <i className="fa fa-search" aria-hidden="true" /> </button>
+                                <button type="button" onClick={this.onSearch}>
+                                     <i className="fa fa-search" aria-hidden="true" /> 
+                                </button>
                             </span>
                         </div>
                     </div>
@@ -67,7 +90,8 @@ const mapStateToProps = (state) => {
         rooms: state.rooms,
         user: state.session,
         messes: state.room,
-        lastMessArr: state.lastMess
+        lastMessArr: state.lastMess,
+        keySearch: state.search
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -75,6 +99,9 @@ const mapDispatchToProps = (dispatch) => {
         loadListRoom: (token) => {
             return dispatch(actions.listRoomApi(token))
         },
+        onSearch : (keySearch)=>{
+            return dispatch(actions.Search(keySearch))
+        }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ListRoom)

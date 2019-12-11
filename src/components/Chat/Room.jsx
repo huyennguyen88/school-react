@@ -24,7 +24,6 @@ class Room extends Component {
         var nameRoom = '';
         if (nameRoomArr.length > 2) {
             nameRoom = room.name
-            console.log(nameRoom)
         }
         else {
             if (user.name === nameRoomArr[0]) {
