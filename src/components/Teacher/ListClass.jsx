@@ -4,12 +4,12 @@ class ListClass extends Component {
     render() {
         return (
             <div>
-                <div class="container mt-3 mb-3">
+                <div className="container mt-3 mb-3">
                     <h1>Danh sách lớp</h1>
                     <hr />
-                    <div class="row"> 
-                        <table class="table table-bordered text-center">
-                            <thead class="thead-dark">
+                    <div className="row"> 
+                        <table className="table table-bordered text-center">
+                            <thead className="thead-dark">
                                 <tr>
                                     <th>Mã lớp</th>
                                     <th>Tên lớp</th>
@@ -21,9 +21,9 @@ class ListClass extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary float-right">Back</button>
+                    <div className="row">
+                        <div className="col-6">
+                            <button type="button" className="btn btn-primary float-right">Back</button>
                         </div>
                     </div>
                 </div>
