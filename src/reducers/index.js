@@ -8,6 +8,7 @@ import nameSend from './nameSend'
 import room from './room'
 import lastMess from './lastMess'
 import search from './search'
+import students from './students'
 const myReducer = combineReducers({
     //Tu
     session, //session
@@ -19,6 +20,8 @@ const myReducer = combineReducers({
     search, // search
     //Huyen
     grades, // grades
-    subjects // subject
+    subjects, // subject
+    //DANG
+    students,
 });
 export default myReducer

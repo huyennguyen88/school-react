@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import StudentListItem from './StudentListItem';
-
+import { connect } from "react-redux";
+import * as actions from '../../actions/index'
 class StudentList extends Component {
     render() {
+        var student = this.props.students.map((s,index)=>{
+            return <StudentListItem key={index} name={s.name} mssv={s.mssv} parent={s.parent} address={s.address}/>
+        })
         return (
             <div class="container mt-3 mb-3">
                 <form class="form-inline my-3">
@@ -21,7 +25,8 @@ class StudentList extends Component {
                             </tr>
                         </thead>
                         <tbody className="table table-striped table-success">
-                            <StudentListItem />
+                            {/* <StudentListItem /> */}
+                            {student}
                         </tbody>
                     </table>
                 </div>
@@ -29,5 +34,9 @@ class StudentList extends Component {
         );
     }
 }
-
-export default StudentList;
+const mapStateToProps= (state)=>{
+    return {
+        students: state.students,
+    }
+}
+export default connect(mapStateToProps,null) (StudentList);
