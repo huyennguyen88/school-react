@@ -3,7 +3,7 @@ import MainMenu from '../Shared/TopNav/MainMenu'
 import Main from './Main';
 import LoginForm from '../Login/LoginForm';
 import ProfileMain from '../Profile/ProfileMain';
-import PublicStorage from '../DocumentStorage/PublicStorage';
+// import PublicStorage from '../DocumentStorage/PublicStorage';
 import LoggedMenu from '../LoggedHome/LoggedMenu';
 import Footer from '../Shared/Footer/Footer'
 import ListClass from '../Teacher/ListClass';
@@ -13,6 +13,8 @@ import ChatMain from '../Chat/ChatMain'
 import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
+import Header from '../Shared/TopNav/Header';
+import Menu from '../Shared/Menu/Menu';
 class Homepage extends React.Component {
     async componentDidMount(){
         let token = JSON.parse(localStorage.getItem('token'))
@@ -20,7 +22,7 @@ class Homepage extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div >
                 <MainMenu />
                 <Switch>
                     <Route path="/login">
@@ -36,7 +38,7 @@ class Homepage extends React.Component {
                         <ProfileMain/>
                     </Route>
                     <Route path="/publicStorage">
-                        <PublicStorage/>
+                        {/* <PublicStorage/> */}
                     </Route>
                     <Route path="/logged">
                         <LoggedMenu/>
@@ -46,6 +48,9 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/classdetail">
                         <ClassDetail />
+                    </Route>
+                    <Route path="/menu">
+                        <Menu/>
                     </Route>
                     <Route path="/">
                         <Main />

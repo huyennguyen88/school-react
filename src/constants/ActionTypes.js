@@ -13,6 +13,7 @@ export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 //Tu - CHAT
 export const LIST_ROOM = 'LIST_ROOM' 
 export const GET_MESSES  = 'GET_MESSES'
+export const PERSON_IN_ROOM  = 'PERSON_IN_ROOM'
 export const CLEAR_MESSES = 'CLEAR_MESSES'
 export const SEND_MESS = 'SEND_MESS'
 export const SEND_PERSON = 'SEND_PERSON'

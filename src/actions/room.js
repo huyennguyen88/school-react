@@ -5,7 +5,8 @@ export const getMessApi = (room_id)=>{
     return (dispatch)=>{
         return callApi('getMessInRoom/'+room_id,'GET',null).then(res=>{
             if(res){
-                return dispatch(getMess(res.data))
+                 dispatch(getMess(res.data.messes))
+                 dispatch(getPersonInRoom(res.data.users))
             }
         })
     }
@@ -14,6 +15,12 @@ export const getMess = (messes)=>{
     return{
         type: types.GET_MESSES,
         messes
+    }
+}
+export const getPersonInRoom = (users)=>{
+    return{
+        type: types.PERSON_IN_ROOM,
+        users
     }
 }
 export const clearMess = ()=>{

@@ -11,7 +11,7 @@ export class ProfileMain extends Component {
                     <p className="h2">
                         Thông tin cá nhân  
                         <Link to="/profile/edit" style={{float: "right"}}>
-                            <i className="fas fa-user-edit"></i>
+                           <i className="fas fa-user-edit"></i>
                         </Link>
                     </p>
                     <hr />

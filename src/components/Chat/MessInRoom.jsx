@@ -98,7 +98,7 @@ class MessInRoom extends Component {
         e.preventDefault()
     }
     render() {
-        var { messes } = this.props
+        var { messes, personInRoom } = this.props
         var messesInRoom = messes.map((mess, index) => {
             return (
                 <Message key={index} mess={mess} />
@@ -161,6 +161,7 @@ const mapStateToProps = (state) => {
         rooms: state.rooms,
         user: state.session,
         nameSend: state.nameSend,
+        personInRoom: state.personInRoom
     }
 }
 const mapDispatchToProps = (dispatch) => {

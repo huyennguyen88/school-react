@@ -2,9 +2,8 @@ import React from 'react';
 import './App.css';
 import Homepage from './components/Homepage/Homepage';
 import { BrowserRouter as Router } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from './actions'
-import io from 'socket.io-client'
+import Header from './components/Shared/TopNav/Header';
+
 // const socket = io("localhost:5000");
 class App extends React.Component {
   constructor(props){

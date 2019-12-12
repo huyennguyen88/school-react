@@ -11,7 +11,7 @@ export class BigImage extends Component {
                     </ol>
                     <div style={style} className="carousel-inner ">
                         <div className="carousel-item active">
-                            <img className="d-block w-100" src="/image/big1.jpg" alt="First slide" />
+                            <img  className="d-block w-100" src="/image/big1.jpg" alt="First slide" />
                         </div>
                         <div className="carousel-item">
                             <img className="d-block w-100" src="/image/big2.jpg" alt="Second slide" />
@@ -37,6 +37,10 @@ export class BigImage extends Component {
 
 export default BigImage
 const style = {
-    height: "500px"
-
+    img:{
+        height: "600px"
+    },
+    marginTB:{
+        margin: "2% 0"
+    }
 }

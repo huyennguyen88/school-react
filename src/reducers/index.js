@@ -9,6 +9,7 @@ import room from './room'
 import lastMess from './lastMess'
 import search from './search'
 import students from './students'
+import personInRoom from './personInRoom'
 const myReducer = combineReducers({
     //Tu
     session, //session
@@ -16,8 +17,9 @@ const myReducer = combineReducers({
     rooms, // room chat
     nameSend, // nameSend dung trong component Received
     lastMess, // get arr last mess
-    room, // mess in room
+    room, // mess in room 
     search, // search
+    personInRoom, // get person in room
     //Huyen
     grades, // grades
     subjects, // subject
