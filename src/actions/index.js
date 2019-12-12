@@ -17,7 +17,7 @@ export const getGrades =(grades)=>{
 }
 export const getSubjectsApi =(dispatch)=>{
     return(dispatch)=>{
-        return callApi('subjects','GET',null)
+        return callApi('subjects','GET',{})
         .then(res => {
             dispatch(getSubjects(res.data))
         })
