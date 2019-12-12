@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import logo from './../../../image/logo.jpg'
 
 class Footer extends Component {
     render() {
@@ -13,7 +13,7 @@ class Footer extends Component {
                         <div className="row h-100">
 
                             <div className="col align-self-center ">
-                                <img src="./image/logo.jpg" height="100" alt="logo" />
+                                <img src={logo} height="100" alt="logo" />
                                 <span className="sr-only"></span>
                             </div>
 
