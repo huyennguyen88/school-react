@@ -4,6 +4,7 @@ import Homepage from './components/Homepage/Homepage';
 import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from './actions'
+import Admin from './components/Admin/Admin'
 class App extends React.Component {
   constructor(props){
     super(props)
@@ -15,7 +16,8 @@ class App extends React.Component {
       return (
         <Router>
           <div>
-              <Homepage/>
+              {/* <Homepage/> */}
+              <Admin/>
           </div>
         </Router>
       )
