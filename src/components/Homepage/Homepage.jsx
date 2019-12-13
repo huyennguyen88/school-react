@@ -43,11 +43,11 @@ class Homepage extends React.Component {
                     <Route path="/logged">
                         <LoggedMenu/>
                     </Route>
+                    <Route path="/listclass/classdetail">
+                        <ClassDetail />
+                    </Route>
                     <Route path="/listclass">
                         <ListClass />
-                    </Route>
-                    <Route path="/classdetail">
-                        <ClassDetail />
                     </Route>
                     <Route path="/menu">
                         <Menu/>

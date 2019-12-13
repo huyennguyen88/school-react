@@ -19,6 +19,10 @@ export const SEND_MESS = 'SEND_MESS'
 export const SEND_PERSON = 'SEND_PERSON'
 //Tu - Search
 export const SEARCH = 'SEARCH'
+//Tu - Class
+export const GET_CLASSES_TEACHER = 'GET_CLASSES_TEACHER'
+export const GET_STUDENTS_CLASS = 'GET_STUDENTS_CLASS'
+export const GET_STUDENTS_SCORES = 'GET_STUDENTS_SCORES'
 //HUYEN - Grades
 export const GET_GRADES = 'GET_GRADES'
 //Huyen - Subject

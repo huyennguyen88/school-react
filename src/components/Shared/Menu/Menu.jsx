@@ -15,11 +15,11 @@ class Menu extends Component {
         var menu = roles.map((r,i)=>{
             switch(r.role){
                 case 1:
-                    return <MenuTeacher/>
+                    return <MenuTeacher key={1}/>
                 case 2:
-                    return <MenuParent/>
+                    return <MenuParent key={2}/>
                 case 3:
-                    return <MenuStudent/>
+                    return <MenuStudent key={2}/>
                 default: 
                     return
             }
