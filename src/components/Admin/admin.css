@@ -1,0 +1,106 @@
+*, ::after , ::before{
+    box-sizing: border-box;
+}
+.wrapper{
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+.sidebar {
+    background-image:url('../../image/sidebar.jpg');
+    left: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 260px;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, .56), 0 4px 25px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+}
+.sidebar .nav {
+    margin-top: 15px;
+    display: block;
+}
+p{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.sidebar .nav .nav-item .nav-link {
+    color: #fff;
+}
+li {
+    text-align: -webkit-match-parent;
+}
+.sidebar .nav p {
+    color: #fff;
+    transition: all .3s linear;
+    margin: 0;
+    line-height: 30px;
+    font-size: 14px;
+    position: relative;
+    display: block;
+    height: auto;
+    white-space: nowrap;
+}
+.darken-overlay div {
+    background-color: rgba(0, 0, 0, 0.5);
+} 
+.darken-pseudo {
+    position: relative;
+}
+.darken-pseudo:after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.sidebar-wrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -260px;
+    z-index: 2;
+    width: 260px; 
+    transition: width 2s;
+}
+
+#DashBoard::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: hsla(0,0%,71%,1.3);
+}
+hr {
+    background-color:white;
+    opacity: 0.3;
+}
+.touch{
+    left:0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 260px;
+}
+.touch:hover > .sidebar > .sidebar-wrapper{
+    animation-name:popup;
+    animation-duration:1s;
+    animation-fill-mode: forwards;
+}
+.touch:not( :hover) > .sidebar > .sidebar-wrapper{
+    animation-name:popout;
+    animation-duration:1s;
+    animation-fill-mode: forwards;
+}
+@keyframes popup{
+    from {left:-260px;}
+    to {left:0px;}
+}
+@keyframes popout{
+    from {left:0px;}
+    to {left:-260px;}
+}

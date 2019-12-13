@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './Sidebar.css'
+import './admin.css'
+import sidebar from '../../image/sidebar.jpg'
 export default class SideBar extends Component{
     
     constructor(props)
@@ -9,24 +10,29 @@ export default class SideBar extends Component{
 
     nav = () =>{
         let todo = ['Teachers','Students','Parents']
-        let li = (todo) => {
-            return (<li className = "nav-item">
-                <a className = "nav-link">
-                    <i className = "material-icons">grid_on</i>
-                <p>{todo}</p>
-                </a>
-            </li>)
+        let li = (todo,index) => {
+            return (
+            <>
+                <li className = "nav-item" key = {index}>
+                    <a className = "nav-link">
+                        <p>{todo}</p>
+                    </a>
+                </li>
+                <hr/>   
+            </>
+            )
         }
         return(
             <ul className ="nav">
-                <li className = "nav-item active">
+                <li id = "DashBoard" className = "nav-item active">
                     <a className = "nav-link">
-                        <i className = "material-icons">DashBoard</i>
+                        <i className = "material-icons"></i>
                         <p>DashBoard</p>
                     </a>
                 </li>
+                <hr/>
                 {
-                    todo.map((item)=>{return li(item)})
+                    todo.map((item,index)=>{return li(item,index)})
                 }
             </ul>
         )
@@ -34,11 +40,13 @@ export default class SideBar extends Component{
 
     render(){
         return(
-            <div className = "sidebar" data-color="azure" data-background-color = "black">
-                <div className = "sidebar-wrapper">
-                    {this.nav()}
+            <a className = "touch">
+                <div id="Sidebar" className = "sidebar darken-overlay">
+                    <div className = "sidebar-wrapper">
+                        {this.nav()}
+                    </div>
                 </div>
-            </div>
+            </a>
         );
     }
 }

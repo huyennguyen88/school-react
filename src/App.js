@@ -8,8 +8,8 @@ import Admin from './components/Admin/Admin'
 class App extends React.Component {
   constructor(props){
     super(props)
-    this.props.getSubjects()
-    this.props.getGrades()
+    // this.props.getSubjects()
+    // this.props.getGrades()
   }
   render() {
      // console.log("grades app",this.props.grades)
