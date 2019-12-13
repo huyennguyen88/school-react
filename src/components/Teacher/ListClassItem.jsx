@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from './../../actions/index'
 class ListClassItem extends Component {
@@ -22,7 +22,12 @@ class ListClassItem extends Component {
                         <input type="checkbox" name="" id=""/>
                     </td>
                     <td>
-                        <Link to="listclass/classdetail">
+                        <Link to={
+                            {
+                                pathname: "listclass/classdetail",
+                                state: { tenLop: lophoc.name }
+                            }
+                        }>
                             <button 
                                 onClick={this.loadStudentInClass} 
                                 type="button" 
@@ -41,9 +46,8 @@ const mapDispatchToProps = (dispatch)=>{
             return dispatch(actions.getStudentsInClassApi(id_class))
         },
         loadStudentScoreInClass: (id_class,token)=>{
-            console.log(token)
             return dispatch(actions.getStudentsScoreInClassApi(id_class,token))
         }
     }   
 }
-export default connect(null,mapDispatchToProps)(ListClassItem);
+export default connect(null,mapDispatchToProps)(withRouter(ListClassItem));

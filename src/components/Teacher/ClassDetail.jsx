@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import StudentList from './StudentList'
-import StudentDiligence from './StudentDiligence';
+// import StudentDiligence from './StudentDiligence';
 import StudentScore from './StudentScore';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { withRouter,Link } from 'react-router-dom'
 import * as actions from '../../actions/index'
 class ClassDetail extends Component {
     constructor(props) {
         super(props)
     }
+    
     render() {
+        var {tenLop} = this.props.location.state
         return (
             <div className="container my-3">
-                <h3>Lớp A</h3>
+                <h3>Lớp {tenLop}</h3>
                 <hr />
                 <ul className="nav nav-tabs my-3" id="myTab" role="tablist">
                     <li className="nav-item">
@@ -47,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
         
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ClassDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ClassDetail));

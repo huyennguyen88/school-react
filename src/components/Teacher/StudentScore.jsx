@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import StudentScoreItem from './StudentScoreItem'
+import {connect} from 'react-redux'
 class StudentScore extends Component {
     render() {
+        var {scores} = this.props
+        var scorelist = scores.map((s,i)=>{
+            return <StudentScoreItem key={i} score={s}/>
+        })
         return (
             <div>
                 <div className="container mt-3 mb-3">
@@ -35,7 +40,7 @@ class StudentScore extends Component {
                                 </tr>
                             </thead>
                             <tbody className="table table-striped table-success">
-                                <StudentScoreItem />
+                                {scorelist}
                             </tbody>
                         </table>
                     </div>
@@ -44,5 +49,9 @@ class StudentScore extends Component {
         );
     }
 }
-
-export default StudentScore;
+const mapStateToProps = (state) =>{
+    return{
+        scores: state.studentScoreInClass
+    }
+}
+export default connect(mapStateToProps,null)(StudentScore);
