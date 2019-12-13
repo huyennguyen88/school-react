@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './../../../actions/index'
 import Swal from 'sweetalert2'
 import { isEmpty } from 'lodash'
+import BigImage from "../../Homepage/BigImage";
 // import logo from './../../../image/logo.jpg'
 class Header extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Header extends Component {
                     <nav id="navbar-light-menu" className="navbar navbar-expand-lg navbar-light bg-gradient-secondary pt-3">
                         <h1>
                             <Link to="/" className="navbar-brand">
-                            <i class="fas fa-school"></i> School
+                            <i className="fas fa-school"></i> School
                                     <span>Education</span>
                             </Link>
                         </h1>
@@ -44,18 +45,18 @@ class Header extends Component {
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active mr-4">
                                     <Link to="/" className="nav-link">
-                                    <i class="fas fa-home"></i> Trang Chủ
+                                    <i className="fas fa-home"></i> Trang Chủ
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
                                 <li className="nav-item mr-4">
                                     <Link to="/" className="nav-link">
-                                    <i class="fas fa-info"></i> Về Chúng Tôi
+                                    <i className="fas fa-info"></i> Về Chúng Tôi
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
                                 <Link to="/" className="nav-link mr-4">
-                                    <i class="fas fa-address-book"></i> Liên Lạc
+                                    <i className="fas fa-address-book"></i> Liên Lạc
                                     <span className="sr-only">(current)</span>
                                 </Link>
                                 {

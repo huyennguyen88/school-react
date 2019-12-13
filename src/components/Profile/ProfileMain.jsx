@@ -53,7 +53,7 @@ export class ProfileMain extends Component {
                     </div>
                     <div className="row">
                         <div className="col-6">
-                            <Link to="/"><button type="button" className="btn btn-primary float-right">Quay lại</button></Link>
+                            <Link to="/menu"><button type="button" className="btn btn-primary float-right">Quay lại</button></Link>
                         </div>
                     </div>
                 </div>

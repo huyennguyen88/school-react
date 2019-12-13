@@ -3,7 +3,6 @@ import logo from './../../../image/logo.jpg'
 
 class Footer extends Component {
     render() {
-
         return (
             <div >
                 <footer className="newsletter_right pymd-5 py-4" id="footer">

@@ -11,7 +11,6 @@ export class Main extends Component {
     render() {
         return (
             <div className="home_page">
-                {/* <BigImage/> */}
                 <Banner/>
             </div>
         )
