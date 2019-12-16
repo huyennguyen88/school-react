@@ -13,6 +13,7 @@ import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
 import ParentPage from '../Parent/ParentPage';
+import StudentPage from '../Student/StudentPage';
 class Homepage extends React.Component {
     componentWillMount(){
         let token = JSON.parse(localStorage.getItem('token'))
@@ -46,6 +47,9 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/parent">
                         <ParentPage/>
+                    </Route>
+                    <Route path="/student">
+                        <StudentPage/>
                     </Route>
                     <Route path="/">
                         <Main />

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-export default class ParentInfo extends Component {
+
+export default class StudentInfo extends Component {
     render() {
-       
         return (
             <>
-            <h4 class="mb-3"><strong>Thông tin phụ huynh: </strong></h4>
-            <table className="table table-borderless table-secondary" style={{'borderRadius':'10px','boxShadow':'1px 2px 5px black'}}>
+            <h4 className="mb-3"><strong>Thông tin học sinh: </strong></h4>
+            <table className="table table-borderless table-white" style={{'borderRadius':'10px','boxShadow':'1px 2px 5px black'}}>
                 <tbody>
                     <tr>
                         <td><h5><strong>Họ tên :</strong></h5></td>
