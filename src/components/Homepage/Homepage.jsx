@@ -12,6 +12,7 @@ import EditProfile from '../Profile/EditProfile'
 import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
+import ParentPage from '../Parent/ParentPage';
 class Homepage extends React.Component {
     componentWillMount(){
         let token = JSON.parse(localStorage.getItem('token'))
@@ -42,6 +43,9 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/classdetail">
                         <ClassDetail />
+                    </Route>
+                    <Route path="/parent">
+                        <ParentPage/>
                     </Route>
                     <Route path="/">
                         <Main />
