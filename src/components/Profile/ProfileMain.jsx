@@ -1,34 +1,49 @@
 import React, { Component } from 'react'
-
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import avatar from './../../image/avatar.jpg'
 export class ProfileMain extends Component {
     render() {
+        let {user} = this.props
         return (
             <div>
-
-                <div class="container mb-3">
-                    <p className="h2">Profile here</p>
+                <div className="container mb-5 mt-5">
+                    <p className="h2">
+                        Thông tin cá nhân  
+                        <Link to="/profile/edit" style={{float: "right"}}>
+                            <i className="fas fa-user-edit"></i>
+                        </Link>
+                    </p>
                     <hr />
-                    <div class="row border mb-3">
-                        <div class="col-3">
-                            <img src="https://previews.123rf.com/images/triken/triken1608/triken160800029/61320775-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg" className="img-fluid " alt="" />
+                    <div className="row border mb-3">
+                        <div className="col-3">
+                            <img src={avatar} className="img-fluid " alt="" />
                         </div>
-                        <div class="col-8">
-                            <table class="table">
+                        <div className="col-8">
+                            <table className="table">
                                 <tbody>
                                     <tr>
-                                        <td >Ho ten</td>
-                                        <td>Nguyen Tat Dang</td>
+                                        <td>Họ tên</td>
+                                        <td>{user.name}</td>
                                     </tr>
                                     <tr>
-                                        <td >Ngay sinh</td>
-                                        <td>06-06-1998</td>
+                                        <td>Email</td>
+                                        <td>{user.email}</td>
                                     </tr>
                                     <tr>
-                                        <td >Gioi tinh</td>
+                                        <td>Ngày sinh</td>
+                                        <td>{(user.birthday+"").substring(0,10)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Địa chỉ</td>
+                                        <td>{user.address}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giới tính</td>
                                         <td>Nam</td>
                                     </tr>
                                     <tr>
-                                        <td >Mat khau</td>
+                                        <td >Mật khẩu</td>
                                         <td>********</td>
                                     </tr>
                                 </tbody>
@@ -36,9 +51,9 @@ export class ProfileMain extends Component {
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary float-right">Back</button>
+                    <div className="row">
+                        <div className="col-6">
+                            <Link to="/"><button type="button" className="btn btn-primary float-right">Quay lại</button></Link>
                         </div>
                     </div>
                 </div>
@@ -47,5 +62,15 @@ export class ProfileMain extends Component {
         )
     }
 }
-
-export default ProfileMain
+const mapStateToProps = (state)=>{
+    return{
+        user: state.session,
+        role: state.role
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ProfileMain)
