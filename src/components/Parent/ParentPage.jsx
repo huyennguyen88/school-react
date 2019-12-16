@@ -5,14 +5,6 @@ import ProfileMain from "../Profile/ProfileMain"
 import ParentInfo from './ParentInfo';
 import ChildrenList from './ChildrenList'
 class ParentPage extends Component {
-    componentDidMount () {
-        const script = document.createElement("script");
-    
-        script.src = "./ParentPage.js";
-        script.async = true;
-    
-        document.body.appendChild(script);
-    }
     render() {
         return (
             <div className="container-fluid my-5">
