@@ -11,7 +11,7 @@ export class ProfileMain extends Component {
                     <p className="h2">
                         Thông tin cá nhân  
                         <Link to="/profile/edit" style={{float: "right"}}>
-                            <i className="fas fa-user-edit"></i>
+                           <i className="fas fa-user-edit"></i>
                         </Link>
                     </p>
                     <hr />
@@ -53,7 +53,7 @@ export class ProfileMain extends Component {
                     </div>
                     <div className="row">
                         <div className="col-6">
-                            <Link to="/"><button type="button" className="btn btn-primary float-right">Quay lại</button></Link>
+                            <Link to="/menu"><button type="button" className="btn btn-primary float-right">Quay lại</button></Link>
                         </div>
                     </div>
                 </div>

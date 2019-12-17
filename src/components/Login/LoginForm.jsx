@@ -40,7 +40,7 @@ class LoginForm extends Component {
   
     render() {
         return (
-            <div className="Login  mt-4">
+            <div className="Login mt-4" style={{margin: "5% 36%"}}>
                 <div className="card mx-auto text-center mb-3" style={style.card} >
                     <div className="card-header bg-danger h3 text-light">Đăng nhập</div>
                     <div className="card-body">
