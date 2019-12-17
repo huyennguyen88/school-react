@@ -6,6 +6,8 @@ import Swal from 'sweetalert2'
 import { isEmpty } from 'lodash'
 import logo from './../../../image/logo.jpg'
 import { is } from '@babel/types';
+import Header from './Header';
+import Banner from './Banner';
 class MainMenu extends Component {
     constructor(props) {
         super(props)
@@ -19,7 +21,8 @@ class MainMenu extends Component {
         var { user, role } = this.props
         return (
             <div>
-                <nav style={style} className="navbar  navbar-expand-lg navbar-dark  mb-0">
+                <Header/>
+                {/* <nav style={style} className="navbar  navbar-expand-lg navbar-dark  mb-0">
 
                     <Link to="/" className="navbar-brand">
                         <img src={logo} height="40" alt="logo" />
@@ -73,7 +76,7 @@ class MainMenu extends Component {
                                             <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i className="fas fa-user mx-2"></i>
                                                 Tài khoản
-                                        </a>
+                                            </a>
                                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <Link to="/profile" className="dropdown-item"><i className="fas fa-address-card"></i> Trang cá nhân</Link>
                                                 <div className="dropdown-divider" />
@@ -84,11 +87,10 @@ class MainMenu extends Component {
                                         </li>
                                     </>
                             }
-
                         </ul>
                     </div>
-                </nav>
-            </div>
+                        </nav>*/}
+            </div> 
         )
     }
 }
@@ -108,6 +110,7 @@ const mapDispatchToProps = (dispatch, ) => {
 }
 const style = {
     backgroundColor: "rgb(225, 5, 93)"
+    // rgb(205, 163, 152)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MainMenu))
 
