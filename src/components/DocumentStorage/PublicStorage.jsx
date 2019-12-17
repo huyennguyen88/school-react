@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import LeftSideBar from './LeftSideBar';
+import StorageList from './StorageList';
 class PublicStorage extends Component {
 
     render() {
         return (
 
-            <div className="wrapper">
+            <div className="contaner-fluid row">
                 <LeftSideBar />
-                <div id="content">
-                    <h1>Public storage</h1>
-                </div>
+                <StorageList/>
             </div>
         )
     }

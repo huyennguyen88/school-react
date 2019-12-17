@@ -27,7 +27,7 @@ class MenuTeacher extends React.Component {
                         </div>
                     </div>
                 </Link>
-                <Link to="/">
+                <Link to="/publicStogae">
                     <div className="card" style={style.item}>
                         <img className="card-img-top" src={books} alt="" />
                         <div className="card-body">
