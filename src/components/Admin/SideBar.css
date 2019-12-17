@@ -1,10 +1,5 @@
-*, ::after , ::before{
+::after , ::before{
     box-sizing: border-box;
-}
-.wrapper{
-    display: flex;
-    width: 100%;
-    align-items: stretch;
 }
 .sidebar {
     background-image:url('../../image/sidebar.jpg');
@@ -43,7 +38,7 @@ li {
     height: auto;
     white-space: nowrap;
 }
-.darken-overlay div {
+.darken-overlay div{
     background-color: rgba(0, 0, 0, 0.5);
 } 
 .darken-pseudo {
@@ -84,14 +79,14 @@ hr {
     top: 0;
     bottom: 0;
     z-index: 2;
-    width: 260px;
+    width: 30px;
 }
-.touch:hover > .sidebar > .sidebar-wrapper{
+.touch:hover > #Sidebar .sidebar-wrapper ,#Sidebar {
     animation-name:popup;
     animation-duration:1s;
     animation-fill-mode: forwards;
 }
-.touch:not( :hover) > .sidebar > .sidebar-wrapper{
+.touch:not( :hover) > #Sidebar .sidebar-wrapper , #Sidebar  {
     animation-name:popout;
     animation-duration:1s;
     animation-fill-mode: forwards;
