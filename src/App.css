@@ -192,3 +192,15 @@ img{ max-width:100%;}
   margin: 5% 5%;
   /* padding-right: 1; */
 }
+/* pop up */
+.modal{
+  width: 100%;
+}
+.btn-pop{
+  width: 40px;
+}
+
+.modal.custom {
+  width: 100%;
+  
+}

@@ -1,9 +1,12 @@
 import callApi from './../utils/apiCaller'
 import * as types from '../constants/ActionTypes'
 
-export const listRoomApi = (token)=>{    
+export const listRoomApi = (token)=>{   
+    console.log(token) 
     return (dispatch)=>{
-        return callApi('rooms/'+ token,'GET',null).then(res=>{
+        return callApi('rooms/getRoom','POST',{
+            authentication_token: token
+        }).then(res=>{
             if(res){
                 return dispatch(listRoom(res.data))
             }

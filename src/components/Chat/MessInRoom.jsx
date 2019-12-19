@@ -21,8 +21,6 @@ class MessInRoom extends Component {
         super(props);
         this.state = {
             currentMessage: '',
-            token_room: '',
-            token: '',
         }
     }
     handleInputEnter = (e) => {
@@ -70,14 +68,6 @@ class MessInRoom extends Component {
             }
         );
     }
-    componentWillReceiveProps(nextProps) {
-        if (isEmpty(nextProps.messes)) {
-            this.setState({
-                token_room: JSON.parse(localStorage.getItem('token_room')),
-                token: JSON.parse(localStorage.getItem('token'))
-            })
-        }
-    }
     componentWillUnmount() {
         this.props.clearMess()
         this.rooms.unsubscribe()
@@ -90,12 +80,16 @@ class MessInRoom extends Component {
         })
     }
     onSubmit = async (e) => {
-        var message = this.state
+        var {currentMessage} = this.state;
+
         // console.log(this.socket.rooms)
         // this.socket.rooms.create(message.token,message.token_room,message.currentMessage)
-        this.rooms.create(message.token, message.token_room, message.currentMessage)
+        var token = JSON.parse(localStorage.getItem('token'));
+        var token_room = JSON.parse(localStorage.getItem('token_room'));
+        this.rooms.create(token, token_room, currentMessage)
         document.getElementById('currentMessage').value = ''
         e.preventDefault()
+        // console.log(message.token_room)
     }
     render() {
         var { messes, personInRoom } = this.props

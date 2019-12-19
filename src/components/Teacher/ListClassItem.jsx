@@ -25,7 +25,7 @@ class ListClassItem extends Component {
                         <Link to={
                             {
                                 pathname: "listclass/classdetail",
-                                state: { tenLop: lophoc.name }
+                                state: { tenLop: lophoc.name, monHoc: "" }
                             }
                         }>
                             <button 

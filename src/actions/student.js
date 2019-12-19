@@ -49,3 +49,24 @@ export const getStudentsScoreInClass = (scores)=>{
         scores: scores
     }
 }
+// update diem so'
+export const updateStudentScoresApi = (id_student,id_subject,score_arr)=>{
+    console.log(score_arr)
+    return (dispatch) => {
+        return callApi('update_student_score','POST',{
+            id_student: id_student,
+            id_subject: id_subject,
+            score_arr: score_arr
+        }).then((res)=>{
+            if(res){
+                return dispatch(updateStudentScores(res.data))
+            }
+        })
+    }
+}
+export const updateStudentScores = (score)=>{
+    return{
+        type: types.UPDATE_STUDENT_SCORES,
+        score: score
+    }
+}

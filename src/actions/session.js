@@ -8,7 +8,6 @@ export const logInApi = (user)=>{
             password: user.password,
         }).then(res=>{
             if(res) {
-                console.log(res)
                 let data = res.data
                 dispatch(logIn(data.user))
                 dispatch(roleLogin(data.roles))
@@ -35,7 +34,7 @@ export const logOut = ()=>{
 }
 export const profileApi = (token) =>{
     return (dispatch)=>{
-        return callApi('users/'+token,'GET',{
+        return callApi('users/getProfile','POST',{
             authentication_token: token
         }).then(res=>{
             if (res){

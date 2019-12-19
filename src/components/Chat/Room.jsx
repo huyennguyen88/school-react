@@ -10,12 +10,14 @@ class Room extends Component {
         }
     }
     activeChat = async () => {
-        var { keyRoom } = this.props
+        var { keyRoom,room } = this.props
         this.props.callback(keyRoom)
         this.setState({
             keyRoom: keyRoom
         })
         await this.props.loadMessInRoom(this.props.room.id)
+        
+        localStorage.setItem('token_room',JSON.stringify(room.authentication_token))
     }
     render() {
         var { room, user, active, lastMess } = this.props

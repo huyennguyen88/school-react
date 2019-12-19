@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import avatar from './../../image/avatar.jpg'
+import * as actions from './../../actions/index'
 export class ProfileMain extends Component {
+    async componentWillMount(){
+        // let token = JSON.parse(localStorage.getItem('token'))
+        // await this.props.currentUser(token);
+    }
     render() {
         let {user} = this.props
         return (
@@ -70,7 +75,9 @@ const mapStateToProps = (state)=>{
 }
 const mapDispatchToProps = (dispatch)=>{
     return{
-        
+        currentUser: (token)=>{
+            return dispatch(actions.profileApi(token))
+        }
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProfileMain)
