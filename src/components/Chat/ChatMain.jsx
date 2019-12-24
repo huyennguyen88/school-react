@@ -2,20 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ListRoom from './ListRoom'
 import * as actions from './../../actions/index'
-import { isEmpty } from 'lodash'
 import MessInRoom from './MessInRoom'
-import Room from './Room'
-import Cable from 'actioncable'
 class ChatMain extends Component {
-    constructor(props) {
-        super(props)
-    }
-    async componentDidMount() {
-        // let token = JSON.parse(localStorage.getItem('token'))
-        // if (!isEmpty(token)) {
-        //     await this.props.loadListRoom(token)
-        // }
-    }
     render() {
         return (
             <div>

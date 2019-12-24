@@ -4,19 +4,14 @@ import { connect } from 'react-redux';
 import * as actions from './../../../actions/index'
 import Swal from 'sweetalert2'
 import { isEmpty } from 'lodash'
-import BigImage from "../../Homepage/BigImage";
-// import logo from './../../../image/logo.jpg'
 class Header extends Component {
-    constructor(props) {
-        super(props)
-    }
     logOut = () => {
         this.props.logOut();
         Swal.fire('Log out', 'log out sucess', 'success')
         this.props.history.push('/')
     }
     render() {
-        var { user, role } = this.props
+        var { user} = this.props
         return (
             <div className="header">
                 <header  style={style}>

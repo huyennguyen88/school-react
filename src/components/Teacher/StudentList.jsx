@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StudentListItem from './StudentListItem';
 import { connect } from "react-redux";
-import * as actions from '../../actions/index'
 class StudentList extends Component {
     render() {
         var {students} = this.props

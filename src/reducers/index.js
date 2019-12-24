@@ -13,6 +13,8 @@ import personInRoom from './personInRoom'
 import classesEveryTeacher from './classesEveryTeacher'
 import studentInClass from './studentsInClass'
 import studentScoreInClass from './studentScoreInClass'
+import documents from './documents'
+import teacher from './teacher';
 const myReducer = combineReducers({
     //Tu
     session, //session
@@ -27,8 +29,10 @@ const myReducer = combineReducers({
     studentInClass, // get Student in class
     studentScoreInClass, // get score
     //Huyen
-    grades, // grades
-    subjects, // subject
+    grades, 
+    subjects, 
+    documents, 
+    teacher,
     //DANG
     students,
 });

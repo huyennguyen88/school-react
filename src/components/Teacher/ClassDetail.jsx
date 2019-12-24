@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import StudentList from './StudentList'
-// import StudentDiligence from './StudentDiligence';
 import StudentScore from './StudentScore';
 import { connect } from "react-redux";
 import { withRouter,Link } from 'react-router-dom'
-import * as actions from '../../actions/index'
 class ClassDetail extends Component {
-    constructor(props) {
-        super(props)
-    }
-    
     render() {
         var {tenLop} = this.props.location.state
         return (

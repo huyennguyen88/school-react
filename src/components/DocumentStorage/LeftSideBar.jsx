@@ -9,7 +9,7 @@ class LeftSideBar extends Component {
         }
     }
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.grades === prevState.date) {
+        if (nextProps.grades === prevState.grades) {
           return null
         }
     
@@ -23,7 +23,7 @@ class LeftSideBar extends Component {
         })
         return (
             <div className="col-3">
-                <p className="h4 px-3 py-3 text-secondary">Tài liệu <i class="fas fa-book-open"></i></p>
+                <p className="h4 px-3 py-3 text-secondary">Tài liệu <i className="fas fa-book-open"></i></p>
                 <div className="list_group" >
                     {listGrade}
                 </div>

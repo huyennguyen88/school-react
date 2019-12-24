@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from "react-router-dom";
+import {withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from './../../../actions/index'
 import Swal from 'sweetalert2'
-import { isEmpty } from 'lodash'
-import logo from './../../../image/logo.jpg'
-import { is } from '@babel/types';
 import Header from './Header';
-import Banner from './Banner';
 class MainMenu extends Component {
-    constructor(props) {
-        super(props)
-    }
     logOut = () => {
         this.props.logOut();
         Swal.fire('Log out', 'log out sucess', 'success')
         this.props.history.push('/')
     }
     render() {
-        var { user, role } = this.props
+        // var { user, role } = this.props
         return (
             <div>
                 <Header/>
@@ -108,9 +101,8 @@ const mapDispatchToProps = (dispatch, ) => {
 
     }
 }
-const style = {
-    backgroundColor: "rgb(225, 5, 93)"
-    // rgb(205, 163, 152)
-}
+// const style = {
+//     backgroundColor: "rgb(225, 5, 93)"
+// }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MainMenu))
 

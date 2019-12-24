@@ -17,7 +17,7 @@ class MenuGradeItem extends Component {
         var {grade, index} = this.props
         var {subjects} = this.state
         var listSubject = subjects.map((subject,index)=>{
-            return  <a  key={index} href="#" className="list-group-item list-group-item-action list-group-item-light">
+            return  <a  key={index} href="abc" className="list-group-item list-group-item-action list-group-item-light">
                        {subject.name} <i className="fas fa-angle-right float-right"></i>       
                         </a>
         })

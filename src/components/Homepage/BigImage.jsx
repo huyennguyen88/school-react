@@ -35,14 +35,3 @@ export class BigImage extends Component {
 }
 
 export default BigImage
-const style = {
-    img: {
-        height: "600px"
-    },
-    marginTB: {
-        margin: "2% 0"
-    },
-    blur: {
-
-    }
-}

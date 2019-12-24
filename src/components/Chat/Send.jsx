@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import * as actions from './../../actions/index'
 class Send extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         var { mess } = this.props
         var time = new Date(mess.created_at)
@@ -28,9 +24,4 @@ const mapStateToProps = (state) => {
         user: state.session
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
-export default connect(null, mapStateToProps)(Send)
+export default connect(mapStateToProps,null)(Send)

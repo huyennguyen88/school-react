@@ -3,9 +3,6 @@ import {Link,withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from './../../actions/index'
 class ListClassItem extends Component {
-    constructor(props){
-        super(props)
-    }
     loadStudentInClass = ()=>{
         var token = JSON.parse(localStorage.getItem('token'))
         this.props.loadStudentInClass(this.props.lophoc.id)

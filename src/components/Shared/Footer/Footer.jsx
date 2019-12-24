@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './../../../image/logo.jpg'
-
 class Footer extends Component {
     render() {
         return (
@@ -47,10 +45,10 @@ class Footer extends Component {
                             </div>
                             <div className="col-md-4">
                                 <ul className="social-icons scial justify-content-end">
-                                    <li className="mr-1"><a href="#"><span className="fab fa-facebook-f" /></a></li>
-                                    <li className="mx-1"><a href="#"><span className="fab fa-twitter" /></a></li>
-                                    <li className="mx-1"><a href="#"><span className="fab fa-google-plus-g" /></a></li>
-                                    <li className="mx-1"><a href="#"><span className="fab fa-linkedin-in" /></a></li>
+                                    <li className="mr-1"><a href="https://www.facebook.com/huyenguyen88"><span className="fab fa-facebook-f" /></a></li>
+                                    <li className="mx-1"><a href="https://twitter.com/judyhuyen"><span className="fab fa-twitter" /></a></li>
+                                    <li className="mx-1"><a href="https://www.google.com"><span className="fab fa-google-plus-g" /></a></li>
+                                    <li className="mx-1"><a href="https://www.linkedin.com"><span className="fab fa-linkedin-in" /></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -62,7 +60,3 @@ class Footer extends Component {
 }
 
 export default Footer;
-
-var style = {
-    backgroundColor: "#E1055E"
-}

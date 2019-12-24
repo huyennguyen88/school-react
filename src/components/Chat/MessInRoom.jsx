@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Message from './Message';
 // import createSocket from './ChatSocket'
@@ -98,7 +98,7 @@ class MessInRoom extends Component {
         e.preventDefault()
     }
     render() {
-        var { messes, personInRoom } = this.props
+        var { messes} = this.props
         var messesInRoom = messes.map((mess, index) => {
             return (
                 <Message key={index} mess={mess} />
@@ -140,19 +140,6 @@ class MessInRoom extends Component {
                 </div>
             </div>
         )
-    }
-}
-const style = {
-    bgName: {
-        backgroundColor: "#05728f",
-        borderRadius: "5px 5px",
-        float: "left",
-        width: "60%",
-        height: "3em"
-    },
-    txtName: {
-        color: "white",
-        textAlign: "center"
     }
 }
 const mapStateToProps = (state) => {
