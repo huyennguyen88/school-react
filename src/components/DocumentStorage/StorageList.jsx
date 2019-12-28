@@ -15,10 +15,10 @@ class StorageList extends Component {
         }
     }
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.documentStore === prevState.documentStore 
-            && nextProps.teacher ===prevState.teacher
-            && nextProps.user ===prevState.user
-            && nextProps.documents ===prevState.documents) {
+        if (nextProps.documentStore === prevState.documentStore
+            && nextProps.teacher === prevState.teacher
+            && nextProps.user === prevState.user
+            && nextProps.documents === prevState.documents) {
             return null
         }
         return {
@@ -28,20 +28,21 @@ class StorageList extends Component {
             documents: nextProps.documents
         }
     }
-    onDeleteDoc =(document_id)=>{
+    onDeleteDoc = (document_id) => {
         this.props.deleteDocumentsApi(document_id)
 
     }
     render() {
+        var user_role = JSON.parse(localStorage.getItem('roles'))[0]
         console.log("state", this.state)
-        var { documentStore,teacher} = this.state
+        var { documentStore, teacher } = this.state
         var doclist = documentStore.map((doc, index) => {
             return <div key={index} className="card border border-secondary mx-2 mt-3" style={{ width: '170px' }}>
                 <img src="https://images.khotrithucso.com/thumbnails/8d41585d04df34f7f576f34998d41fec/package035/967969114c151b8d20f91bf0c0ae47a3/16cafa4b3c79a27287c50b5fb514f097/232690-140x182.jpg" className="cardImg card-img-top" alt="pdf img" />
                 <div className="cardBD bg-light ">
                     <div className="pt-2 px-3" style={{ height: '90px' }}>
                         <p className="h5">{doc.title}</p>
-                    
+
                     </div>
                     <div className="align-self-end ml-3" ><i className="text-danger far fa-file-pdf fa-2x"></i></div>
                 </div>
@@ -53,22 +54,28 @@ class StorageList extends Component {
                                 <i className="fas fa-eye ml-1"></i>
                             </a>
                         </button>
-                        <button onClick={()=>this.onDeleteDoc(doc.id)} type="button" className="btn btn-danger btn-sm ml-1">
-                            <span>Xóa</span>
-                            <i className="fas fa-trash-alt ml-1"></i>
-                        </button>
+                        {
+                            user_role.role === 1
+                                ?
+                                <button onClick={() => this.onDeleteDoc(doc.id)} type="button" className="btn btn-danger btn-sm ml-1">
+                                    <span>Xóa</span>
+                                    <i className="fas fa-trash-alt ml-1"></i>
+                                </button>
+                                :
+                                ""
+                        }
                     </div >
 
                 </div>
             </div>
         })
-        var showAdd = teacher?  <button type="button" className="btn btn-danger float-right mx-2 my-2" data-toggle="modal" data-target="#exampleModal">
-        <i className="fas fa-plus mr-2"></i>
-        <span>New Document</span> 
-    </button> : ''
+        var showAdd = teacher ? <button type="button" className="btn btn-danger float-right mx-2 my-2" data-toggle="modal" data-target="#exampleModal">
+            <i className="fas fa-plus mr-2"></i>
+            <span>New Document</span>
+        </button> : ''
         return (
             <div className="col-9">
-               {showAdd}
+                {showAdd}
                 <AddForm />
                 <div className="row">
                     {doclist}
@@ -88,7 +95,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteDocumentsApi: (document_id)=>{
+        deleteDocumentsApi: (document_id) => {
             return dispatch(actions.deleteDocumentsApi(document_id))
         }
     }
