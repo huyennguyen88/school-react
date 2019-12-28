@@ -27,7 +27,7 @@ class MenuGradeItem extends Component
     }
     render() 
     {
-        
+        console.log("menu", this.state)
         var {grade, index} = this.props
         var {subjects,documents} = this.state
         var listSubject = subjects.map((subject,index)=>{

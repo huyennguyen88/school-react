@@ -35,10 +35,10 @@ export const deleteDocumentsApi = (id)=>{
             })
     }
 }
-export const documentDelete = (id)=>{
+export const documentDelete = (document)=>{
     return{
         type: types.DELETE_DOCUMENT,
-        id
+        document
     }
 }
 export const addDocumentApi = (data)=>{
@@ -46,8 +46,6 @@ export const addDocumentApi = (data)=>{
         console.log("goi api add")
         return callApiForm('documents','POST',data)
         .then(res => {
-            console.log(res.data)
-            
             Swal.fire({
                 icon: 'success',
                 title: 'Đã đăng tài liệu thành công',

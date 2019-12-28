@@ -143,9 +143,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch)=>{
     return{
-        getAllDocuments: ()=>{
-            return dispatch(actions.getDocumentsApi())
-        },
         addDocumentApi: (data)=>{
             return dispatch(actions.addDocumentApi(data))
         }

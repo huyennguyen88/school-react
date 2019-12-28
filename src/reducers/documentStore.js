@@ -10,8 +10,15 @@ var myReducer = (state = initialState, action)=>{
                 return (document.grade_id === grade_id && document.subject_id === subject_id)
             })
             return [...state]  
-            case types.ADD_DOCUMENT:
-                return [...state, action.document]
+        case types.ADD_DOCUMENT:
+            return [...state, action.document]
+        case types.DELETE_DOCUMENT:
+            let doc = action.document
+            let index =[...state].findIndex((item)=>{
+                return item.id === doc.id
+            })
+            state.splice(index,1)
+            return [...state]
 
         default:
             return state;
