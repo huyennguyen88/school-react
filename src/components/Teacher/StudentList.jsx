@@ -79,7 +79,7 @@ class StudentList extends Component {
 const mapStateToProps= (state)=>{
     return {
         students: state.studentInClass,
-        search: state.search
+        search: state.search,
     }
 }
 const mapDispatchToProps= (dispatch)=>{

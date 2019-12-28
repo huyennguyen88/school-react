@@ -100,7 +100,6 @@ class StudentScoreItem extends Component {
 
         return (
             <>
-
                 <Modal show={this.state.open} onHide={this.closePopup} style={{ width: "100%!important" }}>
                     <Modal.Header closeButton>
                         <Modal.Title>{score.name}</Modal.Title>

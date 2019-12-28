@@ -33,6 +33,13 @@ class Room extends Component {
             }
             else if (user.name !== nameRoom[1]) {
                 nameRoom = nameRoomArr[0]
+                if(nameRoomArr[0].includes("-(token")){
+                    var indexName = nameRoomArr[0].indexOf("-(token");
+                    nameRoom = nameRoomArr[0].substring(0,indexName)
+                }
+                else{
+                    nameRoom = nameRoomArr[0]
+                }
             }
         }
         // else {
