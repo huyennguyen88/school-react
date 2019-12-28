@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import avatar from '../../image/avatar.jpg'
-class StudentListItem extends Component {
+class ChildrenStudentListItem extends Component {
     render() {
         var {student} = this.props
         return (
@@ -10,9 +10,17 @@ class StudentListItem extends Component {
                 <td>{student.name}</td>
                 <td>{student.address}</td>
                 <td>{student.parent}</td>
+                {/* <th>
+                    {
+                        student.name!==this.props.self.name?
+                        <button type="button" className="btn btn-success">Tạo room chat</button>
+                        :
+                        <div></div>
+                    }
+                </th> */}
             </tr>
         );
     }
 }
 
-export default StudentListItem;
+export default ChildrenStudentListItem;

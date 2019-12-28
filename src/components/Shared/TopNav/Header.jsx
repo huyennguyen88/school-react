@@ -17,6 +17,20 @@ class Header extends Component {
     }
     render() {
         var { user, role } = this.props
+        var roles = JSON.parse(localStorage.getItem('roles'))
+        if(roles)
+        var menu = roles.map((r,i)=>{
+            switch(r.role){
+                case 1:
+                    return <Link to="/profile" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                case 2:
+                    return <Link to="/parent" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                case 3:
+                    return <Link to="/student" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                default: 
+                    return
+            }
+        })
         return (
             <div className="header">
                 <header  style={style}>
@@ -81,7 +95,7 @@ class Header extends Component {
                                                     Tài khoản
                                                 </a>
                                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                    <Link to="/profile" className="dropdown-item"><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                                                    {menu}
                                                     <div className="dropdown-divider" />
                                                     <a onClick={this.logOut} className="dropdown-item">
                                                         <span className="mx-2"> <i className="fas fa-sign-out-alt"></i> Đăng xuất</span>

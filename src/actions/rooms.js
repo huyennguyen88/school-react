@@ -18,21 +18,57 @@ export const listRoom = (rooms)=>{
         rooms
     }
 }
-export const createRoomApi = (token,id_lophoc)=>{   
+export const createRoomLopHocApi = (token,id_lophoc)=>{   
     return (dispatch)=>{
         return callApi('create_group_class_chat','POST',{
             authentication_token: token,
             id_lophoc: id_lophoc
         }).then(res=>{
             if(res){
-                return dispatch(createRoom(res.data))
+                return dispatch(createRoomLopHoc(res.data))
             }
         })
     }
 }
-export const createRoom = (room)=>{
+export const createRoomLopHoc = (room)=>{
     return{
-        type: types.CREATE_ROOM,
+        type: types.CREATE_ROOM_LOPHOC,
         room
+    }
+}
+export const createRoom1vs1Api = (token, id_student)=>{
+    return (dispatch)=>{
+        return callApi('create_room_1vs1','POST',{
+            authentication_token: token,
+            id_student: id_student
+        }).then(res=>{
+            if(res){
+                return dispatch(createRoom1vs1(res.data))
+            }
+        })
+    }
+}
+export const createRoom1vs1 = (room)=>{
+    return{
+        type: types.CREATE_ROOM_1VS1,
+        room
+    }
+}
+export const havedFriendApi = (token, id_student)=>{
+    return (dispatch) =>{
+        return callApi('havedFriend','POST',{
+            authentication_token: token,
+            id_student: id_student
+        }).then(res=>{
+            if(res){
+                return dispatch(havedFriend(res.data))
+            }
+        })
+    }
+}
+export const havedFriend = (check)=>{
+    return{
+        type: types.HAVED_FRIEND,
+        check
     }
 }

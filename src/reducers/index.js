@@ -13,6 +13,11 @@ import personInRoom from './personInRoom'
 import classesEveryTeacher from './classesEveryTeacher'
 import studentInClass from './studentsInClass'
 import studentScoreInClass from './studentScoreInClass'
+import childrenOfParent from './childrenOfParent'
+import children from './children'
+import studentParent from './studentParent'
+import studentScore from './studentScore'
+import checkHaveFriend from './checkHavedFriend'
 const myReducer = combineReducers({
     //Tu
     session, //session
@@ -22,6 +27,7 @@ const myReducer = combineReducers({
     lastMess, // get arr last mess
     room, // mess in room 
     personInRoom, // get person in room
+    checkHaveFriend, //checking have friend
     search, // search
     classesEveryTeacher, // get class every teacher
     studentInClass, // get Student in class
@@ -31,5 +37,9 @@ const myReducer = combineReducers({
     subjects, // subject
     //DANG
     students,
+    childrenOfParent,
+    children,
+    studentParent,
+    studentScore
 });
 export default myReducer

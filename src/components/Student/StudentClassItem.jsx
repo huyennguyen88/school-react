@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import avatar from '../../image/avatar.jpg'
-class StudentListItem extends Component {
+class StudentClassItem extends Component {
     render() {
         var {student} = this.props
         return (
@@ -15,4 +15,4 @@ class StudentListItem extends Component {
     }
 }
 
-export default StudentListItem;
+export default StudentClassItem;

@@ -88,7 +88,7 @@ const mapDispatchToProps= (dispatch)=>{
             return dispatch(actions.Search(keyword))
         },
         createGroupChat: (token, id_lophoc)=>{
-            return dispatch(actions.createRoomApi(token,id_lophoc))
+            return dispatch(actions.createRoomLopHocApi(token,id_lophoc))
         },
         loadStudentInClass : (id_class)=>{
             return dispatch(actions.getStudentsInClassApi(id_class))

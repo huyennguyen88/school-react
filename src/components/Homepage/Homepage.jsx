@@ -13,8 +13,11 @@ import ChatMain from '../Chat/ChatMain'
 import * as actions from './../../actions/index'
 import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
+import ParentPage from '../Parent/ParentPage';
+import StudentPage from '../Student/StudentPage';
 import Header from '../Shared/TopNav/Header';
 import Menu from '../Shared/Menu/Menu';
+import ChildrenPage from '../Parent/ChildrenPage';
 class Homepage extends React.Component {
     async componentDidMount(){
         let token = JSON.parse(localStorage.getItem('token'))
@@ -51,6 +54,15 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/menu">
                         <Menu/>
+                    </Route>
+                    <Route path="/parent">
+                        <ParentPage/>
+                    </Route>
+                    <Route path="/student">
+                        <StudentPage/>
+                    </Route>
+                    <Route path="/children">
+                        <ChildrenPage/>
                     </Route>
                     <Route path="/">
                         <Main />

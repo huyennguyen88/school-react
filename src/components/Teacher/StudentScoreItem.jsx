@@ -59,6 +59,12 @@ class StudentScoreItem extends Component {
         var state = this.state
         var {mssv,subject} = this.props.score
         score_arr.push(state.name0,state.name1,state.name2,state.name3,state.name4,state.name5,state.name6,state.name7);
+        score_arr = score_arr.map((s,i)=>{
+            if(!s){
+                s = -1;
+            }
+            return s
+        })
         this.props.updateStudentScores(mssv,subject.id,score_arr);
         this.setState({
             open: false
@@ -66,38 +72,46 @@ class StudentScoreItem extends Component {
         this.notify();
     }
     render() {
-        var { score } = this.props
-        var diemhk1 = 0
-        var diemhk2 = 0
-        
-        var hk1 = score.HK1.map((s, i) => {
-            if (s.heso !== 0) { // kiem tra he so neu' = 0 k tinh tong ket
-                diemhk1 += s.score * s.heso
+        var { score } = this.props;
+        var diemhk1 = 0;
+        var diemhk2 = 0;
+        for (let s of score.HK1){
+            if(s.score > -1 || score < 11){
+                diemhk1 += s.score
+            }else{
+                diemhk1 = -1;
+                break;
             }
-            else diemhk1 = 0;
-            return <td key={i}>{s.score !== 0 ? s.score : ""}</td>
+        }
+        for (let s of score.HK2){
+            if(s.score > -1 || score < 11){
+                diemhk2 += s.score
+            }else{
+                diemhk2 = -1;
+                break;
+            }
+        }
+        var hk1 = score.HK1.map((s, i) => {       
+            return <td key={i}>{s.score !== -1 ? s.score : ""}</td>
         })
         var hk2 = score.HK2.map((s, i) => {
-            if (s.heso !== 0) {
-                diemhk2 += s.score * s.heso
-            }
-            else diemhk2 = 0;
-            return <td key={i}>{s.score !== 0 ? s.score : ""}</td>
+          
+            return <td key={i}>{s.score !== -1 ? s.score : ""}</td>
         })
         var hk1Input = score.HK1.map((s, i) => {
-            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + i} max="10" min="0" className="btn-pop hk1" defaultValue={s.score !== 0 ? s.score : ""} key={i} /></td>
+            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + i} max="10" min="0" className="btn-pop hk1" defaultValue={s.score !== -1 ? s.score : ""} key={i} /></td>
         })
         var hk2Input = score.HK2.map((s, i) => {
 
-            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + (i + 4)} max="10" min="0" className="btn-pop hk2" defaultValue={s.score !== 0 ? s.score : ""} key={i} /></td>
+            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + (i + 4)} max="10" min="0" className="btn-pop hk2" defaultValue={s.score !== -1 ? s.score : ""} key={i} /></td>
         })
         diemhk1 /= 7
         diemhk2 /= 7
-        var tongket = 0
-        if (diemhk1 !== 0 && diemhk2 !== 0) {
+        var tongket = -1
+        if (diemhk1 > 0 && diemhk2 > 0) {
             tongket = parseFloat(((diemhk1 + diemhk2 * 2) / 3).toFixed(2))
         }
-
+        console.log(diemhk1)
         return (
             <>
                 <Modal show={this.state.open} onHide={this.closePopup} style={{ width: "100%!important" }}>
@@ -137,7 +151,7 @@ class StudentScoreItem extends Component {
                                         <td>{score.name}</td>
                                         {hk1Input}
                                         {hk2Input}
-                                        <td>{tongket}</td>
+                                        <td>{tongket === -1? "" : tongket}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -156,7 +170,7 @@ class StudentScoreItem extends Component {
                     <td>{score.name}</td>
                     {hk1}
                     {hk2}
-                    <td>{tongket !== 0 ? tongket : ""}</td>
+                    <td>{tongket !== -1 ? tongket : ""}</td>
                 </tr>
             </>
         );
