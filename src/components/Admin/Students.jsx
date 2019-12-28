@@ -1,43 +1,39 @@
 import React,{Component} from 'react'
 import { connect } from "react-redux";
+import './Students.css'
 class Students extends Component{
     constructor(props)
-    {super(props)}
+    {
+        super(props)
+        this.state = {
+            list:[]
+        }
+    }
 
     componentWillReceiveProps(props)
     {
+        this.setState({list:props.students})
     }
-
     render(){
+        console.log(this.state.list)
         return (
-            <div className="container mt-3 mb-3">
-                <h1>Danh sách lớp</h1>
-                <hr />
-                <div className="row"> 
-                    <table className="table table-bordered text-center">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>Mã lớp</th>
-                                <th>Tên lớp</th>
-                                <th>Lớp chuyên</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <div className="row">
-                    <div className="col-6">
-                        <button type="button" className="btn btn-primary float-right">Back</button>
+            <div class="container pt-2">
+                    <h1>Students Manager</h1>
+                    <div className = "Task-Manager">
+                        <a className="button"><i className ="fas fa-plus"></i>New</a>
+                        <a className="button"><i className ="fas fa-trash"></i>Delete</a>
+                        <a className="button"><i className ="fas fa-pen"></i>Edit</a>
                     </div>
-                </div>
+                    <div className = "content">
+
+                    </div>
             </div>
         )
     }   
 }
 const mapStateToProps = (state) =>{
     return {
-        students : state.admin
+        students : state.admin.students
     }
 }
 export default connect(mapStateToProps,null)(Students)

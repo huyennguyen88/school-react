@@ -6,16 +6,16 @@ export const getTeachersApi = ()=>{
         return callApi('admins/getTeachers','GET',null)
         .then(res => 
             {
-                if(res.data){
-                    dispatch(gettTeachers(res.data))
+                if(res){
+                    dispatch(getTeachers(res.data))
                 }
             })
     }
 }
 
-export const gettTeachers =(teachers)=>{
+export const getTeachers =(teachers)=>{    
     return {
-        type: types.GET_TEACHERS,
+        type: types.ADMIN_GET_TEACHERS,
         teachers
     }
 }
@@ -25,7 +25,7 @@ export const getStudentsApi = ()=>{
         return callApi('admins/getStudents','GET',null)
         .then(res => 
             {
-                if(res.data){
+                if(res){
                     dispatch(getStudents(res.data))
                 }
             })
@@ -34,7 +34,7 @@ export const getStudentsApi = ()=>{
 
 export const getStudents =(students)=>{
     return {
-        type: types.GET_STUDENTS,
+        type: types.ADMIN_GET_STUDENTS,
         students
     }
 }
@@ -44,7 +44,7 @@ export const getParentsApi = ()=>{
         return callApi('admins/getParents','GET',null)
         .then(res => 
             {
-                if(res.data){
+                if(res){
                     dispatch(getParents(res.data))
                 }
             })
@@ -53,7 +53,7 @@ export const getParentsApi = ()=>{
 
 export const getParents =(parents)=>{
     return {
-        type: types.GET_PARENTS,
+        type: types.ADMIN_GET_PARENTS,
         parents
     }
 }
@@ -70,7 +70,7 @@ export const createUserApi = (user) =>{
         .then(res =>
             {
                 // console.log(res)
-                if(res.data){
+                if(res){
                     dispatch(createUser(res.data))
                 }
             })
@@ -83,17 +83,17 @@ export const createUser =(data) =>
     {
         case 1:
             return {
-                type: types.GET_TEACHERS,
+                type: types.ADMIN_GET_TEACHERS,
                 teachers: data.data
             }
         case 2:
             return {
-                type: types.GET_PARENTS,
+                type: types.ADMIN_GET_PARENTS,
                 parents: data.data
             }
         case 3:
             return {
-                type: types.GET_STUDENTS,
+                type: types.ADMIN_GET_STUDENTS,
                 students: data.data
             }
     }

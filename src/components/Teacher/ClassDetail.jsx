@@ -1,38 +1,52 @@
 import React, { Component } from 'react';
 import StudentList from './StudentList'
-import StudentDiligence from './StudentDiligence';
+// import StudentDiligence from './StudentDiligence';
 import StudentScore from './StudentScore';
-
+import { connect } from "react-redux";
+import { withRouter,Link } from 'react-router-dom'
+import * as actions from '../../actions/index'
 class ClassDetail extends Component {
+    constructor(props) {
+        super(props)
+    }
+    
     render() {
+        var {tenLop} = this.props.location.state
         return (
-            <div class="container my-3">
-                <h3>Class A</h3>
-                <hr/>
-                <ul class="nav nav-tabs my-3" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Danh sách</a>
+            <div className="container my-3">
+                <h3>Lớp {tenLop}</h3>
+                <hr />
+                <ul className="nav nav-tabs my-3" id="myTab" role="tablist">
+                    <li className="nav-item">
+                        <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Danh sách</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Chuyên cần</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Điểm số</a>
+                    <li className="nav-item">
+                        <a className="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Điểm số</a>
                     </li>
                 </ul>
-                <div class="tab-content " id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><StudentList/></div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><StudentDiligence/></div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><StudentScore/></div>
+                <div className="tab-content " id="myTabContent">
+                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><StudentList/></div>
+                    <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><StudentScore /></div>
                 </div>
-                <div class="row">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary float-right">Back</button>
-                        </div>
+                <div className="row">
+                    <div className="col-6">
+                        <Link to="/listclass">
+                            <button type="button" className="btn btn-primary float-right" >Back</button>
+                        </Link>
                     </div>
+                </div>
             </div>
         );
     }
 }
-
-export default ClassDetail;
+const mapStateToProps = (dispatch) => {
+    return {
+       
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ClassDetail));

@@ -10,12 +10,27 @@ export const SIGN_UP = 'SIGN_UP'
 //Tu - Profile
 export const PROFILE = 'PROFILE'
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+//Tu - CHAT
+export const LIST_ROOM = 'LIST_ROOM' 
+export const GET_MESSES  = 'GET_MESSES'
+export const PERSON_IN_ROOM  = 'PERSON_IN_ROOM'
+export const CLEAR_MESSES = 'CLEAR_MESSES'
+export const SEND_MESS = 'SEND_MESS'
+export const SEND_PERSON = 'SEND_PERSON'
+//Tu - Search
+export const SEARCH = 'SEARCH'
+//Tu - Class
+export const GET_CLASSES_TEACHER = 'GET_CLASSES_TEACHER'
+export const GET_STUDENTS_CLASS = 'GET_STUDENTS_CLASS'
+export const GET_STUDENTS_SCORES = 'GET_STUDENTS_SCORES'
 //HUYEN - Grades
 export const GET_GRADES = 'GET_GRADES'
 //Huyen - Subject
 export const GET_SUBJECTS = 'GET_SUBJECTS'
-//Hieu - Admin
+//DANG
 export const GET_STUDENTS = 'GET_STUDENTS'
-export const GET_PARENTS = 'GET_PARENTS'
-export const GET_TEACHERS = 'GET_TEACHERS'
-export const CREATE_USERS = 'CREATE_USERS'
+//Hieu
+export const GET_ORDER_USERS = 'GET_ORDER_USERS'
+export const ADMIN_GET_PARENTS ='ADMIN_GET_PARENTS'
+export const ADMIN_GET_TEACHERS = 'ADMIN_GET_TEACHERS'
+export const ADMIN_GET_STUDENTS = 'ADMIN_GET_STUDENTS'

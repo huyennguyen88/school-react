@@ -1,29 +1,49 @@
 import React,{Component} from 'react'
 import Students from './Students'
-import * as actions from '../../actions'
+// import * as actions from '../../actions'
+import sidebar from './SideBar.css'
+import './MainBar.css'
+import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 class MainBar extends Component{
     constructor(props)
-    {super(props)}
-
-    componentDidMount(){
-        this.props.getStudents()
+    {
+        super(props)
+        this.state = {
+            style:{
+                left:"0px"
+            }
+        }
     }
-    register = async() =>{
-        // params[
-            //  :name,
-            //  :email,
-            //  :password,
-            //  :birthday,
-            //  :address,
-            //  :role]
-        // await this.props.Register(user)
+    bars = () =>{
+        let value = this.state.style.left === "0px"?"261px":"0px"
+        this.setState({
+            style:{
+                left:value
+            }
+        })
+        this.props.sideBar(value === "0px"?"-261px":"0px");
     }
     render(){
         return (
-            <div className = "mainbar" style = {style.mainBar}>
-                <Students/>
-                {/* <button onClick = {this.register}></button> */}
+            <div className = "mainbar" style = {this.state.style}>
+                <div className = "search">
+                    <div className = "search-field">
+                        <button className = "fas fa-bars" onClick = {this.bars}/>                        <button className = "fas fa-search"></button>
+                        <input className = "input" type ="text" placeholder ="Search"></input>
+                    </div>
+                    <div>
+                        <Switch>
+                            <Route path="/Students">
+                                <Students/>
+                            </Route>
+                            <Route path="/">
+                                <div className = "body">
+                                </div>
+                            </Route>
+                        </Switch>
+                    </div>
+                </div>
             </div>
         )
     }   
@@ -37,14 +57,10 @@ const style = {
     }
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapStateToProps = (state) =>{
     return {
-        getStudents : () =>{
-            dispatch(actions.getStudentsApi())
-        },
-        Register : (user) =>{
-            dispatch(actions.createUserApi(user))
-        }
+        teachers: state.admin.teachers,
+        parents: state.admin.parents,
     }
 }
-export default connect(null,mapDispatchToProps)(MainBar)
+export default connect(mapStateToProps)(MainBar)

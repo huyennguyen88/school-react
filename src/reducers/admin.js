@@ -1,19 +1,16 @@
 import * as types from '../constants/ActionTypes'
-var initialState = []
+var initialState = {teachers:[],students:[],parents:[]}
 var myReducer = (state = initialState, action)=>{
     switch (action.type) {
-        case types.GET_STUDENTS:
-            state = action.students
-            return [...state]
-        case types.GET_TEACHERS:
-            state = action.teachers
-            return [...state]
-        case types.GET_PARENTS:
-            state = action.parents
-            return [...state]
-        case types.CREATE_USERS:
-            state = action.user
-            return [...state]
+        case types.ADMIN_GET_TEACHERS:
+            state.teachers = [...action.teachers]
+            return state
+        case types.ADMIN_GET_STUDENTS:
+            state.students = [...action.students]
+            return state
+        case types.ADMIN_GET_PARENTS:
+            state.parents = [...action.parents]
+            return state
         default:
             return state;
     }

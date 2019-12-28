@@ -1,26 +1,45 @@
 import React, { Component } from 'react'
 import './SideBar.css'
-export default class SideBar extends Component{
-        constructor(props){
-        super(props)
+import {Link} from 'react-router-dom'
+import * as actions from '../../actions'
+import { connect } from "react-redux";
+const mapDispatchToProps = (dispatch) =>{
+        return {
+            getUser : async(role) =>{
+            switch(role){
+                case 'Teachers':
+                    return await dispatch(actions.getTeachersApi())
+                case 'Students':
+                    return await dispatch(actions.getStudentsApi())
+                case 'Parents':
+                    return await dispatch(actions.getParentsApi())
+            }
+        }
     }
-
+}
+export default connect(null,mapDispatchToProps)(class SideBar extends Component{
+        constructor(props){
+            super(props)
+        }
+    get = (todo) =>{
+        this.props.getUser(todo)
+    }
     nav = () =>{
         let todo = ['Teachers','Students','Parents']
         let li = (todo) => {
             return (
-                    <a className = "nav-link">
+                // onClick = {(todo) =>{this.props.getUser(todo)}}
+                <Link to={"/" + todo} className = "nav-link " onClick = {()=>this.get(todo)}>
                         <p>{todo}</p>
-                    </a>
+                </Link>
             )
         }
         return(
-            <ul className ="nav">
+            <ul>
                 {
                     todo.map((item,index)=>{return (
                         <li className = "nav-item" key = {index}>
                             {li(item,index)}
-                            <hr/>
                         </li>
                         )})
                 }
@@ -30,13 +49,15 @@ export default class SideBar extends Component{
 
     render(){
         return(
-            <div className = "touch">
-                <div id="Sidebar" className = "sidebar darken-overlay">
-                    <div className = "sidebar-wrapper">
-                        {this.nav()}
+            <div className = "sideBar layout" style = {{left:this.props.sideBar}}>
+                <Link to = "/">
+                    <div className = "iconic">
+                            <i className = "fas fa-school fa"></i>
+                            Administrator
                     </div>
-                </div>
+                </Link>
+                {this.nav()}
             </div>
         );
     }
-}
+})
