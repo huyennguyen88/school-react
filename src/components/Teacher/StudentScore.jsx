@@ -21,7 +21,6 @@ class StudentScore extends Component {
     render() {
         var { scores,search } = this.props
         var nameSub
-        console.log(scores[0])
         if (scores[0]) {
             nameSub = scores[0].subject.name
         }
@@ -40,7 +39,7 @@ class StudentScore extends Component {
                     <div className="form-inline my-3">
                         <input onKeyUp={this.onChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                         <button onClick={this.onSubmit} className="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-                        <button className="btn btn-info" style={{ marginLeft: "59%" }}>Tạo phòng chat</button>
+                        {/* <button className="btn btn-info" style={{ marginLeft: "59%" }}>Tạo phòng chat</button> */}
                     </div>
                     <div className="row">
                         <table className="table table-bordered text-center">

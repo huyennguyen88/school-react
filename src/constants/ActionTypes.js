@@ -17,6 +17,7 @@ export const PERSON_IN_ROOM  = 'PERSON_IN_ROOM'
 export const CLEAR_MESSES = 'CLEAR_MESSES'
 export const SEND_MESS = 'SEND_MESS'
 export const SEND_PERSON = 'SEND_PERSON'
+export const CREATE_ROOM = 'CREATE_ROOM'
 //Tu - Search
 export const SEARCH = 'SEARCH'
 //Tu - Class

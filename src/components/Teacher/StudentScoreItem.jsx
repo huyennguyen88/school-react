@@ -62,9 +62,7 @@ class StudentScoreItem extends Component {
         this.props.updateStudentScores(mssv,subject.id,score_arr);
         this.setState({
             open: false
-        })
-        console.log(score_arr)
-        
+        })        
         this.notify();
     }
     render() {

@@ -106,10 +106,7 @@ class MessInRoom extends Component {
                             {messesInRoom}
                        
                     </ScrollToBottom>
-                    {
-                        isEmpty(messesInRoom)
-                            ? ""
-                            :
+                   
                             <div className="type_msg">
                                 <div className="input_msg_write">
                                     <input
@@ -130,7 +127,7 @@ class MessInRoom extends Component {
                                     </button>
                                 </div>
                             </div>
-                    }
+                    
                 </div>
             </div>
         )

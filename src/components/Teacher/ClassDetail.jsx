@@ -11,7 +11,7 @@ class ClassDetail extends Component {
     }
 
     render() {
-        var { tenLop } = this.props.location.state
+        var tenLop = JSON.parse(localStorage.getItem('tenlop'));
         var roles = JSON.parse(localStorage.getItem('roles'))
         var role = roles[0];
         return (
@@ -34,7 +34,7 @@ class ClassDetail extends Component {
 
                 </ul>
                 <div className="tab-content " id="myTabContent">
-                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><StudentList /></div>
+                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><StudentList  /></div>
                     {
                         role.role === 1
                             ?

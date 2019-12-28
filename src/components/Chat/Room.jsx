@@ -39,7 +39,6 @@ class Room extends Component {
         //     nameRoom = room.name
         // }
         if (!isEmpty(lastMess)) {
-
             lastMessInRoom = lastMess
         }
         return (

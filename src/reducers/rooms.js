@@ -5,6 +5,12 @@ var myReducer = (state = initialState, action)=>{
         case types.LIST_ROOM:
             state = action.rooms.rooms
             return [...state]
+        case types.CREATE_ROOM:
+            if(action.room)
+            {
+                return [...state,action.room]
+            }
+            return [...state]
         default:
             return state;
     }

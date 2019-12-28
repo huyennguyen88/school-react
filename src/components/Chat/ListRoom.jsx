@@ -36,14 +36,17 @@ class ListRoom extends Component {
         var { rooms,lastMessArr,keySearch } = this.props
         if (!isEmpty(rooms)) {
             rooms = rooms.filter((r,i)=>{
-                return r.name.toLowerCase().indexOf(keySearch) !== -1
+                if(r.name){
+                    return r.name.toLowerCase().indexOf(keySearch) !== -1
+                }
             })
             var listRoom = rooms.map((room,index)=>{
+                console.log(lastMessArr[lastMessArr[index]])
                 return(
                     index===this.state.activeRoom?
-                    <Room lastMess={lastMessArr[index].content} key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = 'active_chat check'/>
+                    <Room lastMess={lastMessArr[index]? lastMessArr[index].content : "talk something ..."} key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = 'active_chat check'/>
                     :
-                    <Room lastMess={lastMessArr[index].content} key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = ''/>
+                    <Room lastMess={lastMessArr[index]? lastMessArr[index].content : "talk something ..." } key={index} keyRoom={index} room={room} callback = {this.activeRoom} active = ''/>
                 )
             })
         }

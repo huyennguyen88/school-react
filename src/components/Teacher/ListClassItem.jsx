@@ -7,9 +7,8 @@ class ListClassItem extends Component {
         super(props)
     }
     loadStudentInClass = ()=>{
-        var token = JSON.parse(localStorage.getItem('token'))
-        this.props.loadStudentInClass(this.props.lophoc.id)
-        this.props.loadStudentScoreInClass(this.props.lophoc.id,token)
+        localStorage.setItem('id_lophoc', JSON.stringify(this.props.lophoc.id))
+        localStorage.setItem('tenlop',JSON.stringify(this.props.lophoc.name))
     }
     render() {
         var {lophoc,number} = this.props
@@ -25,7 +24,7 @@ class ListClassItem extends Component {
                         <Link to={
                             {
                                 pathname: "listclass/classdetail",
-                                state: { tenLop: lophoc.name, monHoc: "" }
+                                state: { tenLop: lophoc.name, monHoc: "",id_lophoc: lophoc.id }
                             }
                         }>
                             <button 
