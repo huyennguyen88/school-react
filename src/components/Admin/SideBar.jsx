@@ -1,35 +1,16 @@
 import React, { Component } from 'react'
 import './SideBar.css'
 import {Link} from 'react-router-dom'
-import * as actions from '../../actions'
-import { connect } from "react-redux";
-const mapDispatchToProps = (dispatch) =>{
-        return {
-            getUser : async(role) =>{
-            switch(role){
-                case 'Teachers':
-                    return await dispatch(actions.getTeachersApi())
-                case 'Students':
-                    return await dispatch(actions.getStudentsApi())
-                case 'Parents':
-                    return await dispatch(actions.getParentsApi())
-            }
-        }
-    }
-}
-export default connect(null,mapDispatchToProps)(class SideBar extends Component{
+export default class SideBar extends Component{
         constructor(props){
             super(props)
         }
-    get = (todo) =>{
-        this.props.getUser(todo)
-    }
     nav = () =>{
         let todo = ['Teachers','Students','Parents']
         let li = (todo) => {
             return (
                 // onClick = {(todo) =>{this.props.getUser(todo)}}
-                <Link to={"/" + todo} className = "nav-link " onClick = {()=>this.get(todo)}>
+                <Link to={"/" + todo} className = "nav-link " >
                         <p>{todo}</p>
                 </Link>
             )
@@ -60,4 +41,4 @@ export default connect(null,mapDispatchToProps)(class SideBar extends Component{
             </div>
         );
     }
-})
+}

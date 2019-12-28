@@ -66,18 +66,35 @@ export const createUserApi = (user) =>{
             address: user.address,
             birthday: user.birthday,
             password: user.password,
+            role: user.role
         })
         .then(res =>
             {
-                // console.log(res)
                 if(res){
-                    dispatch(createUser(res.data))
+                    dispatch(User(res.data))
                 }
             })
     }
 }
-
-export const createUser =(data) =>
+export const updateUserApi = (user) =>{
+    return(dispatch)=>{
+        return callApi('admins/updateUser','POST',{
+            name: user.name,
+            email: user.email,
+            address: user.address,
+            birthday: user.birthday,
+            password: user.password,
+            role: user.role
+        })
+        .then(res =>
+            {
+                if(res){
+                    dispatch(User(res.data))
+                }
+            })
+    }
+}
+export const User =(data) =>
 {
     switch(data.role)
     {

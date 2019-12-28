@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import './User.css'
 import * as actions from '../../actions'
 import Pagination from "react-js-pagination";
-
-class Students extends Component{
+class Parents extends Component{
     constructor(props)
     {
         super(props)
@@ -12,17 +11,13 @@ class Students extends Component{
             list:[],
             activePage:1,
             selectID:null,
-            Modalstyle:{
-                Display:"none"
-            }
         }
     }
-    
     handlePageChange =(pageNumber)=> {
         this.setState({activePage: pageNumber});
     }
     getID = async(item)=>{
-        await this.setState({selectID:item.student.id})
+        await this.setState({selectID:item.parent.id})
     }
     componentDidMount()
     {
@@ -31,12 +26,8 @@ class Students extends Component{
     componentWillReceiveProps(props)
     {
         this.setState({
-            list:props.students
+            list:props.parents
         })
-    }
-    CreateUser =() =>{
-        let value =this.state.Modalstyle == "none"?"block":"none"
-        this.setState({Modalstyle:value})
     }
     Listing = () =>{
         if(this.state.list.length == 0)return (
@@ -74,7 +65,7 @@ class Students extends Component{
                                     <tr className="text-black" key={index}
                                         onClick ={()=>this.getID(item)}
                                     >
-                                        <th>{item.student.id}</th>
+                                        <th>{item.parent.id}</th>
                                         <th>{item.user.address}</th>
                                         <th>{item.user.name}</th>
                                         <th>{item.user.email}</th>
@@ -94,30 +85,28 @@ class Students extends Component{
             )
         } 
     }
+    Delete = () =>{
+
+    }
     render(){
         return (
-            <>
-                <div className = "Modal" style = {this.state.Modalstyle}>
-                    asdasda
-                </div>
-                <div className="container pt-2">
-                        <h1>Students Manager</h1>
-                        <div className = "Task-Manager">
-                            <a className="button"><i className ="fas fa-plus" onClick = {this.CreateUser}></i>New</a>
-                            <a className="button"><i className ="fas fa-pen"></i>Edit</a>
-                        </div>
-                        <div className = "content">
-                            {this.Listing()}
-                        </div>
-                </div>
-            </>
+            <div className="container pt-2">
+                    <h1>Parents Manager</h1>
+                    <div className = "Task-Manager">
+                        <a className="button"><i className ="fas fa-plus"></i>New</a>
+                        <a className="button"><i className ="fas fa-pen"></i>Edit</a>
+                    </div>
+                    <div className = "content">
+                        {this.Listing()}
+                    </div>
+            </div>
         )
     }   
 }
 const mapDispatchToProps = (dispatch) =>{
     return {
         getitem : async() =>{
-            return await dispatch(actions.getStudentsApi())
+            return await dispatch(actions.getParentsApi())
         },
         createUser: async(data) =>{
             // #params[
@@ -143,7 +132,7 @@ const mapDispatchToProps = (dispatch) =>{
 }
 const mapStateToProps = (state) =>{
     return {
-        students : state.admin.students
+        parents : state.admin.parents
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Students)
+export default connect(mapStateToProps,mapDispatchToProps)(Parents)

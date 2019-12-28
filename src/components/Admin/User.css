@@ -35,3 +35,10 @@ h1{
 .button:hover{
     background-color:rgba(0, 0, 0, 0.2);
 }
+.Loading{
+    display:block;
+    height:100px;
+    background-image:url('../../image/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -1,10 +1,9 @@
 import React,{Component} from 'react'
 import Students from './Students'
-// import * as actions from '../../actions'
-import sidebar from './SideBar.css'
+import Teachers from './Teachers'
+import Parents from './Parents'
 import './MainBar.css'
 import { Switch, Route } from "react-router-dom";
-import { connect } from "react-redux";
 class MainBar extends Component{
     constructor(props)
     {
@@ -37,6 +36,12 @@ class MainBar extends Component{
                             <Route path="/Students">
                                 <Students/>
                             </Route>
+                            <Route path="/Parents">
+                                <Parents/>
+                            </Route>
+                            <Route path="/Teachers">
+                                <Teachers/>
+                            </Route>
                             <Route path="/">
                                 <div className = "body">
                                 </div>
@@ -57,10 +62,4 @@ const style = {
     }
 }
 
-const mapStateToProps = (state) =>{
-    return {
-        teachers: state.admin.teachers,
-        parents: state.admin.parents,
-    }
-}
-export default connect(mapStateToProps)(MainBar)
+export default MainBar
