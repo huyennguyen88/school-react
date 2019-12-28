@@ -3,7 +3,6 @@ import * as types from '../constants/ActionTypes'
 export const getStudentsApi = ()=>{
     return (dispatch)=>{callApi('students','GET',null).then(
         res=>{
-            console.log(res.data)
             dispatch(getStudents(res.data))
         }
     )}

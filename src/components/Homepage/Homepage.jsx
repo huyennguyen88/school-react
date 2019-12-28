@@ -11,10 +11,15 @@ import ClassDetail from '../Teacher/ClassDetail'
 import EditProfile from '../Profile/EditProfile'
 import ChatMain from '../Chat/ChatMain'
 import * as actions from './../../actions/index'
-import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
+import { Switch, Route } from "react-router-dom";
 import Menu from '../Shared/Menu/Menu';
+
 class Homepage extends React.Component {
+    constructor(props){
+        super(props)
+        this.props.currentTeacher();
+    }
     async componentDidMount(){
         let token = JSON.parse(localStorage.getItem('token'))
         await this.props.currentUser(token);
@@ -70,6 +75,9 @@ const mapDispatchToProps = (dispatch)=>{
     return{
         currentUser: (token)=>{
             return dispatch(actions.profileApi(token))
+        },
+        currentTeacher: ()=>{
+            return dispatch(actions.getTeacherNow())
         }
     }
 }

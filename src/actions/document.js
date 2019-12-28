@@ -15,3 +15,11 @@ export const getDocuments =(documents)=>{
         documents
     }
 }
+export const getDocumentsWithGrade =(grade_id, subject_id, documents)=>{
+    return {
+        type: types.GET_DOCUMENTS_WITH_GRADE,
+        grade_id,
+        subject_id,
+        documents
+    }
+}

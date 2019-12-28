@@ -29,6 +29,9 @@ export const GET_GRADES = 'GET_GRADES'
 export const GET_SUBJECTS = 'GET_SUBJECTS'
 //Huyen - document
 export const GET_DOCUMENTS = 'GET_DOCUMENTS'
+export const GET_DOCUMENTS_WITH_GRADE = 'GET_DOCUMENTS_WITH_GRADE'
+//Huyen - teacher
 export const TEACHER_NOW = 'TEACHER_NOW'
+export const GET_TEACHER_NOW = 'GET_TEACHER_NOW'
 //DANG
 export const GET_STUDENTS = 'GET_STUDENTS'

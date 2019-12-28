@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import axios from 'axios';
+import Swal from 'sweetalert2'
 class AddForm extends Component {
     constructor(props) {
         super(props)
@@ -53,7 +54,6 @@ class AddForm extends Component {
         console.log("state",this.state)
     }
     onHandleSubmit = (e) => {
-        console.log("vaoday")
         e.preventDefault()
         
         var { title, description, teacher, pin, grade_id, subject_id} = this.state
@@ -71,8 +71,22 @@ class AddForm extends Component {
             headers: {
                 'content-type': 'multipart/form-data'
             }
-        }).then(res => console.log(res.data))
-        .catch(err => {console.log(err)});
+        }).then(res => {
+            console.log(res.data)
+            Swal.fire({
+                icon: 'success',
+                title: 'Đã đăng tài liệu thành công',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+        })
+        .catch(err => {
+            console.log(err)
+            Swal.fire('Oops...', 'Something went wrong!', 'error')
+
+        });
+        
     }
     render() {
         var { grades, subjects, user, teacher } = this.state
@@ -82,7 +96,6 @@ class AddForm extends Component {
         var subjectOption = subjects.map((subject, index) => {
             return <option key={index} index={index} value={subject.id} >{subject.name}</option>
         })
-        console.log("state",this.state)
         return (
             <div>
                 
@@ -106,10 +119,6 @@ class AddForm extends Component {
                                         <label  className="text-danger">Tiêu đề  </label>
                                         <input  onChange= {(e)=> this.onChange(e)} name="title" type="text" className="form-control" placeholder="Tiêu đề là..."  />
                                         <small  className="form-text text-muted">Thêm tiêu đề ngắn gọn cho tài liệu.</small>
-                                    </div>
-                                    <div className="form-group">
-                                        <label  className="text-danger">Giáo viên</label>
-                                        <input  onChange= {(e)=> this.onChange(e)} name="teacher_id"  readOnly type="text" className="form-control" value={teacher.id} placeholder={user.name}/>
                                     </div>
                                     <div className="form-group">
                                         <label className=" text-danger" >Chọn khối</label>
