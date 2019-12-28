@@ -4,9 +4,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import * as actions from './../../actions/index'
 class ListClass extends Component {
-    constructor(props){
-        super(props)
-    }
     async componentWillMount(){
         var token = JSON.parse(localStorage.getItem('token'))
         if(token)  await this.props.loadClasses(token)

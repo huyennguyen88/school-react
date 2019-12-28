@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Send from './Send';
 import Receive from './Receive';
-import * as actions from './../../actions/index'
 class Message extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         var { mess, user } = this.props
         return (

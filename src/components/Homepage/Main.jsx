@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import BigImage from './BigImage'
 import Banner from '../Shared/TopNav/Banner'
 export class Main extends Component {
     componentDidMount(){

@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
 import BigImage from '../../Homepage/BigImage';
 import MenuTeacher from './MenuTeacher';
 import MenuParent from './MenuParent';
 import MenuStudent from './MenuStudent';
 class Menu extends Component {
-    constructor(props){
-        super(props)
-    }
     render() {
         var roles = JSON.parse(localStorage.getItem('roles'))
-        var role1 = roles[0]
-        var role2 = roles[1]
         var menu = roles.map((r,i)=>{
             switch(r.role){
                 case 1:
@@ -21,7 +15,7 @@ class Menu extends Component {
                 case 3:
                     return <MenuStudent key={2}/>
                 default: 
-                    return
+                    return <div>Nothing</div>
             }
         })
     

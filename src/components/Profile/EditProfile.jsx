@@ -96,7 +96,7 @@ export class EditProfile extends Component {
                         </div>
                     </div>
                     <div className="col-md-9 personal-info">
-                        <form className="form-horizontal" role="form">
+                        <form className="form-horizontal" >
                             <div className="form-group">
                                 <label className="col-lg-3 control-label">Họ tên: </label>
                                 <div className="col-lg-8">

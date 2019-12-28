@@ -11,6 +11,7 @@ export const logInApi = (user)=>{
                 let data = res.data
                 dispatch(logIn(data.user))
                 dispatch(roleLogin(data.roles))
+                dispatch(teacherNow(data.teacher))
             }
         })
     }
@@ -76,5 +77,11 @@ export const updateProfile = (user)=>{
     return{
         type: types.UPDATE_PROFILE,
         user
+    }
+}
+export const teacherNow = (teacher)=>{
+    return{
+        type: types.TEACHER_NOW,
+        teacher
     }
 }

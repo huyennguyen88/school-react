@@ -18,6 +18,9 @@ import children from './children'
 import studentParent from './studentParent'
 import studentScore from './studentScore'
 import checkHaveFriend from './checkHavedFriend'
+import allDocuments from './allDocuments'
+import teacher from './teacher';
+import documentStore from './documentStore';
 const myReducer = combineReducers({
     //Tu
     session, //session
@@ -33,8 +36,11 @@ const myReducer = combineReducers({
     studentInClass, // get Student in class
     studentScoreInClass, // get score
     //Huyen
-    grades, // grades
-    subjects, // subject
+    grades, 
+    subjects, 
+    allDocuments,
+    teacher,
+    documentStore,
     //DANG
     students,
     childrenOfParent,

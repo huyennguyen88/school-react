@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './../../../image/logo.jpg'
-
 class Footer extends Component {
     render() {
         return (
@@ -60,7 +58,3 @@ class Footer extends Component {
 }
 
 export default Footer;
-
-var style = {
-    backgroundColor: "#E1055E"
-}

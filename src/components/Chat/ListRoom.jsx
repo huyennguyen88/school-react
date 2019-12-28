@@ -23,8 +23,8 @@ class ListRoom extends Component {
     }
     onChange = (e)=>{
         var target = e.target;
-        var name = target. name
-        var value = target. value
+        var name = target.name
+        var value = target.value
         this.setState({
             [name]: value
         })
@@ -77,14 +77,6 @@ class ListRoom extends Component {
                 </div>
             </div>
         )
-    }
-}
-const style ={
-    active:{
-        backgroundColor: "#ebebeb"
-    },
-    unactive:{
-        
     }
 }
 const mapStateToProps = (state) => {

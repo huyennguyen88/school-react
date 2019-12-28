@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './../../../actions/index'
 import Swal from 'sweetalert2'
 import { isEmpty } from 'lodash'
-import BigImage from "../../Homepage/BigImage";
-// import logo from './../../../image/logo.jpg'
 class Header extends Component {
-    constructor(props) {
-        super(props)
-    }
     logOut = () => {
         this.props.logOut();
         Swal.fire('Log out', 'log out sucess', 'success')
@@ -115,7 +110,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.session,
-        role: state.role
+        role: state.role,
+        teacher : state.teacher
     }
 }
 const mapDispatchToProps = (dispatch, ) => {
@@ -128,7 +124,6 @@ const mapDispatchToProps = (dispatch, ) => {
 }
 const style = {
     backgroundColor: "rgb(205, 163, 152)"
-    // rgb(205, 163, 152)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import StudentList from './StudentList'
-// import StudentDiligence from './StudentDiligence';
 import StudentScore from './StudentScore';
 import { connect } from "react-redux";
 import { withRouter, Link } from 'react-router-dom'

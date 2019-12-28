@@ -3,7 +3,7 @@ import MainMenu from '../Shared/TopNav/MainMenu'
 import Main from './Main';
 import LoginForm from '../Login/LoginForm';
 import ProfileMain from '../Profile/ProfileMain';
-// import PublicStorage from '../DocumentStorage/PublicStorage';
+import PublicStorage from '../DocumentStorage/PublicStorage';
 import LoggedMenu from '../LoggedHome/LoggedMenu';
 import Footer from '../Shared/Footer/Footer'
 import ListClass from '../Teacher/ListClass';
@@ -11,14 +11,18 @@ import ClassDetail from '../Teacher/ClassDetail'
 import EditProfile from '../Profile/EditProfile'
 import ChatMain from '../Chat/ChatMain'
 import * as actions from './../../actions/index'
-import { Switch, Route } from "react-router-dom";
 import {connect} from 'react-redux'
 import ParentPage from '../Parent/ParentPage';
 import StudentPage from '../Student/StudentPage';
-import Header from '../Shared/TopNav/Header';
+// import Header from '../Shared/TopNav/Header';
+import { Switch, Route } from "react-router-dom";
 import Menu from '../Shared/Menu/Menu';
 import ChildrenPage from '../Parent/ChildrenPage';
 class Homepage extends React.Component {
+    constructor(props){
+        super(props)
+        this.props.currentTeacher();
+    }
     async componentDidMount(){
         let token = JSON.parse(localStorage.getItem('token'))
         await this.props.currentUser(token);
@@ -41,7 +45,7 @@ class Homepage extends React.Component {
                         <ProfileMain/>
                     </Route>
                     <Route path="/publicStorage">
-                        {/* <PublicStorage/> */}
+                        <PublicStorage/>
                     </Route>
                     <Route path="/logged">
                         <LoggedMenu/>
@@ -83,6 +87,9 @@ const mapDispatchToProps = (dispatch)=>{
     return{
         currentUser: (token)=>{
             return dispatch(actions.profileApi(token))
+        },
+        currentTeacher: ()=>{
+            return dispatch(actions.getTeacherNow())
         }
     }
 }
