@@ -9,7 +9,8 @@ var myReducer = (state = initialState, action)=>{
             state = documents.filter((document,index)=>{
                 return (document.grade_id === grade_id && document.subject_id === subject_id)
             })
-            return [...state]
+            return [...state]  
+
         default:
             return state;
     }

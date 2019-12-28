@@ -14,7 +14,6 @@ import * as actions from './../../actions/index'
 import {connect} from 'react-redux'
 import { Switch, Route } from "react-router-dom";
 import Menu from '../Shared/Menu/Menu';
-
 class Homepage extends React.Component {
     constructor(props){
         super(props)

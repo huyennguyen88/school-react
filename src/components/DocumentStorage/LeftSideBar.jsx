@@ -23,8 +23,7 @@ class LeftSideBar extends Component {
         })
         return (
             <div className="col-3">
-                <p className="h4 px-3 py-3 text-secondary">Tài liệu <i className="fas fa-book-open"></i></p>
-                <div className="list_group" >
+                <div className="list_group my-2" >
                     {listGrade}
                 </div>
             </div>

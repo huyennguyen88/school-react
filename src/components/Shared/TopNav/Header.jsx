@@ -96,7 +96,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.session,
-        role: state.role
+        role: state.role,
+        teacher : state.teacher
     }
 }
 const mapDispatchToProps = (dispatch, ) => {
@@ -109,7 +110,6 @@ const mapDispatchToProps = (dispatch, ) => {
 }
 const style = {
     backgroundColor: "rgb(205, 163, 152)"
-    // rgb(205, 163, 152)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))
 

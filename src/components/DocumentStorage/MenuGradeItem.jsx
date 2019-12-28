@@ -57,6 +57,9 @@ const mapDispatchToProps = (dispatch)=>{
     return{
         getDocumentsWithGrade: (grade_id,subject_id,documents)=>{
             return dispatch(actions.getDocumentsWithGrade(grade_id,subject_id,documents))
+        },
+        getAllDocuments: ()=>{
+            return dispatch(actions.getDocumentsApi())
         }
     }
 }

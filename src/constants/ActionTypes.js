@@ -30,6 +30,8 @@ export const GET_SUBJECTS = 'GET_SUBJECTS'
 //Huyen - document
 export const GET_DOCUMENTS = 'GET_DOCUMENTS'
 export const GET_DOCUMENTS_WITH_GRADE = 'GET_DOCUMENTS_WITH_GRADE'
+export const DELETE_DOCUMENT = 'DELETE_DOCUMENT'
+export const ADD_DOCUMENT = 'ADD_DOCUMENT'
 //Huyen - teacher
 export const TEACHER_NOW = 'TEACHER_NOW'
 export const GET_TEACHER_NOW = 'GET_TEACHER_NOW'

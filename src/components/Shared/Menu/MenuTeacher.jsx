@@ -36,7 +36,7 @@ class MenuTeacher extends React.Component {
                     <div className="card">
                         <img className="card-img-top" src={books} alt="" />
                         <div className="card-body">
-                            <h5 className="card-title">Kho tài liệu</h5>
+                            <h5 className="card-title">Public Store</h5>
                         </div>
                     </div>
                 </Link>

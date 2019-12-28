@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import * as actions from './../../actions/index'
 class AddForm extends Component {
     constructor(props) {
         super(props)
@@ -88,6 +89,7 @@ class AddForm extends Component {
         });
         
     }
+    
     render() {
         var { grades, subjects, user, teacher } = this.state
         var gradeOption = grades.map((grade, index) => {
@@ -159,4 +161,11 @@ const mapStateToProps = (state) => {
         teacher: state.teacher
     }
 }
-export default connect(mapStateToProps, null)(AddForm)
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        getAllDocuments: ()=>{
+            return dispatch(actions.getDocumentsApi())
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AddForm)

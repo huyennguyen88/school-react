@@ -23,3 +23,19 @@ export const getDocumentsWithGrade =(grade_id, subject_id, documents)=>{
         documents
     }
 }
+export const deleteDocumentsApi = (id)=>{
+    return (dispatch)=>{
+        console.log("goi api")
+        return callApi('documents/'+id,'DELETE',null)
+        .then(res => 
+            {
+                dispatch(documentDelete(res.data))
+            })
+    }
+}
+export const documentDelete = (id)=>{
+    return{
+        type: types.DELETE_DOCUMENT,
+        id
+    }
+}
