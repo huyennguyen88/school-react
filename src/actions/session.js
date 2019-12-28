@@ -9,9 +9,11 @@ export const logInApi = (user)=>{
         }).then(res=>{
             if(res) {
                 let data = res.data
+                //chap va'
+                // localStorage.setItem('which_role', res.data.which_role)
                 dispatch(logIn(data.user))
                 dispatch(roleLogin(data.roles))
-                dispatch(teacherNow(data.teacher))
+                dispatch(teacherNow(data.which_role))
             }
         })
     }

@@ -13,26 +13,27 @@ class Header extends Component {
     render() {
         var { user, role } = this.props
         var roles = JSON.parse(localStorage.getItem('roles'))
-        if(roles)
-        var menu = roles.map((r,i)=>{
-            switch(r.role){
-                case 1:
-                    return <Link to="/profile" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
-                case 2:
-                    return <Link to="/parent" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
-                case 3:
-                    return <Link to="/student" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
-                default: 
-                    return
-            }
-        })
+        var teacher = JSON.parse(localStorage.getItem('teacher'))
+        if (roles)
+            var menu = roles.map((r, i) => {
+                switch (r.role) {
+                    case 1:
+                        return <Link to="/profile" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                    case 2:
+                        return <Link to="/parent" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                    case 3:
+                        return <Link to="/student" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                    default:
+                        return
+                }
+            })
         return (
             <div className="header">
-                <header  style={style}>
+                <header style={style}>
                     <nav id="navbar-light-menu" className="navbar navbar-expand-lg navbar-light bg-gradient-secondary pt-3">
                         <h1>
                             <Link to="/" className="navbar-brand">
-                            <i className="fas fa-school"></i> School
+                                <i className="fas fa-school"></i> School
                                     <span>Education</span>
                             </Link>
                         </h1>
@@ -54,13 +55,26 @@ class Header extends Component {
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active mr-4">
                                     <Link to="/" className="nav-link">
-                                    <i className="fas fa-home"></i> Trang Chủ
+                                        <i className="fas fa-home"></i> Trang Chủ
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
+                                {
+                                    teacher && teacher.admin === true
+                                        ?
+                                        <li className="nav-item mr-4">
+                                            <Link to="/admin" className="nav-link">
+                                                <i className="fas fa-info"></i> Admin page
+                                        <span className="sr-only">(current)</span>
+                                            </Link>
+                                        </li>
+                                        :
+                                        ""
+                                }
+
                                 <li className="nav-item mr-4">
                                     <Link to="/" className="nav-link">
-                                    <i className="fas fa-info"></i> Về Chúng Tôi
+                                        <i className="fas fa-info"></i> Về Chúng Tôi
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
@@ -90,7 +104,7 @@ class Header extends Component {
                                                     Tài khoản
                                                 </a>
                                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                <Link to="/profile" className="dropdown-item"><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                                                    <Link to="/profile" className="dropdown-item"><i className="fas fa-address-card"></i> Trang cá nhân</Link>
                                                     <div className="dropdown-divider" />
                                                     <a onClick={this.logOut} className="dropdown-item">
                                                         <span className="mx-2"> <i className="fas fa-sign-out-alt"></i> Đăng xuất</span>
@@ -99,6 +113,7 @@ class Header extends Component {
                                             </li>
                                         </>
                                 }
+
                             </ul>
                         </div>
                     </nav>
@@ -111,7 +126,7 @@ const mapStateToProps = (state) => {
     return {
         user: state.session,
         role: state.role,
-        teacher : state.teacher
+        teacher: state.teacher
     }
 }
 const mapDispatchToProps = (dispatch, ) => {
