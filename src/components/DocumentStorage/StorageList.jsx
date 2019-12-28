@@ -34,7 +34,7 @@ class StorageList extends Component {
     }
     render() {
         console.log("state", this.state)
-        var { documentStore,teacher,user } = this.state
+        var { documentStore,teacher} = this.state
         var doclist = documentStore.map((doc, index) => {
             return <div key={index} className="card border border-secondary mx-2 mt-3" style={{ width: '170px' }}>
                 <img src="https://images.khotrithucso.com/thumbnails/8d41585d04df34f7f576f34998d41fec/package035/967969114c151b8d20f91bf0c0ae47a3/16cafa4b3c79a27287c50b5fb514f097/232690-140x182.jpg" className="cardImg card-img-top" alt="pdf img" />
