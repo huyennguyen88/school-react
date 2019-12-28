@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import avatar from '../../image/avatar.jpg'
 class StudentListItem extends Component {
     render() {
         var {student} = this.props

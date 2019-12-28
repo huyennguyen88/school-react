@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import "./LeftSideBar.scss";
 import MenuGradeItem from './MenuGradeItem';
 import { connect } from "react-redux";
-//import * as actions from '../../actions/index'
 class LeftSideBar extends Component {
     constructor(props) {
         super(props)
@@ -11,7 +9,7 @@ class LeftSideBar extends Component {
         }
     }
     static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.grades === prevState.date) {
+        if (nextProps.grades === prevState.grades) {
           return null
         }
     
@@ -19,18 +17,15 @@ class LeftSideBar extends Component {
       }
     render() {
         var { grades } = this.state
-        //console.log("grades", grades)
+
         var listGrade = grades.map((grade, index) => {
             return <MenuGradeItem key={index} index={index} grade={grade} />
         })
         return (
-            <div>
-                <nav id="sidebar">
-
-                    <ul className="list-unstyled components">
-                        {listGrade}
-                    </ul>
-                </nav>
+            <div className="col-3">
+                <div className="list_group my-2" >
+                    {listGrade}
+                </div>
             </div>
         )
     }

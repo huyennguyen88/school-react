@@ -3,13 +3,9 @@ import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 import * as actions from './../../actions/index'
 class Receive extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         var { mess, personInRoom } = this.props;
         var time = new Date(mess.created_at);
-        var nameSend = '';
         if (!isEmpty(personInRoom)) {
             var index = personInRoom.findIndex((p) => {
                 return mess.user_token === p.authentication_token

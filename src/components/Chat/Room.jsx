@@ -10,12 +10,14 @@ class Room extends Component {
         }
     }
     activeChat = async () => {
-        var { keyRoom } = this.props
+        var { keyRoom,room } = this.props
         this.props.callback(keyRoom)
         this.setState({
             keyRoom: keyRoom
         })
         await this.props.loadMessInRoom(this.props.room.id)
+        
+        localStorage.setItem('token_room',JSON.stringify(room.authentication_token))
     }
     render() {
         var { room, user, active, lastMess } = this.props
@@ -28,16 +30,26 @@ class Room extends Component {
         else {
             if (user.name === nameRoomArr[0]) {
                 nameRoom = nameRoomArr[1]
+                if(nameRoomArr[1].includes("-(token")){
+                    var indexName = nameRoomArr[1].indexOf("-(token");
+                    nameRoom = nameRoomArr[1].substring(0,indexName)
+                }
             }
             else if (user.name !== nameRoom[1]) {
                 nameRoom = nameRoomArr[0]
+                if(nameRoomArr[0].includes("-(token")){
+                    var indexName = nameRoomArr[0].indexOf("-(token");
+                    nameRoom = nameRoomArr[0].substring(0,indexName)
+                }
+                else{
+                    nameRoom = nameRoomArr[0]
+                }
             }
         }
         // else {
         //     nameRoom = room.name
         // }
         if (!isEmpty(lastMess)) {
-
             lastMessInRoom = lastMess
         }
         return (

@@ -4,3 +4,8 @@ export * from './subject'
 export * from './admin'
 export * from './control'
 export * from './messes'
+export * from './student'
+export * from './classesEveryTeacher' // lien quan den DS lop, DS diem so 
+export * from './parent'
+export * from './document'
+export * from './teacher'

@@ -1,41 +1,67 @@
 import React, { Component } from 'react'
-import "./LeftSideBar.scss";
 import { connect } from "react-redux";
-//import * as actions from '../../actions'
-class MenuGradeItem extends Component {
-    constructor(props){
+import * as actions from './../../actions/index'
+class MenuGradeItem extends Component 
+{
+    constructor(props)
+    {
         super(props)
         this.state ={  
-            subjects: []
+            subjects: [],
+            documents: []
+            
         }
     }
-    static getDerivedStateFromProps(nextProps,prevState){
-        if(nextProps.subjects === prevState.subjects){
+    static getDerivedStateFromProps(nextProps,prevState)
+    {
+        if(nextProps.subjects === prevState.subjects && nextProps.documents === prevState.documents){
             return null
         }
-        return {subjects: nextProps.subjects}
+        return {
+            subjects: nextProps.subjects,
+            documents: nextProps.documents
+        }
     }
-    render() {
+    onChoose =(grade_id, subject_id, documents)=>{
+        this.props.getDocumentsWithGrade(grade_id,subject_id,documents)
+    }
+    render() 
+    {
+        console.log("menu", this.state)
         var {grade, index} = this.props
-        var {subjects} = this.state
+        var {subjects,documents} = this.state
         var listSubject = subjects.map((subject,index)=>{
-            return <li key={index}>
-                <a href="#">{subject.name}</a>
-            </li>
+            return  <div key={index}  onClick={()=> this.onChoose(grade.id,subject.id,documents)}>
+                        <div  className="list-group-item list-group-item-action list-group-item-light">
+                            {subject.name} <i className="fas fa-angle-right float-right"></i>       
+                        </div>
+                    </div> 
         })
         return (
-            <li>
-                <a href={"#grade"+index} data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">{grade.name}</a>
-                <ul className="collapse list-unstyled" id={"grade"+index}>
+            <div>
+                <a href={"#grade"+index} data-toggle="collapse" aria-expanded="false" className="dropdown-toggle list-group-item list-group-item-action list-group-item-danger h5">{grade.name}</a>
+                <div className="collapse" id={"grade"+index}>
                     {listSubject}
-                </ul>
-            </li>
+                </div>
+            </div>
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-        subjects: state.subjects
+        subjects: state.subjects,
+        documents: state.allDocuments
     }
 }
-export default connect(mapStateToProps, null)(MenuGradeItem)
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        getDocumentsWithGrade: (grade_id,subject_id,documents)=>{
+            return dispatch(actions.getDocumentsWithGrade(grade_id,subject_id,documents))
+        },
+        getAllDocuments: ()=>{
+            return dispatch(actions.getDocumentsApi())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuGradeItem)

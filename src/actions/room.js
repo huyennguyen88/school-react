@@ -3,7 +3,9 @@ import * as types from '../constants/ActionTypes'
 
 export const getMessApi = (room_id)=>{
     return (dispatch)=>{
-        return callApi('getMessInRoom/'+room_id,'GET',null).then(res=>{
+        return callApi('getMessInRoom','POST',{
+            room_id: room_id
+        }).then(res=>{
             if(res){
                  dispatch(getMess(res.data.messes))
                  dispatch(getPersonInRoom(res.data.users))

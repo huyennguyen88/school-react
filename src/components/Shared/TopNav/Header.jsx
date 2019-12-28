@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from './../../../actions/index'
 import Swal from 'sweetalert2'
 import { isEmpty } from 'lodash'
-import BigImage from "../../Homepage/BigImage";
-// import logo from './../../../image/logo.jpg'
 class Header extends Component {
-    constructor(props) {
-        super(props)
-    }
     logOut = () => {
         this.props.logOut();
         Swal.fire('Log out', 'log out sucess', 'success')
@@ -17,13 +12,28 @@ class Header extends Component {
     }
     render() {
         var { user, role } = this.props
+        var roles = JSON.parse(localStorage.getItem('roles'))
+        var teacher = JSON.parse(localStorage.getItem('teacher'))
+        if (roles)
+            var menu = roles.map((r, i) => {
+                switch (r.role) {
+                    case 1:
+                        return <Link to="/profile" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                    case 2:
+                        return <Link to="/parent" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                    case 3:
+                        return <Link to="/student" className="dropdown-item" key={i}><i className="fas fa-address-card"></i> Trang cá nhân</Link>
+                    default:
+                        return
+                }
+            })
         return (
             <div className="header">
-                <header  style={style}>
+                <header style={style}>
                     <nav id="navbar-light-menu" className="navbar navbar-expand-lg navbar-light bg-gradient-secondary pt-3">
                         <h1>
                             <Link to="/" className="navbar-brand">
-                            <i className="fas fa-school"></i> School
+                                <i className="fas fa-school"></i> School
                                     <span>Education</span>
                             </Link>
                         </h1>
@@ -45,20 +55,33 @@ class Header extends Component {
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active mr-4">
                                     <Link to="/" className="nav-link">
-                                    <i className="fas fa-home"></i> Trang Chủ
+                                        <i className="fas fa-home"></i> Trang Chủ
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
+                                {
+                                    teacher && teacher.admin === true
+                                        ?
+                                        <li className="nav-item mr-4">
+                                            <Link to="/admin" className="nav-link">
+                                                <i className="fas fa-info"></i> Admin page
+                                        <span className="sr-only">(current)</span>
+                                            </Link>
+                                        </li>
+                                        :
+                                        ""
+                                }
+
                                 <li className="nav-item mr-4">
                                     <Link to="/" className="nav-link">
-                                    <i className="fas fa-info"></i> Về Chúng Tôi
+                                        <i className="fas fa-info"></i> Về Chúng Tôi
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
-                                <Link to="/" className="nav-link mr-4">
+                                <a href='http://fb.com/mrahn123' className="nav-link mr-4">
                                     <i className="fas fa-address-book"></i> Liên Lạc
                                     <span className="sr-only">(current)</span>
-                                </Link>
+                                </a>
                                 {
                                     isEmpty(user)
                                         ?
@@ -90,6 +113,7 @@ class Header extends Component {
                                             </li>
                                         </>
                                 }
+
                             </ul>
                         </div>
                     </nav>
@@ -101,7 +125,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         user: state.session,
-        role: state.role
+        role: state.role,
+        teacher: state.teacher
     }
 }
 const mapDispatchToProps = (dispatch, ) => {
@@ -114,7 +139,6 @@ const mapDispatchToProps = (dispatch, ) => {
 }
 const style = {
     backgroundColor: "rgb(205, 163, 152)"
-    // rgb(205, 163, 152)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))
 

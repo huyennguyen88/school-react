@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import ListClassItem from './ListClassItem'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
+import {isEmpty} from 'lodash'
 import * as actions from './../../actions/index'
 class ListClass extends Component {
-    constructor(props){
-        super(props)
-    }
     async componentWillMount(){
         var token = JSON.parse(localStorage.getItem('token'))
+        var user_role = JSON.parse(localStorage.getItem('roles'))
+        if(isEmpty(token) || (user_role[0] && user_role[0].role !== 1)){
+            this.props.history.push('/notfound')
+        }
         if(token)  await this.props.loadClasses(token)
     }
     render() {
@@ -66,4 +68,4 @@ const mapDispatchToProps = (dispatch)=>{
         }
     }
 }
-export default (connect)(mapStateToProps,mapDispatchToProps)(ListClass);
+export default (connect)(mapStateToProps,mapDispatchToProps)(withRouter(ListClass));

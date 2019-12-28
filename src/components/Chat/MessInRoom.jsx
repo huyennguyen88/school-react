@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Message from './Message';
 // import createSocket from './ChatSocket'
@@ -21,8 +21,6 @@ class MessInRoom extends Component {
         super(props);
         this.state = {
             currentMessage: '',
-            token_room: '',
-            token: '',
         }
     }
     handleInputEnter = (e) => {
@@ -70,14 +68,6 @@ class MessInRoom extends Component {
             }
         );
     }
-    componentWillReceiveProps(nextProps) {
-        if (isEmpty(nextProps.messes)) {
-            this.setState({
-                token_room: JSON.parse(localStorage.getItem('token_room')),
-                token: JSON.parse(localStorage.getItem('token'))
-            })
-        }
-    }
     componentWillUnmount() {
         this.props.clearMess()
         this.rooms.unsubscribe()
@@ -90,15 +80,19 @@ class MessInRoom extends Component {
         })
     }
     onSubmit = async (e) => {
-        var message = this.state
+        var {currentMessage} = this.state;
+
         // console.log(this.socket.rooms)
         // this.socket.rooms.create(message.token,message.token_room,message.currentMessage)
-        this.rooms.create(message.token, message.token_room, message.currentMessage)
+        var token = JSON.parse(localStorage.getItem('token'));
+        var token_room = JSON.parse(localStorage.getItem('token_room'));
+        this.rooms.create(token, token_room, currentMessage)
         document.getElementById('currentMessage').value = ''
         e.preventDefault()
+        // console.log(message.token_room)
     }
     render() {
-        var { messes, personInRoom } = this.props
+        var { messes} = this.props
         var messesInRoom = messes.map((mess, index) => {
             return (
                 <Message key={index} mess={mess} />
@@ -112,10 +106,7 @@ class MessInRoom extends Component {
                             {messesInRoom}
                        
                     </ScrollToBottom>
-                    {
-                        isEmpty(messesInRoom)
-                            ? ""
-                            :
+                   
                             <div className="type_msg">
                                 <div className="input_msg_write">
                                     <input
@@ -136,23 +127,10 @@ class MessInRoom extends Component {
                                     </button>
                                 </div>
                             </div>
-                    }
+                    
                 </div>
             </div>
         )
-    }
-}
-const style = {
-    bgName: {
-        backgroundColor: "#05728f",
-        borderRadius: "5px 5px",
-        float: "left",
-        width: "60%",
-        height: "3em"
-    },
-    txtName: {
-        color: "white",
-        textAlign: "center"
     }
 }
 const mapStateToProps = (state) => {

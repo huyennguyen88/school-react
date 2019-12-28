@@ -8,10 +8,12 @@ export const logInApi = (user)=>{
             password: user.password,
         }).then(res=>{
             if(res) {
-                console.log(res)
                 let data = res.data
+                //chap va'
+                // localStorage.setItem('which_role', res.data.which_role)
                 dispatch(logIn(data.user))
                 dispatch(roleLogin(data.roles))
+                dispatch(teacherNow(data.which_role))
             }
         })
     }
@@ -35,7 +37,7 @@ export const logOut = ()=>{
 }
 export const profileApi = (token) =>{
     return (dispatch)=>{
-        return callApi('users/'+token,'GET',{
+        return callApi('users/getProfile','POST',{
             authentication_token: token
         }).then(res=>{
             if (res){
@@ -77,5 +79,11 @@ export const updateProfile = (user)=>{
     return{
         type: types.UPDATE_PROFILE,
         user
+    }
+}
+export const teacherNow = (teacher)=>{
+    return{
+        type: types.TEACHER_NOW,
+        teacher
     }
 }

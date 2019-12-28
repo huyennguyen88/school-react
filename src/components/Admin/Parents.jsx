@@ -90,7 +90,7 @@ class Parents extends Component{
                                     <tr className="text-black" key={index}
                                         onClick ={()=>this.getID(item)}
                                     >
-                                        <th>{item.student.id}</th>
+                                        <th>{item.parent.id}</th>
                                         <th>{item.user.name}</th>
                                         <th>{item.user.address}</th>
                                         <th>{item.user.email}</th>

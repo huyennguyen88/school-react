@@ -1,19 +1,46 @@
 import React, { Component } from 'react';
 import StudentScoreItem from './StudentScoreItem'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/index'
+
 class StudentScore extends Component {
-    render() {
-        var {scores} = this.props
-        var scorelist = scores.map((s,i)=>{
-            return <StudentScoreItem key={i} score={s}/>
+    constructor(props){
+        super(props)
+        this.state = {
+            keyword: ""
+        }
+    }
+    onChange = (e)=>{
+        this.setState({
+            keyword: e.target.value
         })
+    }
+    onSubmit = ()=>{
+        this.props.searchStudent(this.state.keyword);
+    }
+    render() {
+        var { scores,search } = this.props
+        var nameSub
+        if (scores[0]) {
+            nameSub = scores[0].subject.name
+        }
+        if(scores){
+            var scores = scores.filter((s,i)=>{
+                return s.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            })
+            var scorelist = scores.map((s, i) => {
+                return <StudentScoreItem key={i} score={s} />
+            })
+        }
         return (
             <div>
                 <div className="container mt-3 mb-3">
-                    <form className="form-inline my-3">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    <h1>Môn học: <b>{nameSub}</b></h1>
+                    <div className="form-inline my-3">
+                        <input onKeyUp={this.onChange} className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button onClick={this.onSubmit} className="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+                        {/* <button className="btn btn-info" style={{ marginLeft: "59%" }}>Tạo phòng chat</button> */}
+                    </div>
                     <div className="row">
                         <table className="table table-bordered text-center">
                             <thead >
@@ -49,9 +76,17 @@ class StudentScore extends Component {
         );
     }
 }
-const mapStateToProps = (state) =>{
-    return{
-        scores: state.studentScoreInClass
+const mapStateToProps = (state) => {
+    return {
+        scores: state.studentScoreInClass,
+        search: state.search
     }
 }
-export default connect(mapStateToProps,null)(StudentScore);
+const mapDispatchToProps= (dispatch)=>{
+    return {
+        searchStudent: (keyword)=>{
+            return dispatch(actions.Search(keyword))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(StudentScore);
