@@ -3,12 +3,19 @@ import StudentList from './StudentList'
 import StudentScore from './StudentScore';
 import { connect } from "react-redux";
 import { withRouter, Link } from 'react-router-dom'
+import {isEmpty} from 'lodash'
 import * as actions from '../../actions/index'
 class ClassDetail extends Component {
     constructor(props) {
         super(props)
     }
-
+    componentWillMount(){
+        var token = JSON.parse(localStorage.getItem('token'))
+        var user_role = JSON.parse(localStorage.getItem('roles'))
+        if(isEmpty(token) || (user_role[0] && user_role[0].role !== 1)){
+            this.props.history.push('/notfound')
+        }
+    }
     render() {
         var tenLop = JSON.parse(localStorage.getItem('tenlop'));
         var roles = JSON.parse(localStorage.getItem('roles'))

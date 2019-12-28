@@ -4,10 +4,10 @@ export const getChildrenOfParentApi = (authentication_token)=>{
     return (dispatch)=>{callApi('childrenOfParent/','POST',
     {
         authentication_token: authentication_token
-    }).then(
-        res=>{
-            // console.log(res.data)
-            dispatch(getChildrenOfParent(res.data))
+    }).then(res=>{
+            if(res){
+                dispatch(getChildrenOfParent(res.data))
+            }
         }
     )}
 }

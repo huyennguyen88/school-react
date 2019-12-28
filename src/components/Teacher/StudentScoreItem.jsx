@@ -67,9 +67,21 @@ class StudentScoreItem extends Component {
         })
         this.props.updateStudentScores(mssv,subject.id,score_arr);
         this.setState({
-            open: false
+            open: false,
         })        
         this.notify();
+    }
+    componentWillUnmount(){
+        this.setState({
+            name0: 0.0,
+            name1: 0.0,
+            name2: 0.0,
+            name3: 0.0,
+            name4: 0.0,
+            name5: 0.0,
+            name6: 0.0,
+            name7: 0.0,
+        })
     }
     render() {
         var { score } = this.props;
@@ -77,7 +89,7 @@ class StudentScoreItem extends Component {
         var diemhk2 = 0;
         for (let s of score.HK1){
             if(s.score > -1 || score < 11){
-                diemhk1 += s.score
+                diemhk1 += s.score*s.heso
             }else{
                 diemhk1 = -1;
                 break;
@@ -85,33 +97,33 @@ class StudentScoreItem extends Component {
         }
         for (let s of score.HK2){
             if(s.score > -1 || score < 11){
-                diemhk2 += s.score
+                diemhk2 += s.score*s.heso
             }else{
                 diemhk2 = -1;
                 break;
             }
         }
         var hk1 = score.HK1.map((s, i) => {       
-            return <td key={i}>{s.score !== -1 ? s.score : ""}</td>
+            return <td key={i}>{s.score >= 0 ? s.score : ""}</td>
         })
         var hk2 = score.HK2.map((s, i) => {
           
-            return <td key={i}>{s.score !== -1 ? s.score : ""}</td>
+            return <td key={i}>{s.score >= 0 ? s.score : ""}</td>
         })
         var hk1Input = score.HK1.map((s, i) => {
-            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + i} max="10" min="0" className="btn-pop hk1" defaultValue={s.score !== -1 ? s.score : ""} key={i} /></td>
+            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + i} max="10" min="0" className="btn-pop hk1" defaultValue={s.score >= 0? s.score : ""} key={i} /></td>
         })
         var hk2Input = score.HK2.map((s, i) => {
 
-            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + (i + 4)} max="10" min="0" className="btn-pop hk2" defaultValue={s.score !== -1 ? s.score : ""} key={i} /></td>
+            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + (i + 4)} max="10" min="0" className="btn-pop hk2" defaultValue={s.score >= 0 ? s.score : ""} key={i} /></td>
         })
+        console.log(diemhk1)
         diemhk1 /= 7
         diemhk2 /= 7
         var tongket = -1
         if (diemhk1 > 0 && diemhk2 > 0) {
             tongket = parseFloat(((diemhk1 + diemhk2 * 2) / 3).toFixed(2))
         }
-        console.log(diemhk1)
         return (
             <>
                 <Modal show={this.state.open} onHide={this.closePopup} style={{ width: "100%!important" }}>

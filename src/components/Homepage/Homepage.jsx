@@ -14,10 +14,12 @@ import * as actions from './../../actions/index'
 import {connect} from 'react-redux'
 import ParentPage from '../Parent/ParentPage';
 import StudentPage from '../Student/StudentPage';
+import NotFound from '../Shared/Error/NotFound'
 // import Header from '../Shared/TopNav/Header';
 import { Switch, Route } from "react-router-dom";
 import Menu from '../Shared/Menu/Menu';
 import ChildrenPage from '../Parent/ChildrenPage';
+import AboutTeam from '../Shared/About/AboutTeam';
 class Homepage extends React.Component {
     constructor(props){
         super(props)
@@ -67,6 +69,12 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/children">
                         <ChildrenPage/>
+                    </Route>
+                    <Route path="/notfound">
+                        <NotFound/>
+                    </Route>
+                    <Route path="/about">
+                        <AboutTeam/>
                     </Route>
                     <Route path="/">
                         <Main />

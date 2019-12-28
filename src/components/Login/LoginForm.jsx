@@ -13,6 +13,12 @@ class LoginForm extends Component {
             password: ""
         }
     }
+    componentWillMount(){
+        var token = JSON.parse(localStorage.getItem('token'))
+        if(!isEmpty(token)){
+            this.props.history.push("/notfound")
+        }
+    }
     changeForm = (e)=>{
         let target = e.target;
         let name = target.name;

@@ -922,7 +922,8 @@ ol.breadcrumb {
 /*-- team --*/
 .team-grids img {
 	margin: 0 auto;
-	width: inherit;
+    width: 300px;
+    height: 400px;
 }
 .team-grids {
 	position: relative;

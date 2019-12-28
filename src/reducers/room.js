@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes'
+import {isEmpty} from 'lodash'
 var initialState = [];
 var myReducer = (state = initialState, action)=>{
     switch (action.type) {
@@ -11,7 +12,11 @@ var myReducer = (state = initialState, action)=>{
             state.length = 0
             return state;
         case types.SEND_MESS:
-            return [...state,action.mess]
+            var first = [...state][0]
+            if(!isEmpty(first) && first.room_id=== action.mess.room_id){
+                return [...state,action.mess]
+            }
+            return [...state]
         default:
             return [...state];
     }

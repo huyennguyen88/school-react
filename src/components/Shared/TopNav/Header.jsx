@@ -64,10 +64,10 @@ class Header extends Component {
                                         <span className="sr-only">(current)</span>
                                     </Link>
                                 </li>
-                                <Link to="/" className="nav-link mr-4">
+                                <a href='http://fb.com/mrahn123' className="nav-link mr-4">
                                     <i className="fas fa-address-book"></i> Liên Lạc
                                     <span className="sr-only">(current)</span>
-                                </Link>
+                                </a>
                                 {
                                     isEmpty(user)
                                         ?
@@ -90,7 +90,7 @@ class Header extends Component {
                                                     Tài khoản
                                                 </a>
                                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                    {menu}
+                                                <Link to="/profile" className="dropdown-item"><i className="fas fa-address-card"></i> Trang cá nhân</Link>
                                                     <div className="dropdown-divider" />
                                                     <a onClick={this.logOut} className="dropdown-item">
                                                         <span className="mx-2"> <i className="fas fa-sign-out-alt"></i> Đăng xuất</span>

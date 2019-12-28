@@ -4,8 +4,6 @@ var myReducer = (state = initialState, action)=>{
     switch(action.type){
         case types.ROLE:
             state = action.roles
-            console.log(state)
-
             localStorage.setItem('roles',JSON.stringify(state))
             return [...state];
         case types.PROFILE_ROLE:

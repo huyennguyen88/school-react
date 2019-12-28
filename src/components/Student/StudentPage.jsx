@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import * as actions from '../../actions/index'
 import StudentHocLuc from './StudentHocLuc'
 import StudentDSLop from './StudentDSLop'
+import {withRouter} from 'react-router-dom'
+import {isEmpty} from 'lodash'
 class StudentPage extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,10 @@ class StudentPage extends Component {
     
     async componentWillMount(){
         var token = JSON.parse(localStorage.getItem('token'))
+        var user_role = JSON.parse(localStorage.getItem('roles'))
+        if(isEmpty(token) || (user_role[0] && user_role[0].role !== 3)){
+            this.props.history.push('/notfound')
+        }
         if(token)  await this.props.getInfo(token)
     }
     
@@ -81,4 +87,4 @@ const mapDispatchToProps =(dispatch)=>{
         },
 }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(StudentPage);
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(StudentPage));

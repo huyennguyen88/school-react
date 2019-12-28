@@ -7,7 +7,7 @@ class MenuTeacher extends React.Component {
     render() {
         return (
             <div className="menu-teacher" style={style.menu}>
-                <Link to="/profile" style={style.item}>
+                <Link to="/parent" style={style.item}>
                     <div className="card">
                         <img className="card-img-top" src={info} alt="" />
                         <div className="card-body">

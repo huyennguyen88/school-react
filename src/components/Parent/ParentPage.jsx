@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import "./ParentPageStyle.scss"
 import avatar from "../../image/avatar.jpg"
-import ProfileMain from "../Profile/ProfileMain"
 import ParentInfo from './ParentInfo';
 import ChildrenList from './ChildrenList'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
+import {isEmpty} from 'lodash'
 import * as actions from './../../actions/index'
 import { getChildrenOfParentApi } from './../../actions/index';
 class ParentPage extends Component {
@@ -14,7 +14,11 @@ class ParentPage extends Component {
         
     }
     componentDidMount() {
-        let token = JSON.parse(localStorage.getItem('token'))
+        var token = JSON.parse(localStorage.getItem('token'))
+        var user_role = JSON.parse(localStorage.getItem('roles'))
+        if(isEmpty(token) || (user_role[0] && user_role[0].role !== 2)){
+            this.props.history.push('/notfound')
+        }
         this.props.getChildren(token)
     }
     
@@ -69,4 +73,4 @@ const mapDispatchToProps = (dispatch)=>{
         }
     }
 }
-export default (connect)(mapStateToProps,mapDispatchToProps)(ParentPage)
+export default (connect)(mapStateToProps,mapDispatchToProps)(withRouter(ParentPage))
