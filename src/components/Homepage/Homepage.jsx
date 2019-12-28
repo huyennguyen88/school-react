@@ -17,6 +17,7 @@ import ParentPage from '../Parent/ParentPage';
 import StudentPage from '../Student/StudentPage';
 import Header from '../Shared/TopNav/Header';
 import Menu from '../Shared/Menu/Menu';
+import ChildrenPage from '../Parent/ChildrenPage';
 class Homepage extends React.Component {
     async componentDidMount(){
         let token = JSON.parse(localStorage.getItem('token'))
@@ -59,6 +60,9 @@ class Homepage extends React.Component {
                     </Route>
                     <Route path="/student">
                         <StudentPage/>
+                    </Route>
+                    <Route path="/children">
+                        <ChildrenPage/>
                     </Route>
                     <Route path="/">
                         <Main />

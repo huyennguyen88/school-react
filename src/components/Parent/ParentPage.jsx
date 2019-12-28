@@ -4,8 +4,23 @@ import avatar from "../../image/avatar.jpg"
 import ProfileMain from "../Profile/ProfileMain"
 import ParentInfo from './ParentInfo';
 import ChildrenList from './ChildrenList'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import * as actions from './../../actions/index'
+import { getChildrenOfParentApi } from './../../actions/index';
 class ParentPage extends Component {
+    constructor(props) {
+        super(props);
+        
+    }
+    componentDidMount() {
+        let token = JSON.parse(localStorage.getItem('token'))
+        this.props.getChildren(token)
+    }
+    
     render() {
+        // console.log(this.props.user.authentication_token)
+        
         return (
             <div className="container-fluid my-5">
                 <h3><strong>Parent's name</strong></h3>
@@ -14,7 +29,7 @@ class ParentPage extends Component {
                 <div className="col-2">
                     
                     <img src={avatar} class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} custom my-3" alt=""/>
-                    <button type="button" class="btn btn-info mx-2 text-white"><h5><strong>Đổi ảnh đại diện</strong></h5></button>
+                    <button type="button" class="btn btn-info mx-auto text-white"><h5><strong>Đổi ảnh đại diện</strong></h5></button>
                 </div>
                 <div className="col-10">
                 <div className="row">
@@ -38,4 +53,20 @@ class ParentPage extends Component {
         
     }
 }
-export default ParentPage
+const mapStateToProps = (state)=>{
+    return{
+       
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        getChildren : (token) =>
+        {
+            console.log(token)
+            return dispatch(actions.getChildrenOfParentApi(token))
+            //thay đổi state.childrenOfParent
+            //trả về : student_id, name, lop, email, birthday, address
+        }
+    }
+}
+export default (connect)(mapStateToProps,mapDispatchToProps)(ParentPage)

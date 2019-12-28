@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-export default class ParentInfo extends Component {
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+class ParentInfo extends Component {
     render() {
-       
+       let {user} = this.props
         return (
             <>
             <h4 class="mb-3"><strong>Thông tin phụ huynh: </strong></h4>
@@ -9,19 +11,19 @@ export default class ParentInfo extends Component {
                 <tbody>
                     <tr>
                         <td><h5><strong>Họ tên :</strong></h5></td>
-                        <td>User Name</td>
+                        <td>{user.name}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Email :</strong></h5></td>
-                        <td>Email</td>
+                        <td>{user.email}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Ngày sinh :</strong></h5></td>
-                        <td>Ngày sinh</td>
+                        <td>{(user.birthday+"").substring(0,10)}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Địa chỉ :</strong></h5></td>
-                        <td></td>
+                        <td>{user.address}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Giới tính :</strong></h5></td>
@@ -37,3 +39,15 @@ export default class ParentInfo extends Component {
         )
     }
 }
+const mapStateToProps = (state)=>{
+    return{
+        user: state.session,
+        role: state.role
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        
+    }
+}
+export default (connect)(mapStateToProps,mapDispatchToProps)(ParentInfo)

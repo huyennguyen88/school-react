@@ -13,6 +13,10 @@ import personInRoom from './personInRoom'
 import classesEveryTeacher from './classesEveryTeacher'
 import studentInClass from './studentsInClass'
 import studentScoreInClass from './studentScoreInClass'
+import childrenOfParent from './childrenOfParent'
+import children from './children'
+import studentParent from './studentParent'
+import studentScore from './studentScore'
 const myReducer = combineReducers({
     //Tu
     session, //session
@@ -31,5 +35,9 @@ const myReducer = combineReducers({
     subjects, // subject
     //DANG
     students,
+    childrenOfParent,
+    children,
+    studentParent,
+    studentScore
 });
 export default myReducer

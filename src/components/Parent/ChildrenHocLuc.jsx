@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import StudentHocLucItem from './StudentHocLucItem'
+import ChildrenHocLucItem from './ChildrenHocLucItem'
 import { connect } from "react-redux";
-class StudentHocLuc extends Component {
+class ChildrenHocLuc extends Component {
     constructor(props)
     {super(props)}
     render() {
@@ -20,7 +20,7 @@ class StudentHocLuc extends Component {
         })
         var bangdiem = score.map((s,index)=>{
             var diem = s.map((mon,index)=>{
-                return <StudentHocLucItem mon={mon} key={index}/>
+                return <ChildrenHocLucItem mon={mon} key={index}/>
             })
             return (
                 <div className={index===0?"tab-pane fade show active":"tab-pane fade"} id={index} role="tabpanel" aria-labelledby={index+"-tab"}>
@@ -63,4 +63,4 @@ const mapStateToProps = (state) =>{
        
     }
 }
-export default connect(mapStateToProps,null)(StudentHocLuc);
+export default connect(mapStateToProps,null)(ChildrenHocLuc);

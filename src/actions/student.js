@@ -20,6 +20,7 @@ export const getStudentsInClassApi = (id_class)=>{
             id_class: id_class
         }).then((res)=>{
             if(res){
+                console.log(res)
                 dispatch(getStudentsInClass(res.data))
             }
         })
@@ -47,5 +48,69 @@ export const getStudentsScoreInClass = (scores)=>{
     return{
         type: types.GET_STUDENTS_SCORES,
         scores: scores
+    }
+}
+export const getChildrenDetailApi = (id)=>{
+    return (dispatch) => {
+        return callApi('students/'+id+'/student_detail','GET',null).then((res)=>{
+            if(res){
+                console.log(res)
+                dispatch(getChildrenDetail(res.data))
+                dispatch(getStudentsInClassApi(res.data.lop_hoc_id))
+            }
+        })
+    }
+}
+export const getChildrenDetail = (info)=>{
+    return{
+        type: types.GET_CHILDREN_INFO,
+        info : info
+    }
+}
+export const getStudentDetailFromTokenApi = (token)=>{
+    return (dispatch) => {
+        return callApi('student_detail_with_token/','POST',{
+            authentication_token : token
+        }).then((res)=>{
+            if(res){
+                console.log(res)
+                dispatch(getStudentParent(res.data.parent_info))
+                // dispatch(getStudentInfo(res.data.student_info))
+                dispatch(getStudentsInClassApi(res.data.student_info.lop_hoc_id))
+                dispatch(getStudentScoreApi(res.data.student_info.id))
+            }
+        })
+    }
+}
+export const getStudentParent = (parent) =>
+{
+    return{
+        type: types.GET_PARENT,
+        parent : parent
+    }
+}
+export const getStudentInfo = (student) =>
+{
+    return{
+        type: types.GET_STUDENT_INFO,
+        student : student
+    }
+}
+export const getStudentScoreApi = (student_id) =>
+{
+    return (dispatch) => {
+        return callApi('students/'+student_id+"/student_score",'GET',null).then((res)=>{
+            if(res){
+                console.log(res)
+                dispatch(getStudentScore(res.data))
+            }
+        })
+    }
+}
+export const getStudentScore = (score) =>
+{
+    return{
+        type: types.GET_STUDENT_SCORE,
+        score: score
     }
 }

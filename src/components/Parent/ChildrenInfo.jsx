@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import * as actions from '../../actions/index'
+import {Link, withRouter} from "react-router-dom" 
 class StudentInfo extends Component {
     render() {
-        let {user}=this.props
+        console.log(this.props.children)
+        let {children} = this.props
         return (
             <>
             <h4 className="mb-3"><strong>Thông tin học sinh: </strong></h4>
@@ -11,19 +13,19 @@ class StudentInfo extends Component {
                 <tbody>
                     <tr>
                         <td><h5><strong>Họ tên :</strong></h5></td>
-                        <td>{user.name}</td>
+                        <td>{children.name}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Email :</strong></h5></td>
-                        <td>{user.email}</td>
+                        <td>{children.email}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Ngày sinh :</strong></h5></td>
-                        <td>{(user.birthday+"").substring(0,10)}</td>
+                        <td>{(children.birthday+"").substring(0,10)}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Địa chỉ :</strong></h5></td>
-                        <td>{user.address}</td>
+                        <td>{children.address}</td>
                     </tr>
                     <tr>
                         <td><h5><strong>Giới tính :</strong></h5></td>
@@ -40,8 +42,9 @@ class StudentInfo extends Component {
     }
 }
 const mapStateToProps = (state)=>{
+    // console.log(state.children)
     return{
-       user: state.session,
+        children : state.children
     }
 }
 const mapDispatchToProps = (dispatch)=>{
@@ -49,4 +52,4 @@ const mapDispatchToProps = (dispatch)=>{
         
     }
 }
-export default (connect)(mapStateToProps,mapDispatchToProps)(StudentInfo)
+export default (connect)(mapStateToProps,mapDispatchToProps)(withRouter(StudentInfo))

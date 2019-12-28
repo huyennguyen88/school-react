@@ -27,5 +27,13 @@ export const GET_STUDENTS_SCORES = 'GET_STUDENTS_SCORES'
 export const GET_GRADES = 'GET_GRADES'
 //Huyen - Subject
 export const GET_SUBJECTS = 'GET_SUBJECTS'
-//DANG
+//DANG - Get all student of school
 export const GET_STUDENTS = 'GET_STUDENTS'
+//Dang - Childrens Of Parent
+export const GET_CHILDREN = 'GET_CHILDREN'
+export const GET_CHILDREN_INFO = 'GET_CHILDREN_INFO'
+export const GET_CHILDREN_SCORE = 'GET_CHILDREN_SCORE'
+export const GET_PARENT = 'GET_PARENT'
+//Dang - Get Student info
+export const GET_STUDENT_INFO = 'GET_STUDENT_INFO'
+export const GET_STUDENT_SCORE = 'GET_STUDENT_SCORE'

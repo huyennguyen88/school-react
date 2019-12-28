@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class StudentHocLucItem extends Component {
+export default class ChildrenHocLucItem extends Component {
     constructor(props) {
         super(props)
     }
