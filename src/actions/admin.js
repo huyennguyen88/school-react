@@ -79,11 +79,11 @@ export const createUserApi = (user) =>{
 export const updateUserApi = (user) =>{
     return(dispatch)=>{
         return callApi('admins/updateUser','POST',{
+            id: user.id,
             name: user.name,
             email: user.email,
             address: user.address,
             birthday: user.birthday,
-            password: user.password,
             role: user.role
         })
         .then(res =>

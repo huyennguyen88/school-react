@@ -10,7 +10,7 @@ export default class SideBar extends Component{
         let li = (todo) => {
             return (
                 // onClick = {(todo) =>{this.props.getUser(todo)}}
-                <Link to={"/" + todo} className = "nav-link " >
+                <Link to={"/Admin/" + todo} className = "nav-link " >
                         <p>{todo}</p>
                 </Link>
             )
@@ -31,13 +31,19 @@ export default class SideBar extends Component{
     render(){
         return(
             <div className = "sideBar layout" style = {{left:this.props.sideBar}}>
-                <Link to = "/">
+                <Link to = "/Admin">
                     <div className = "iconic">
                             <i className = "fas fa-school fa"></i>
                             Administrator
                     </div>
                 </Link>
                 {this.nav()}
+                <Link to = "/">
+                    <div className = "footer">
+                        <i className = "fas fa-door-open"></i>
+                        Exit
+                    </div>
+                </Link>
             </div>
         );
     }

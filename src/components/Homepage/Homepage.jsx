@@ -60,6 +60,7 @@ class Homepage extends React.Component {
     }
 }
 const mapStateToProps = (state)=>{
+    console.log(state)
     return{
         user: state.session,
         role: state.role

@@ -26,3 +26,12 @@ p{
     line-height:1.8;
     letter-spacing: 1px;
 }
+.footer{
+    margin-top:290px;
+    border-top: 1px solid white;
+    color:white;
+    text-align:center;
+    font-size:30px;
+    line-height:1.8;
+    letter-spacing: 1px;
+}

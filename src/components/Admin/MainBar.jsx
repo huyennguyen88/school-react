@@ -3,6 +3,7 @@ import Students from './Students'
 import Teachers from './Teachers'
 import Parents from './Parents'
 import './MainBar.css'
+import {Link} from 'react-router-dom'
 import { Switch, Route } from "react-router-dom";
 class MainBar extends Component{
     constructor(props)
@@ -33,16 +34,16 @@ class MainBar extends Component{
                     </div>
                     <div>
                         <Switch>
-                            <Route path="/Students">
+                            <Route path="/Admin/Students">
                                 <Students/>
                             </Route>
-                            <Route path="/Parents">
+                            <Route path="/Admin/Parents">
                                 <Parents/>
                             </Route>
-                            <Route path="/Teachers">
+                            <Route path="/Admin/Teachers">
                                 <Teachers/>
                             </Route>
-                            <Route path="/">
+                            <Route path="/Admin">
                                 <div className = "body">
                                 </div>
                             </Route>
