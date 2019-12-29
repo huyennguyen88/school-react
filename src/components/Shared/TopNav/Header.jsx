@@ -73,7 +73,7 @@ class Header extends Component {
                                 }
 
                                 <li className="nav-item mr-4">
-                                    <Link to="/" className="nav-link">
+                                    <Link to="/about" className="nav-link">
                                         <i className="fas fa-info"></i> Về Chúng Tôi
                                         <span className="sr-only">(current)</span>
                                     </Link>

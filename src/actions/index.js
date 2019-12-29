@@ -9,3 +9,5 @@ export * from './classesEveryTeacher' // lien quan den DS lop, DS diem so
 export * from './parent'
 export * from './document'
 export * from './teacher'
+export * from './rooms'
+export * from './room'

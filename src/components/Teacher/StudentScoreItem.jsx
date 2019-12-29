@@ -36,6 +36,7 @@ class StudentScoreItem extends Component {
             name6: HK2[2].score,
             name7: HK2[3].score,
         })
+        console.log("10")
     }
     openPopup = () => {
         this.setState({
@@ -66,6 +67,7 @@ class StudentScoreItem extends Component {
             return s
         })
         this.props.updateStudentScores(mssv,subject.id,score_arr);
+        score_arr =[]
         this.setState({
             open: false,
         })        
@@ -111,13 +113,12 @@ class StudentScoreItem extends Component {
             return <td key={i}>{s.score >= 0 ? s.score : ""}</td>
         })
         var hk1Input = score.HK1.map((s, i) => {
-            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + i} max="10" min="0" className="btn-pop hk1" defaultValue={s.score >= 0? s.score : ""} key={i} /></td>
+            return <td key={i+"hk1"}><input type="number" onChange={this.onChange} name={"name" + i} max="10" min="0" className="btn-pop hk1" defaultValue={s.score >= 0? s.score : ""} key={i} /></td>
         })
         var hk2Input = score.HK2.map((s, i) => {
 
-            return <td key={i}><input type="number" onChange={this.onChange} name={"name" + (i + 4)} max="10" min="0" className="btn-pop hk2" defaultValue={s.score >= 0 ? s.score : ""} key={i} /></td>
+            return <td key={i+"hk2"}><input type="number" onChange={this.onChange} name={"name" + (i + 4)} max="10" min="0" className="btn-pop hk2" defaultValue={s.score >= 0 ? s.score : ""} key={i} /></td>
         })
-        console.log(diemhk1)
         diemhk1 /= 7
         diemhk2 /= 7
         var tongket = -1
